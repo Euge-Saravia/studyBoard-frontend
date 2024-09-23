@@ -1,9 +1,11 @@
+import "./mainButton.scss"
 
+const MainButton = ({ color, size, text, onClick }) => {
+    return (
+        <button className={`btn ${color} ${size}`} onClick={onClick}>
+            {text}
+        </button>
+    );
+};
 
-const MainButton = () => {
-  return (
-    <div>MainButton</div>
-  )
-}
-
-export default MainButton
+export default MainButton;
