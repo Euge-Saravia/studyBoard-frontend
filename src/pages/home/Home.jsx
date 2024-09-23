@@ -1,10 +1,13 @@
+import PostIt from "../../components/board/postIt/PostIt";
 
-import JoinButton from "../../components/buttons/joinButton/JoinButton";
 
 const Home = () => {
     return (
         <div>
-            <JoinButton />
+            <PostIt />
+            <PostIt type="wheat"/>
+            <PostIt type="green-brut"/>
+            <PostIt type="perano"/>
         </div>
     );
 };
