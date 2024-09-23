@@ -14,20 +14,23 @@ $font-fira: "Fira Code";
 
 
 
-@mixin short-paragraph(){
+@mixin short-paragraph($color){
     font-family: $font-karla;
     font-size: 0.813rem;
     line-height: 1rem;
+    color: $color;
 }
 
-@mixin long-paragraph(){
+@mixin long-paragraph($color){
     font-family: $font-karla;
     font-size: 0.938rem;
     line-height:  1.25rem;
+    color: $color;
 }
 
 @mixin code() {
     font-family: $font-fira;
     font-size: 0.813rem;
     line-height: 1rem;
+    color: $white-cream;
 }
