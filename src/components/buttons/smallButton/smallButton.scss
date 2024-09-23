@@ -1,0 +1,41 @@
+@import "../../../styles/variables.scss";
+
+.small-btn {
+    width: 5.938rem;
+    height: 1.563rem;
+    border-radius: 0.938rem;
+    border: none;
+    font-size: 0.813em;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    background-color: $light-blue;
+    color: $dark-blue;
+
+    &.variant2 {
+        background-color: $white-cream;
+        color: $dark-blue;
+        border: 2px solid $light-blue;
+    }
+
+    &.variant3 {
+        background-color: $dark-blue;
+        color: $light-blue;
+    }
+
+    &.disabled {
+        background-color: $light-gray;
+        color: $dark-gray;
+    }
+
+    &:hover {
+        opacity: 0.9;
+    }
+
+}
