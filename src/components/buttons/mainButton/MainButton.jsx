@@ -1,9 +1,9 @@
 
 
 const MainButton = () => {
-  return (
-    <div>MainButton</div>
-  )
+    return (
+        <div>MainButton</div>
+    )
 }
 
 export default MainButton

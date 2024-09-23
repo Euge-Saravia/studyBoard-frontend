@@ -1,4 +1,5 @@
 import React from "react";
+
 import JoinButton from "../../components/buttons/joinButton/JoinButton";
 
 const Home = () => {
