@@ -7,5 +7,4 @@ const MainButton = ({ color, size, text, onClick }) => {
         </button>
     );
 };
-
 export default MainButton;
