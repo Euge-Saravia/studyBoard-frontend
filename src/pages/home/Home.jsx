@@ -1,13 +1,12 @@
 import PostIt from "../../components/board/postIt/PostIt";
+import DayCard from "../../components/calendar/DayCard";
+import WeekCalendar from "../../components/calendar/WeekCalendar";
 
 
 const Home = () => {
     return (
         <div>
-            <PostIt />
-            <PostIt type="wheat"/>
-            <PostIt type="green-brut"/>
-            <PostIt type="perano"/>
+            <WeekCalendar/>
         </div>
     );
 };
