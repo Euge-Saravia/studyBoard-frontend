@@ -1,0 +1,27 @@
+@import "../../../styles/variables.scss";
+
+.title {
+    -webkit-appearance: button;
+    font-family: $font-poppins;
+    background: var(--accent);
+    color: var(--background);
+    border: none;
+    color: $dark-gray;
+    font-size:  1.75rem;
+    font-weight: 600;
+    width: 100%;
+    text-align: left;
+    padding: 0.125rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    .arrow {
+        display: flex;
+        align-items: center;
+        transform-origin: center;
+    }
+}
+
