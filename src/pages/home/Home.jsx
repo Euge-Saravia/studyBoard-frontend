@@ -1,10 +1,11 @@
+import ProfileImg from "../../components/profileImg/ProfileImg";
 
 const Home = () => {
-    return (
-        <div>
-
-        </div>
-    );
+  return (
+    <div>
+      <ProfileImg />
+    </div>
+  );
 };
 
 export default Home;
