@@ -2,7 +2,7 @@ import { addDays, addWeeks, format, isSameDay, startOfWeek, subWeeks } from 'dat
 import { es } from 'date-fns/locale';
 import React from 'react'
 import { useState } from 'react'
-import DayCard from './DayCard';
+import DayCard from '../dayCard/DayCard';
 import './weekCalendar.scss'
 
 const WeekCalendar = () => {

@@ -1,6 +1,6 @@
 import PostIt from "../../components/board/postIt/PostIt";
-import DayCard from "../../components/calendar/DayCard";
-import WeekCalendar from "../../components/calendar/WeekCalendar";
+import DayCard from "../../components/calendar/dayCard/DayCard";
+import WeekCalendar from "../../components/calendar/weekCalendar/WeekCalendar";
 
 
 const Home = () => {
