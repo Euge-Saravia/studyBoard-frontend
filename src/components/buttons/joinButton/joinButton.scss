@@ -14,12 +14,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
     
 
     svg {
-        width: 1.5rem;
-        height: 1.5rem;
-        stroke: $light-blue;
+        stroke: $dark-blue;
         padding-left: 0.1rem;
     }
 
