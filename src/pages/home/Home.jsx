@@ -1,11 +1,12 @@
-import ChoosePostIt from "../../components/choosePostIt/ChoosePostIt";
+
+import Sidebar from "../../components/sidebar/Sidebar";
 
 const Home = () => {
-  return (
-    <div>
-    <ChoosePostIt />
-    </div>
-  );
+    return (
+        <div>
+            <Sidebar />
+        </div>
+    );
 };
 
 export default Home;

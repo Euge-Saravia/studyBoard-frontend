@@ -21,7 +21,7 @@ const BoardTag = ({ name, isOpen }) => {
                     >
                         <img
                             src="./assets/icons/Arrow down.svg"
-                            alt={isOpen ? "cerrar board" : "abrir board"}
+                            alt={isOpen ? `cerrar board ${name}` : `abrir board ${name}`}
                         />
                     </motion.div>
                 </motion.button>
