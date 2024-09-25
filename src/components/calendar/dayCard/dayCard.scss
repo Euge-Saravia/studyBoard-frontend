@@ -1,0 +1,125 @@
+@import "../../../styles/variables.scss";
+
+.day-card-container {
+    display: flex;
+    border-radius: 12px;
+    transition: all 150ms ease-in-out;
+    cursor: pointer;
+    justify-content: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin: 1.8px;
+    width: 53px;
+
+    &.today {
+        background-color: $light-blue;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        position: relative;
+    }
+
+    &.not-today {
+        &:hover {
+            background-color: $dark-blue;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+            .date-number,.date-week {
+                color: $white-cream;
+            }
+        }
+
+        &:active {
+            background-color: $dark-blue;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+            .date-number,.date-week {
+                color: $white-cream;
+            }
+        }
+    }
+
+    @keyframes ping {
+        0% {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        75%,
+        10% {
+            transform: scale(2);
+            opacity: 0;
+        }
+    }
+
+    .is-today-indicator {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 0.5rem;
+        width: 0.5rem;
+        position: absolute;
+        bottom: -0.10rem;
+
+        &--ping {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            border-radius: 50%;
+            background-color: $dark-blue;
+            opacity: 0.75;
+        }
+
+        &--dot {
+            position: relative;
+            border-radius: 50%;
+            height: 0.5rem;
+            width: 0.5rem;
+            background-color: $dark-blue;
+        }
+    }
+
+    .date-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .date-content {
+        text-align: center;
+    }
+
+    .date-number {
+        transition: all 150ms ease-in-out;
+        font-size: 1rem;
+        font-weight: 600;
+
+        &.today {
+            color: $dark-blue;
+        }
+
+        &.not-today {
+            color: $dark-gray;
+
+
+            .date-container:hover & {
+                color: $dark-blue, 0.5;
+            }
+        }
+
+        .date-week {
+            transition: all 150ms ease-in-out;
+
+            &.today {
+                color: $dark-blue;
+            }
+
+            &.not-today {
+                color: $dark-gray;
+
+                .date-container:hover & {
+                    color: $dark-blue, 0.5;
+                }
+
+
+            }
+        }
+    }
+}

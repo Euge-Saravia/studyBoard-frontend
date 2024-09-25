@@ -1,0 +1,29 @@
+@import "../../../styles/variables.scss";
+
+.calendar-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+@media screen and (max-width:430px) {
+    .calendar-container{
+        width: 100%;
+
+    }
+    
+}
+
+.arrow-btn{
+    padding: 0.25rem;
+    color: $light-blue;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
