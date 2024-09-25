@@ -1,0 +1,25 @@
+@import "../../../styles/variables.scss";
+
+
+.colorButton {
+    height: 1.125rem;
+    width: 1.125rem;
+    border-radius: 50%;
+    border: none;
+
+    &.colorPostItRose {
+        background-color: $rose-bud;
+    }
+
+    &.colorPostItPerano {
+        background-color: $perano;
+    }
+
+    &.colorPostItGreen {
+        background-color: $green-brut;
+    }
+
+    &.colorPostItWheat {
+        background-color: $wheat;
+    }
+}
