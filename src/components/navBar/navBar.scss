@@ -1,0 +1,74 @@
+@import "../../styles/variables.scss";
+
+.navBarContainer {
+    margin-top: 2rem;
+    background-color: #F3F3F3;
+}
+
+.logo {
+    display: none;
+}
+
+.iconsWrappers {
+    display: flex;
+    height: 2.875rem;
+    align-items: center;
+    box-shadow: 1px -2px 3px 0px #0000001A;
+
+    .iconsNavBar {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        align-items: center;
+        stroke: $light-gray;
+
+        &.active {
+            background-color: $light-blue;
+            stroke: $dark-blue;
+        }
+
+    }
+
+    svg {
+        height: 2.053rem;
+        width: 2.053rem;
+    }
+}
+
+@media (min-width: 1024px) {
+
+
+    .navBarContainer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 2.875rem;
+        box-shadow: 1px 2px 3px 0px #0000001A;
+
+
+        .logo {
+            display: flex;
+            height: 2.053rem;
+            margin-left: 4.875rem;
+        }
+
+        .iconsWrappers {
+            margin-right: 1.678rem;
+            gap: 1rem;
+            box-shadow: none;
+            height: 0;
+
+            .iconsNavBar {
+                &.active {
+                    stroke: $dark-blue;
+                }
+
+                &.order {
+                    order: 1;
+                }
+            }
+
+        }
+    }
+}
