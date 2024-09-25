@@ -4,7 +4,6 @@ import MainButton from "../buttons/mainButton/MainButton";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { blockquote } from "framer-motion/client";
 
 
 const Sidebar = ({ state, onClick }) => {
@@ -36,10 +35,10 @@ const Sidebar = ({ state, onClick }) => {
                 open: { display: "flex" },
                 closed: { display: "none"},
             }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.4 }}
             layout="position"
         >
-            <GroupImage profileImage="/assets/PRUEBA.jpeg" />
+            <GroupImage profileImage="assets/PRUEBA.jpeg" />
         </motion.div>
 
         <motion.button 
@@ -49,7 +48,7 @@ const Sidebar = ({ state, onClick }) => {
                 open: {x: 0},
                 closed: {x: "-160%"},
             }}
-            transition={{ duration: 0.9 }}
+            transition={{ duration: 0.7 }}
             onClick={toggleSidebar}
         >
             <motion.div 
