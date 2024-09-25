@@ -1,0 +1,28 @@
+@import "../../styles//variables.scss";
+
+.profileWrapper {
+    background-color: $light-gray;
+    border-radius: 50%;
+    height: 7.875rem;
+    width: 7.875rem;
+    position: absolute;
+    position: relative; 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+
+    .editProfile {
+        background-color: $white-cream;
+        width: 1.875rem;
+        height: 1.875rem;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 0.035rem solid $light-gray;
+        position: relative;
+        left: 6rem;
+        margin-top: 1rem;
+        box-shadow: 1px 1px 2px 0px #00000040;
+    }
+}
