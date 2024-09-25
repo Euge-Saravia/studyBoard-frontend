@@ -4,7 +4,6 @@ import MainButton from "../buttons/mainButton/MainButton";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { blockquote } from "framer-motion/client";
 
 
 const Sidebar = ({ state, onClick }) => {
@@ -14,10 +13,11 @@ const Sidebar = ({ state, onClick }) => {
         setIsOpen(!isOpen);
     }
 
-    const variants = {
+    const variantArrow = {
         open: { rotate: 180, x:0 },
-        closed: { rotate: 0, x: "-10%"},
+        closed: { rotate: 0, x: "-20%"},
     }
+
 
   return (
     <motion.aside 
@@ -28,18 +28,26 @@ const Sidebar = ({ state, onClick }) => {
         transition={{ duration: 0.2 }}
         layout="position"
     >
-
-        <motion.div 
-            className="groups"
+        <motion.div className="container"
             animate={isOpen ? "open" : "closed"}
             variants={{
-                open: { display: "flex" },
-                closed: { display: "none"},
+                open: { display: "flex", opacity: 1 },
+                closed: { display: "none", opacity: 0},
             }}
             transition={{ duration: 0.3 }}
-            layout="position"
-        >
-            <GroupImage profileImage="/assets/PRUEBA.jpeg" />
+            layout="position">
+                <div className="groups">
+                    <GroupImage profileImage="assets/PRUEBA.jpeg" />
+                </div>
+                <section className="bottom">
+                    <MainButton color="accent" size="small" text="+"/>
+                    <div className="logo">
+                        <div className="line"></div>
+                        <Link to="/">
+                            <img src="./logo/Icon-Variant2.svg" alt="studyboard logo" />
+                        </Link>
+                    </div>
+                </section>
         </motion.div>
 
         <motion.button 
@@ -47,42 +55,23 @@ const Sidebar = ({ state, onClick }) => {
             animate={isOpen ? "open" : "closed"}
             variants={{
                 open: {x: 0},
-                closed: {x: "-160%"},
+                closed: {x: "-140%"},
             }}
-            transition={{ duration: 0.9 }}
+            transition={{ duration: 0.7 }}
             onClick={toggleSidebar}
+            layout="position"
         >
             <motion.div 
                 className="arrow"
                 animate={isOpen ? "open" : "closed"}
-                variants={variants}
-                transition={{ duration: 0.1 }}
+                variants={variantArrow}
+                transition={{ duration: 0.7 }}
                 >
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
                 </svg>
             </motion.div>
-        </motion.button>
-        <motion.section 
-            className="bottom"
-            animate={isOpen ? "open" : "closed"}
-            variants={{
-            open: { display: "flex" },
-            closed: { display: "none"},
-        }}
-            transition={{ duration: 0.3 }}
-            layout="position"
-            >
-            <MainButton color="accent" size="small" text="+"/>
-            <div className="logo">
-                <div className="line"></div>
-                <Link to="/">
-                    <img src="./logo/Icon-Variant2.svg" alt="studyboard logo" />
-                </Link>
-            </div>
-
-
-        </motion.section>
+        </motion.button>     
     </motion.aside>
   )
 }

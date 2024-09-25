@@ -11,7 +11,7 @@ const JoinButton = ( { color, onClick} ) => {
   }
 
   return (
-    <button className={`btn ${color}`} onClick={handleClick}>
+    <button className={`joinbtn ${color}`} onClick={handleClick}>
         <div>
           {!hasJoined ? (
 
