@@ -19,10 +19,14 @@ const SignUpPage = () => {
                 <form className='form-content'>
                     <img className='logo' src='/logo\Icon-Variant2.svg' />
                     <div className='form-content'>
-                        <Input border="border" placeholder="Nombre" />
-                        <Input border="border" placeholder="Correo electrónico" />
-                        <Input border="border" placeholder="Contraseña" />
-                        <Input border="border" placeholder="Repite la contraseña" />
+                        <Input id="name" border="border" type="text" placeholder="Nombre" />
+                        {errors.name && <p className="errors">{errors.name.message}</p>}
+                        <Input id="email" border="border" type="text" placeholder="Correo electrónico" />
+                        {errors.email && <p className="errors">{errors.email.message}</p>}
+                        <Input {...register("password")} id="password" type="password" border="border" placeholder="Contraseña" />
+                        {errors.password && <p className="errors">{errors.password.message}</p>}
+                        <Input {...register("confirmPassword")} id="confirmPassword" type="password" border="border" placeholder="Repite la contraseña" />
+                        {errors.confirmPassword && <p className="errors">{errors.confirmPassword.message}</p>}
                     </div>
                     <div className='buttons'>
                         <MainButton className="btn" color="accent" text="Registrarse" iconVisibility="icon-hidden" iconButton={null} />
