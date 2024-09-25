@@ -6,6 +6,10 @@
     height: 7.875rem;
     width: 7.875rem;
     position: absolute;
+    position: relative; 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
 
     .editProfile {
         background-color: $white-cream;
