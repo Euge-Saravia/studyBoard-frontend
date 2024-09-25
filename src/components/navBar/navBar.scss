@@ -21,14 +21,16 @@
         justify-content: center;
         height: 100%;
         align-items: center;
+        stroke: $light-gray;
 
-        &.color {
+        &.active {
             background-color: $light-blue;
+            stroke: $dark-blue;
         }
 
     }
 
-    img {
+    svg {
         height: 2.053rem;
         width: 2.053rem;
     }
@@ -58,6 +60,10 @@
             height: 0;
 
             .iconsNavBar {
+                &.active {
+                    stroke: $dark-blue;
+                }
+
                 &.order {
                     order: 1;
                 }
