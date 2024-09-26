@@ -2,6 +2,15 @@
 
 .navBarContainer {
     background-color: #F3F3F3;
+    position: fixed;
+    width: 100%;
+    z-index: 10000;
+    bottom: 0;
+
+    @media (min-width: 1024px) {
+        position: relative;
+        top: 0;
+    }
 }
 
 .logoNavBar {
