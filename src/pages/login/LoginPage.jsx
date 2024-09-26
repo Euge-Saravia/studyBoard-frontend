@@ -26,7 +26,7 @@ const LoginPage = () => {
                             {errors.password && <p className="errors">{errors.password.message}</p>}
                         </div>
                         <div className='buttons'>
-                            <MainButton color="accent" text="Iniciar sesión" iconButton={null} />
+                            <MainButton color="accent" text="Iniciar sesión"/>
                             <MainButton color="secondary" text="Iniciar sesión con github" iconVisibility="icon-visible" iconButton={githubIcon} label="githubIcon" />
                         </div>
                     </form>

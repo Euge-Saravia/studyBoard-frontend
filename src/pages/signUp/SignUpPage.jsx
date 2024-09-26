@@ -30,7 +30,7 @@ const SignUpPage = () => {
                             {errors.confirmPassword && <p className="errors">{errors.confirmPassword.message}</p>}
                         </div>
                         <div className='buttons'>
-                            <MainButton color="accent" text="Registrarse" iconButton={null} />
+                            <MainButton color="accent" text="Registrarse"/>
                             <MainButton color="secondary" text="Registrarse con github" iconVisibility="icon-visible"  iconButton={githubIcon} label="githubIcon" />
                         </div>
                     </form>

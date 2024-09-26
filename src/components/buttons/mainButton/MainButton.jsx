@@ -1,6 +1,6 @@
 import "./mainButton.scss"
 
-const MainButton = ({ color, size, text, onClick, iconVisibility, iconButton, label }) => {
+const MainButton = ({ color, size, text, onClick, iconVisibility, iconButton=null, label }) => {
     return (
         <button className={`btn ${color} ${size}`} onClick={onClick}>
             {text}
