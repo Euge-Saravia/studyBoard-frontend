@@ -6,7 +6,6 @@ import Input from "../../components/inputs/Input";
 const Home = () => {
 
     return (
-        <div>
         <div className="home-container">
             <section className="cont-wrap">
                  <div className="search-container">
