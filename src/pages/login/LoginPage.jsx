@@ -14,31 +14,32 @@ const LoginPage = () => {
         resolver: yupResolver(loginSchema)
     })
     return (
-        <div className='form-page'>
-            <div className='form-container'>
-                <form className='form-content'>
-                    <img className='logo' src='/logo\Icon-Variant2.svg' />
-                    <div className='form-content'>
-                        <Input id="email" border="border" type="text" placeholder="Correo electrónico" />
-                        {errors.email && <p className="errors">{errors.email.message}</p>}
-                        <Input {...register("password")} id="password" type="password" border="border" placeholder="Contraseña" />
-                        {errors.password && <p className="errors">{errors.password.message}</p>}
+        <section className='login-body'>
+            <div className='form-page'>
+                <div className='form-container'>
+                    <form className='form-content'>
+                        <img className='logo' src='/logo\Icon-Variant2.svg' />
+                        <div className='form-content'>
+                            <Input id="email" border="border" type="text" placeholder="Correo electrónico" />
+                            {errors.email && <p className="errors">{errors.email.message}</p>}
+                            <Input {...register("password")} id="password" type="password" border="border" placeholder="Contraseña" />
+                            {errors.password && <p className="errors">{errors.password.message}</p>}
+                        </div>
+                        <div className='buttons'>
+                            <MainButton color="accent" text="Iniciar sesión" iconButton={null} />
+                            <MainButton color="secondary" text="Iniciar sesión con github" iconVisibility="icon-visible" iconButton={githubIcon} label="githubIcon" />
+                        </div>
+                    </form>
+                    <div>
+                        <p>¿No tienes cuenta aún?</p>
+                        <span>
+                            <p>Regístrate</p>
+                            <a href='/signup'>aquí</a>
+                        </span>
                     </div>
-                    <div className='buttons'>
-                        <MainButton className="btn" color="accent" text="Iniciar sesión" iconVisibility="icon-hidden" iconButton={null} />
-                        <MainButton className="btn" color="secondary" text="Iniciar sesión con github" iconButton={githubIcon} label="githubIcon" />
-                    </div>
-                </form>
-                <div>
-                    <p>¿No tienes cuenta aún?</p>
-                    <span>
-                        <p>Regístrate</p>
-                        <a>aquí</a>
-                    </span>
                 </div>
             </div>
-
-        </div>
+        </section>
     )
 }
 

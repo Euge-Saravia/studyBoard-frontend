@@ -1,10 +1,11 @@
 @import "../../styles/variables.scss";
 
-body{
+.signup-body{
     background-color: $dark-blue;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
 }
 
 .form-page {
