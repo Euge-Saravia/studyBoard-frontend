@@ -1,11 +1,19 @@
 @import "../../styles/variables.scss";
 
 .navBarContainer {
-    margin-top: 2rem;
     background-color: #F3F3F3;
+    position: fixed;
+    width: 100%;
+    z-index: 10000;
+    bottom: 0;
+
+    @media (min-width: 1024px) {
+        position: relative;
+        top: 0;
+    }
 }
 
-.logo {
+.logoNavBar {
     display: none;
 }
 
@@ -47,7 +55,7 @@
         box-shadow: 1px 2px 3px 0px #0000001A;
 
 
-        .logo {
+        .logoNavBar {
             display: flex;
             height: 2.053rem;
             margin-left: 4.875rem;
@@ -63,10 +71,10 @@
                 &.active {
                     stroke: $dark-blue;
                 }
+            }
 
-                &.order {
-                    order: 1;
-                }
+            .order {
+                order: 1;
             }
 
         }
