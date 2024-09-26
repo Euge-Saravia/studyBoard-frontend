@@ -8,6 +8,7 @@
 
 body {
     min-height: 100vh;
+    position: relative;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -45,6 +46,7 @@ h4 {
 h5 {
     font-size: 1.25rem;
     line-height: 1.625rem;
+    font-weight: 600;
 }
 
 h6 {
