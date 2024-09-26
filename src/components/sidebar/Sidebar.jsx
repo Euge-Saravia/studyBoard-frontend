@@ -2,15 +2,9 @@ import "./sidebar.scss";
 import GroupImage from "./boardImage/GroupImage";
 import MainButton from "../buttons/mainButton/MainButton";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import { motion } from "framer-motion";
 
-const Sidebar = ({ state, onClick }) => {
-    const [isOpen, setIsOpen] = useState(false);
-
-    const toggleSidebar = () => {
-        setIsOpen(!isOpen);
-    };
+const Sidebar = ({ state, onClick, isOpen, toggleSidebar }) => {
 
     const variantArrow = {
         open: { rotate: 180, x: 0 },
@@ -28,10 +22,13 @@ const Sidebar = ({ state, onClick }) => {
                 className="container"
                 animate={isOpen ? "open" : "closed"}
                 variants={{
-                    open: { display: "flex", opacity: 1, transition: { delay: 0.3 }},
+                    open: {
+                        display: "flex",
+                        opacity: 1,
+                        transition: { delay: 0.3 },
+                    },
                     closed: { display: "none", opacity: 0 },
                 }}
-                
                 transition={{ duration: 0.3 }}
                 layout="open"
             >
