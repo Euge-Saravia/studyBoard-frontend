@@ -39,7 +39,7 @@ const ComponentGroupCards = () => {
 
 
   return (
-    <div>
+    <div className="cardgroups-container">
         {groups.map((group, index) => (
             <GroupCard 
                 key={index} 

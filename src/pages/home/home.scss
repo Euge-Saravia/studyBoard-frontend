@@ -1,0 +1,19 @@
+@import "../../styles/variables.scss";
+
+.home-container {
+    background-color: $white-cream;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    .search-container {
+        width:14.75rem;
+        align-self: flex-end;
+        margin-right: 2rem;
+    }
+
+
+}
