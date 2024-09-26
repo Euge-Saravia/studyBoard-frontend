@@ -1,11 +1,9 @@
 
-import GroupLabel from "../../components/labels/groupLabel/GroupLabel";
-import Sidebar from "../../components/sidebar/Sidebar";
+import "./home.scss";
 
 const Home = () => {
     return (
         <div>
-            <GroupLabel />
         </div>
     );
 };
