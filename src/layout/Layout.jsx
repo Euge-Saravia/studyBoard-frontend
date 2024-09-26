@@ -11,7 +11,6 @@ const Layout = () => {
     const showNavSidebar = !noNavRoutes.includes(location.pathname);
     const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
     const [isDesktop, setIsDesktop] = useState(window.innerWidth > 1024);
-    console.log(isDesktop);
 
     useEffect(() => {
         if(isDesktop){
