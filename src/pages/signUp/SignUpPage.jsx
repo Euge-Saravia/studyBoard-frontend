@@ -17,7 +17,7 @@ const SignUpPage = () => {
     })
 
     const navigate = useNavigate()
-    const { data, loading, error, executePost } = usePost('')
+    /*const { data, loading, error, executePost } = usePost('')
 
     const onSubmit = (formData) => {
         executePost(formData)
@@ -33,14 +33,14 @@ const SignUpPage = () => {
             document.cookie = `user=${data.user.id}; ${expires}; path=/`;
             navigate("/home");
         }
-    }, [data, navigate])
+    }, [data, navigate])*/
 
 
     return (
         <section className='signup-body'>
             <div className='form-page'>
                 <div className='form-container'>
-                    <form className='form-content' onSubmit={handleSubmit(onSubmit)}>
+                    <form className='form-content'>
                         <img className='logo' src='/logo\Icon-Variant2.svg' />
                         <div className='form-content'>
                             <Input id="name" border="border" type="text" placeholder="Nombre" />
