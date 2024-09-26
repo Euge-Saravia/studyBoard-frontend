@@ -1,2 +1,33 @@
 @import "../../../styles/variables.scss";
 
+.cardgroups-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 3rem;
+
+}
+
+@media (min-width: 714px) {
+    .cardgroups-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, auto);
+        gap: 2rem 2rem;
+        justify-content: center;
+        align-items: center;
+
+    }
+}
+
+@media (min-width: 1024px) {
+    .cardgroups-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, auto);
+        gap: 2rem 2rem;
+        justify-content: center;
+        align-items: center;
+
+    }
+}
