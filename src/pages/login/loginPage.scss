@@ -44,7 +44,7 @@
     gap: 10px;
 }
 
-span{
+.login-span{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -52,13 +52,13 @@ span{
     gap: 5px;
 }
 
-p{
+.login-text{
     font-family: Poppins;
     font-size: 0.938rem;
     color: $white-cream;
 }
 
-a{
+.link{
     font-family: Poppins;
     font-size: 0.938rem;
     font-weight: bold;
