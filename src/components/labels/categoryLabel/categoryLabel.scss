@@ -1,0 +1,36 @@
+@import "../../../styles/variables.scss";
+
+.label {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border: none;
+    background-color: $wheat;
+    border-radius: 0.3rem;
+    width: 6rem;
+    height: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+        @include short-paragraph($dark-gray);
+        text-transform: uppercase;
+    }
+
+    &.rose {
+        background-color: $rose-bud;
+    }
+
+    &.perano {
+        background-color: $perano;
+    }
+
+    &.green {
+        background-color: $green-brut;
+    }
+
+    &.wheat {
+        background-color: $wheat;
+    }
+}

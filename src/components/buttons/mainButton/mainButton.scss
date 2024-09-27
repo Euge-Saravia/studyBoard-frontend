@@ -1,0 +1,64 @@
+@import "../../../styles/variables.scss";
+
+.btn {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    padding: 0.938rem 1.688rem;
+    border: none;
+    border-radius: 0.938rem;
+    font-size: 0.813rem;
+    font-weight: 600;
+    background-color: $dark-blue;
+    color: $light-blue;
+    cursor: pointer;
+    gap: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        opacity: 0.9;
+    }
+
+    &.secondary {
+        background-color: $white-cream;
+        border: solid 1px $light-blue;
+        color: $dark-blue;
+    }
+
+    &.accent {
+        background-color: $light-blue;
+        color: $dark-blue;
+    }
+
+    &.grey {
+        background-color: $light-gray;
+        color: $dark-gray;
+    }
+
+    &.small {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 2.813rem;
+        height: 2.813rem;
+        font-size: 20px;
+        font-weight: 700;
+        padding: 0;
+    }
+}
+
+.img-btn-style{
+    height: auto;
+    width: 15px;
+}
+
+.icon-hidden{
+    display: none;
+}
+
+.icon-visible{
+    display: block;
+}

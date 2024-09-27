@@ -1,0 +1,28 @@
+@import "../../styles/variables.scss";
+
+.userProfileContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 7rem;
+
+    .inputsContainer {
+        width: 14.75rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.625rem;
+        margin-bottom: 5.375rem;
+        margin-top: 3.438rem;
+    }
+
+    .buttonsContainer {
+        margin-bottom: 5.625rem;
+
+        button {
+            width: 14.813rem;
+            margin-bottom: 0.914rem;
+        }
+    }
+
+
+}

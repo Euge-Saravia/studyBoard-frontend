@@ -1,0 +1,13 @@
+@import "../../../styles/variables.scss";
+
+.imagebtn {
+    cursor: pointer;
+    border:none;
+    width: 2.9rem;
+    height: 2.9rem;
+    border-radius: 50%;
+    background-color: $light-gray;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}

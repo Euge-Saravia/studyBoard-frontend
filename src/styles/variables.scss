@@ -1,0 +1,36 @@
+$dark-blue: #132F5E;
+$light-blue: #7EE6DD;
+$white-cream: #F3F3F3;
+$rose-bud :#F7B2B0;
+$wheat: #F7DCB0;
+$green-brut: #BBEAD4;
+$perano: #B0C5F7;
+$dark-gray: #303236;
+$light-gray: #B9C1C2;
+
+$font-karla:"Karla", sans-serif;
+$font-poppins: "Poppins";
+$font-fira: "Fira Code";
+
+
+
+@mixin short-paragraph($color){
+    font-family: $font-karla;
+    font-size: 0.813rem;
+    line-height: 1rem;
+    color: $color;
+}
+
+@mixin long-paragraph($color){
+    font-family: $font-karla;
+    font-size: 0.938rem;
+    line-height:  1.25rem;
+    color: $color;
+}
+
+@mixin code() {
+    font-family: $font-fira;
+    font-size: 0.813rem;
+    line-height: 1rem;
+    color: $white-cream;
+}

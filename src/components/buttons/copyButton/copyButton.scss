@@ -1,0 +1,25 @@
+@import "../../../styles/variables.scss";
+
+.btncopy {
+    display: flex;
+    flex-direction: row;
+    background-color: transparent;
+    border: none;
+    align-items: center;
+    cursor: pointer;
+
+    svg {
+        stroke: $dark-gray; 
+    }
+
+    &:focus {
+        .copied {
+            color: $light-gray;
+        }
+
+        svg {
+            stroke:$light-gray;
+        }
+    }
+    
+}

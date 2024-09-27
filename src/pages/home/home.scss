@@ -1,0 +1,46 @@
+@import "../../styles/variables.scss";
+
+.home-container {
+    background-color: $white-cream;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+
+    .cont-wrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-end;
+
+        .search-container {
+            width:14.75rem;
+            align-self: flex-end;
+
+        }
+
+        .groups-cont {
+            margin-top: 1rem;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+
+    .home-container {
+        justify-content: center;
+        align-items: flex-start;
+
+        .cont-wrap {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-end;
+
+
+            .search-container {
+                align-self: flex-end;
+            }
+        }
+        
+    }
+}

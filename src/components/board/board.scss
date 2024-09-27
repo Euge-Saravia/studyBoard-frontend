@@ -1,0 +1,69 @@
+@import "../../styles/variables.scss";
+
+.board {
+    width: 100%;
+    padding: 0.25rem 1rem 1rem 1rem;
+    border-top-left-radius: 0.744rem;
+    border-top-right-radius: 0.744rem;
+    z-index: 1;
+    overflow: hidden;
+    position: relative;
+    transition: z-index 0.5s;
+    margin-top: -1rem;
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    &:last-child {
+        padding-bottom: 0.5rem;
+    }
+
+    &.expand {
+        width: 100%;
+    }
+
+    &.blue {
+        background-color: $perano;
+    }
+
+    &.green {
+        background-color: $green-brut;
+    }
+
+    &.red {
+        background-color: $rose-bud;
+    }
+
+    &.yellow {
+        background-color: $wheat;
+    }
+
+    &.open {
+        background: white;
+        z-index: 30;
+        position: absolute;
+        border-radius: 0.744rem;
+        margin-top: 0;
+        padding-bottom: 0.5rem;
+        left: 0;
+        top: 0;
+        transition: position 1s;
+
+        &.blue {
+            border: solid 5px $perano;
+        }
+
+        &.green {
+            border: solid 5px $green-brut;
+        }
+
+        &.red {
+            border: solid 5px $rose-bud;
+        }
+
+        &.yellow {
+            border: solid 5px $wheat;
+        }
+    }
+}

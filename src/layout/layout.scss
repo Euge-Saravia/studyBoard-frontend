@@ -1,0 +1,30 @@
+@import "../styles/variables.scss";
+
+.overlay {
+    &.open {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: $white-cream;
+        z-index: 10;
+    }
+    &.closed {
+        opacity: 0;
+    }
+
+    @media (min-width: 1024px) {
+        display: none;
+    }
+}
+
+.white-background {
+    background-color: $white-cream;
+    padding-top: 2.563rem;
+    padding-bottom: 3.125rem;
+}
+
+.blue-background {
+    background-color: $dark-blue;
+}
