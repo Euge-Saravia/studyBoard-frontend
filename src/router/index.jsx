@@ -5,6 +5,7 @@ import Layout from "../layout/Layout";
 import SignUpPage from "../pages/signUp/SignUpPage";
 import LoginPage from "../pages/login/LoginPage";
 import UseProfile from "../pages/userProfile/UserProfile";
+import Group from "../pages/group/Group";
 
 export const router = createBrowserRouter([
     {
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
             {
                 path:"/userprofile",
                 element:<UseProfile />
+            },
+            {
+                path: "/group",
+                element: <Group />
             }
         ],
     },

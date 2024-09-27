@@ -3,7 +3,7 @@ const ViewSelectorButton = ({ page, isActive, onClick }) => {
     return (
         <button
             type="button"
-            className={`btn ${isActive ? "active" : ""}`}
+            className={`btnselector ${isActive ? "active" : ""}`}
             aria-label={`Cambiar a vista ${page}`}
             title={`Cambiar a vista ${page}`}
             onClick={onClick}

@@ -1,5 +1,5 @@
 @import "../../../../styles/variables.scss";
-.btn {
+.btnselector {
     border: none;
     width: 0.512rem;
     height: 0.512rem;
@@ -16,7 +16,7 @@
     &.active {
         background-color: $light-blue;
         box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 10%);
-        border: solid 2px $light-blue;
+        border: solid 5px $light-blue;
     }
 
 }
