@@ -1,20 +1,23 @@
 import { useState } from "react";
 import "./boardTagsContainer.scss";
 import Board from "../Board";
-const BoardTagsContainer = ({ groupId }) => {
+import CreateBoard from "../createBoard/CreateBoard";
+
+
+const BoardTagsContainer = ({ isCreator }) => {
     /* Fetch con los boards del grupo */
     const boards = [
         {
             name: "Javascript",
-            color: "red",
+            color: "blue",
         },
         {
             name: "React",
-            color: "yellow",
+            color: "red",
         },
         {
             name: "Tailwind",
-            color: "blue",
+            color: "yellow",
         },
         {
             name: "HTML",
@@ -30,13 +33,19 @@ const BoardTagsContainer = ({ groupId }) => {
 
     return (
         <section className="tags">
+            { isCreator &&
+            <CreateBoard 
+            key={0}
+            isOpen={openCardIndex === 0}
+            toggleCard={() => toggleCard(0)}
+            />}
             {boards.map((board, index) => (
                 <Board
-                    key={index}
+                    key={index+1}
                     color={board.color}
                     name={board.name}
-                    isOpen={openCardIndex === index}
-                    toggleCard={() => toggleCard(index)}
+                    isOpen={openCardIndex === index+1}
+                    toggleCard={() => toggleCard(index+1)}
                 />
             ))}
         </section>

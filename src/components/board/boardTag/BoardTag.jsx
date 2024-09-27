@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import "./boardTag.scss"
 
-const BoardTag = ({ name, isOpen }) => {
+const BoardTag = ({ name, isOpen, addSymbol }) => {
     return (
         <>
             <motion.button
@@ -11,7 +11,7 @@ const BoardTag = ({ name, isOpen }) => {
                 >
                     {name}
                     <motion.div
-                        className="arrow"
+                        className="icon"
                         animate={isOpen ? "open" : "closed"}
                         variants={{
                             open: { rotate: 180 },
@@ -19,10 +19,17 @@ const BoardTag = ({ name, isOpen }) => {
                         }}
                         transition={{ duration: 0.2 }}
                     >
+                        {addSymbol ? 
+                        <img
+                            src="./assets/icons/Add.svg"
+                            alt="Añadir nuevo board"
+                            className="add"
+                        />
+                        : 
                         <img
                             src="./assets/icons/Arrow down.svg"
                             alt={isOpen ? `cerrar board ${name}` : `abrir board ${name}`}
-                        />
+                        />}
                     </motion.div>
                 </motion.button>
         </>
