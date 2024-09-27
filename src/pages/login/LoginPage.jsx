@@ -9,6 +9,7 @@ import MainButton from '../../components/buttons/mainButton/MainButton'
 import githubIcon from '/assets/icons/github-mark.svg'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import usePost from '../../hooks/usePost'
 
 
 const LoginPage = () => {
@@ -17,6 +18,7 @@ const LoginPage = () => {
     })
 
     const [loading, setLoading] = useState(false)
+    const [githubLoading, setGithubLoading] = useState(false)
     const navigate = useNavigate()
 
     const { data, loading: postLoading, error, executePost } = usePost('')
@@ -26,6 +28,11 @@ const LoginPage = () => {
         setLoading(true)
         executePost(formData)
     }
+
+    const handleGithubLogin = () => {
+        setGithubLoading(true)
+        window.location.href = 'http://localhost:4001/oauth2/authorization/github'
+    };
 
     useEffect(()=>{
         if (data) {
@@ -44,10 +51,12 @@ const LoginPage = () => {
         <section className='login-body'>
             <div className='form-page'>
                 <div className='form-container'>
-                {loading || postLoading ? ( 
-                        <div className="spinner-container">
-                            <div className="spinner"></div>
-                            <p>Cargando...</p>
+                {loading || postLoading || githubLoading ? (
+                        <div className="modal-overlay">
+                            <div className="modal-content">
+                                <div className="spinner"></div>
+                                <p className='modal-text'>Cargando, por favor espera...</p>
+                            </div>
                         </div>
                     ) : (
                     <form className='form-content'>
@@ -60,7 +69,9 @@ const LoginPage = () => {
                         </div>
                         <div className='buttons'>
                             <MainButton color="accent" text="Iniciar sesión"/>
-                            <MainButton color="secondary" text="Iniciar sesión con github" iconVisibility="icon-visible" iconButton={githubIcon} label="githubIcon" />
+                            <MainButton color="secondary" text="Iniciar sesión con github" iconVisibility="icon-visible" iconButton={githubIcon} label="githubIcon"
+                            type="button"
+                            onClick={handleGithubLogin} />
                         </div>
                     </form>
                     )}
