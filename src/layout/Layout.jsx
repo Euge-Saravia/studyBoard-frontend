@@ -30,13 +30,17 @@ const Layout = () => {
         setSidebarIsOpen(!sidebarIsOpen);
     };
 
+    const backgroundClass = noNavRoutes.includes(location.pathname)
+        ? "blue-background"
+        : "white-background";
+
     return (
         <>
             {showNavSidebar && <NavBar />}
             {showNavSidebar && (
                 <Sidebar isOpen={sidebarIsOpen} toggleSidebar={toggleSidebar} />
             )}
-            <main>
+            <main className={backgroundClass}>
                 <Outlet />
             </main>
             <motion.div
