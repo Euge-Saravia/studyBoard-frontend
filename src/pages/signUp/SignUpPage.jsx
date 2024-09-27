@@ -7,8 +7,10 @@ import '../../components/buttons/mainButton/mainButton.scss'
 import Input from '../../components/inputs/Input'
 import MainButton from '../../components/buttons/mainButton/MainButton'
 import githubIcon from '/assets/icons/github-mark.svg'
+import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import usePost from '../../hooks/usePost'
+
 
 
 const SignUpPage = () => {
@@ -17,7 +19,7 @@ const SignUpPage = () => {
     })
 
     const navigate = useNavigate()
-    const { data, loading, error, executePost } = usePost('')
+    /*const { data, loading, error, executePost } = usePost('')
 
     const onSubmit = (formData) => {
         executePost(formData)
@@ -33,14 +35,14 @@ const SignUpPage = () => {
             document.cookie = `user=${data.user.id}; ${expires}; path=/`;
             navigate("/home");
         }
-    }, [data, navigate])
+    }, [data, navigate])*/
 
 
     return (
         <section className='signup-body'>
             <div className='form-page'>
                 <div className='form-container'>
-                    <form className='form-content' onSubmit={handleSubmit(onSubmit)}>
+                    <form className='form-content'>
                         <img className='logo' src='/logo\Icon-Variant2.svg' />
                         <div className='form-content'>
                             <Input id="name" border="border" type="text" placeholder="Nombre" />
@@ -61,7 +63,7 @@ const SignUpPage = () => {
                         <p>¿Ya estás registrado?</p>
                         <span>
                             <p>Inicia sesión</p>
-                            <a href='/login'>aquí</a>
+                            <Link to="/login">aquí</Link>
                         </span>
                     </div>
                 </div>

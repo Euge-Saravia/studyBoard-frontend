@@ -9,7 +9,7 @@ const NavBar = () => {
       </div>
       <div className="iconsWrappers">
           <NavLink
-            to="/profileuser"
+            to="/userprofile"
             className={({ isActive }) => (isActive ? "iconsNavBar order active" : "iconsNavBar order")}
           >
             <svg
