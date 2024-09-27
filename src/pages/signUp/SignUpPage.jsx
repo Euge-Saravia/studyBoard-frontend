@@ -60,10 +60,10 @@ const SignUpPage = () => {
                         </div>
                     </form>
                     <div>
-                        <p>¿Ya estás registrado?</p>
+                        <p className='signup-span'>¿Ya estás registrado?</p>
                         <span>
-                            <p>Inicia sesión</p>
-                            <Link to="/login">aquí</Link>
+                            <p className='signup-text'>Inicia sesión</p>
+                            <Link to="/login" className='link'>aquí</Link>
                         </span>
                     </div>
                 </div>

@@ -10,7 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
     "@hookform/resolvers": "^3.9.0",
+    "@mui/material": "^6.1.1",
     "copy-to-clipboard": "^3.3.3",
     "date-fns": "^4.1.0",
     "framer-motion": "^11.5.6",
