@@ -1,5 +1,4 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import React from 'react'
 import { useForm } from 'react-hook-form'
 import { loginSchema } from '../../hooks/validationSchemas'
 import './loginPage.scss'
@@ -10,6 +9,7 @@ import githubIcon from '/assets/icons/github-mark.svg'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import usePost from '../../hooks/usePost'
+import { useState, useEffect } from "react";
 
 
 const LoginPage = () => {

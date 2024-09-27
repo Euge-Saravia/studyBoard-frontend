@@ -13,7 +13,7 @@ const FrontPage = () => {
         setTimeout(() => {
             navigate("/login");
         }, "500");
-    }, "3500");
+    }, "1500");
 
     return (
         <section className="front">
