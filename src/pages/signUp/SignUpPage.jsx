@@ -7,8 +7,10 @@ import '../../components/buttons/mainButton/mainButton.scss'
 import Input from '../../components/inputs/Input'
 import MainButton from '../../components/buttons/mainButton/MainButton'
 import githubIcon from '/assets/icons/github-mark.svg'
+import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import usePost from '../../hooks/usePost'
+
 
 
 const SignUpPage = () => {
@@ -61,7 +63,7 @@ const SignUpPage = () => {
                         <p>¿Ya estás registrado?</p>
                         <span>
                             <p>Inicia sesión</p>
-                            <a href='/login'>aquí</a>
+                            <Link to="/login">aquí</Link>
                         </span>
                     </div>
                 </div>
