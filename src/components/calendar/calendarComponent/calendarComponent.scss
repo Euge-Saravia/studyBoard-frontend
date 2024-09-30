@@ -1,10 +1,14 @@
 @import "../../../styles/variables.scss";
 
-.calendar-section {
+.calendar-comp {
+    
+    .calendar-section {
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
 
     .top-navigation {
         width: 100%;
@@ -35,11 +39,42 @@
         margin-left: 3rem;
         display: flex;
         flex-direction: column;
+        margin-top: 1.5rem;
     }
 
     .linebt {
         border: solid 1px $light-gray;
         width: 70%;
         margin-top: 0.8rem;
+    }
+
+    .cal-post-it {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.6rem 0.6rem;
+        margin-top: 2rem;
+        margin-left: 1rem;;
+    }
+}
+}
+
+
+@media (min-width: 1024px)  {
+
+    .calendar-comp {
+        width: 32rem;
+        display:flex;
+        justify-content: center;
+
+        .calendar-section {
+            width: 51.875rem;
+       
+
+        .linebt {
+            border: solid 1px $light-gray;
+            width: 80%;
+            margin-top: 0.8rem;
+        }
+    }
     }
 }

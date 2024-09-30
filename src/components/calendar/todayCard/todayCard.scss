@@ -9,9 +9,6 @@
     .month-year {
         width: auto;
         height: 1.313rem;
-        background-color: $dark-blue;
-        color: $light-blue;
-        border-radius: 1rem;
         display: flex;
         flex-direction: row;
         gap: 0.5rem;
@@ -23,6 +20,10 @@
             color: $light-blue;
             font-family: $font-karla;
             font-size: 0.89rem;
+            background-color: $dark-blue;
+            color: $light-blue;
+            border-radius: 1rem;
+            padding: 0.1rem 0.6rem;
         }
     }
 
@@ -31,6 +32,7 @@
         display: flex;
         flex-direction: row;
         align-items: baseline;
+        margin-left: 0.8rem;
 
         p {
             color: $dark-blue;
