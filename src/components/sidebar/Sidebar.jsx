@@ -60,7 +60,7 @@ const Sidebar = ({ state, onClick, isOpen, toggleSidebar }) => {
                         <div className="line"></div>
                         <Link to="/aboutus">
                             <img
-                                src="./logo/Icon-Variant2.svg"
+                                src="/logo/Icon-Variant2.svg"
                                 alt="studyboard logo"
                             />
                         </Link>
