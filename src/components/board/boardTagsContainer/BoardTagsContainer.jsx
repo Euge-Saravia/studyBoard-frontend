@@ -27,7 +27,7 @@ const BoardTagsContainer = ({ isCreator }) => {
 
     const [openCardIndex, setOpenCardIndex] = useState(null);
 
-    const toggleCard = (index) => {
+    const toggleBoard = (index) => {
         setOpenCardIndex(openCardIndex === index ? null : index);
     };
 
@@ -37,7 +37,7 @@ const BoardTagsContainer = ({ isCreator }) => {
             <CreateBoard 
             key={0}
             isOpen={openCardIndex === 0}
-            toggleCard={() => toggleCard(0)}
+            toggleBoard={() => toggleBoard(0)}
             />}
             {boards.map((board, index) => (
                 <Board
@@ -45,7 +45,7 @@ const BoardTagsContainer = ({ isCreator }) => {
                     color={board.color}
                     name={board.name}
                     isOpen={openCardIndex === index+1}
-                    toggleCard={() => toggleCard(index+1)}
+                    toggleBoard={() => toggleBoard(index+1)}
                 />
             ))}
         </section>

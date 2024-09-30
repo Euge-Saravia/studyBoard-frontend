@@ -3,10 +3,17 @@ import Input from "../../../inputs/Input";
 import { useForm } from "react-hook-form";
 import "./createBoardForm.scss"
 
-const CreateBoardForm = () => {
-    const { handleSubmit, formState: { errors } } = useForm();
+const CreateBoardForm = ( { submitFunction }) => {
+    const { handleSubmit, register, formState: { errors } } = useForm();
+
     const onSubmit = (data) => {
-        console.log(data.name);
+        submitFunction(data, randomColor());
+    }
+
+    const randomColor = () => {
+        const colors = ['red', 'yellow', 'blue', 'green'];
+        let randomNum = Math.floor(Math.random() * colors.length);
+        return colors[randomNum];
     }
 
     return (
@@ -16,15 +23,17 @@ const CreateBoardForm = () => {
                     id="name"
                     border="border"
                     type="text"
-                    placeholder="Nombre del nuevo Board"
-                    error="El nombre del board no puede estar en blanco"
+                    {...register("name", {
+                        required: "Debes introducir el nombre del board",
+                    })}
+                    placeholder="Nombre del nuevo board"
                 />
-                {errors.email && (
+                {errors.name && (
                     <p className="errors">{errors.name.message}</p>
                 )}
             </div>
             <div className="buttons">
-                <MainButton color="accent" text="Iniciar sesión" />
+                <MainButton color="primary" text="Crear nuevo board" type="submit"/>
             </div>
         </form>
     );

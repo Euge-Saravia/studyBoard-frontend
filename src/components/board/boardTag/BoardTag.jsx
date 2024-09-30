@@ -1,13 +1,21 @@
 import { motion } from "framer-motion";
 import "./boardTag.scss"
 
-const BoardTag = ({ name, isOpen, addSymbol }) => {
+const BoardTag = ({ name, isOpen, addSymbol, onClick }) => {
+
+    const handleClick = (e) => {
+        e.stopPropagation(); // Evita que el click dentro del icono se propague
+        onClick(); // Ejecutamos la función que cierra o abre el board
+    };
+
+
     return (
         <>
             <motion.button
                     layout="position"
                     whileTap={{ scale: 0.97 }}
                     className="title"
+                    onClick={onClick}
                 >
                     {name}
                     <motion.div
@@ -18,12 +26,14 @@ const BoardTag = ({ name, isOpen, addSymbol }) => {
                             closed: { rotate: 0 },
                         }}
                         transition={{ duration: 0.2 }}
+                        onClick={handleClick}
                     >
                         {addSymbol ? 
                         <img
                             src="./assets/icons/Add.svg"
                             alt="Añadir nuevo board"
                             className="add"
+                            onClick={handleClick}
                         />
                         : 
                         <img

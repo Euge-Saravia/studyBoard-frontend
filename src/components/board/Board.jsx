@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import BoardTag from "./boardTag/BoardTag";
 import "./board.scss"
 
-const Board = ({ name, color, isOpen, toggleCard }) => {
+const Board = ({ name, color, isOpen, toggleBoard }) => {
 
     return (
         <>
@@ -10,7 +10,7 @@ const Board = ({ name, color, isOpen, toggleCard }) => {
                 transition={{ layout: { duration: 1, type: "spring" } }}
                 layout
                 animate={isOpen ? "open" : "closed"}
-                onClick={toggleCard}
+                onClick={toggleBoard}
                 className={`board ${isOpen ? `open ${color}` : color}`}
             >
                 <BoardTag name={name} isOpen={isOpen}/>
