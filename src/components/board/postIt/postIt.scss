@@ -37,4 +37,12 @@
         cursor: pointer;
         transition: transform 0.2s ease-in-out;
     }
+
+    code {
+        font-family: $font-fira;
+        display: flex;
+        background-color: #f4f4f4;
+        padding: 0.2rem;
+        border-radius: 1rem;
+    }
 }

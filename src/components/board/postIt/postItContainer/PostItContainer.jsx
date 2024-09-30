@@ -12,13 +12,13 @@ const PostItContainer = () => {
             id: 1,
             type: "perano",
             title: "JWT",
-            text: "Lorem ipsum",
+            text: "Lorem ipsum odor amet, consectetuer adipiscing elit. Ante interdum nec pharetra commodo pellentesque eget euismod. Vestibulum quam velit est; eu ex enim. Justo efficitur ullamcorper ante porttitor diam accumsan phasellus.\n ```javascript\nNatoque tincidunt diam porta purus curae.\n``` \nLacus mattis urna, purus suscipit iaculis blandit.Id facilisi sed pellentesque maximus class. Sit mi magnis sapien conubia elementum.",
         },
         {
             id: 2,
             type: "wheat",
             title: "Spring",
-            text: "Lorem ipsum ipsum lorem"
+            text: "Here is some **bold text** and a code snippet:\n```javascript\nconst token = jwt.sign({ foo: 'bar' }, 'shhhhh');\n```",
         },
         {
             id: 3,
