@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import usePost from '../../hooks/usePost'
 import { useState, useEffect } from "react";
+import LoadingModal from '../../components/modals/loadingModal/LoadingModal'
 
 
 const LoginPage = () => {
@@ -51,14 +52,7 @@ const LoginPage = () => {
         <section className='login-body'>
             <div className='form-page'>
                 <div className='form-container'>
-                {loading || postLoading || githubLoading ? (
-                        <div className="modal-overlay">
-                            <div className="modal-content">
-                                <div className="spinner"></div>
-                                <p className='modal-text'>Cargando, por favor espera...</p>
-                            </div>
-                        </div>
-                    ) : (
+                <LoadingModal isOpen={loading || postLoading || githubLoading}/>
                     <form className='form-content'>
                         <img className='logo' src='/logo\Icon-Variant2.svg' />
                         <div className='form-content'>
@@ -74,7 +68,6 @@ const LoginPage = () => {
                             onClick={handleGithubLogin} />
                         </div>
                     </form>
-                    )}
                     <div>
                         <p>¿No tienes cuenta aún?</p>
                         <span className='login-span'>
