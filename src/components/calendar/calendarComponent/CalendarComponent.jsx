@@ -4,30 +4,9 @@ import TodayCard from "../todayCard/TodayCard.jsx";
 import PostIt from "../../board/postIt/PostIt.jsx";
 import { isSameDay, format } from "date-fns";
 import { es } from "date-fns/locale";
+import PostItContainer from "../../board/postIt/postItContainer/PostItContainer.jsx";
 
 const CalendarComponent = () => {
-    const postits = [
-        {
-            type: "perano",
-            title: "JWT",
-            text: "Lorem ipsum"
-        },
-        {
-            type: "wheat",
-            title: "Spring",
-            text: "Lorem ipsum ipsum lorem"
-        },
-        {
-            type: "rose",
-            title: "Security",
-            text: "Lorem ipsum"
-        },
-        {
-            type: "green-brut",
-            title: "Arrays",
-            text: "Lorem ipsum ipsum lorem "
-        },
-    ]
 
     const today = new Date();
 
@@ -55,14 +34,7 @@ const CalendarComponent = () => {
             </div>
             <div className="linebt"></div>
             <section className="cal-post-it">
-                {postits.map((postit, index) => (
-                    <PostIt 
-                        key={index}
-                        type={postit.type} 
-                        title={postit.title}
-                        text={postit.text}/>
-                ))
-                }
+                <PostItContainer />
             </section>
         </section>
     </div>
