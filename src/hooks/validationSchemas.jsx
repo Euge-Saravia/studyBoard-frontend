@@ -32,9 +32,6 @@ export const createGroupSchema = yup.object().shape({
 })
 
 export const createPostItSchema = yup.object().shape({
-    posItTitle: yup.string()
-        .required('El título es obligatorio')
-        .min(6, "El título debe tener al menos 6 caractéres"),
     postItContent: yup.string().required('El contenido es obligatorio')
 })
 

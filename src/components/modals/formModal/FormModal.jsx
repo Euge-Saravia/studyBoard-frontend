@@ -13,6 +13,12 @@ const FormModal = ({ isOpen, onClose, onSubmit, validationSchema, title, fields,
         onClose()
     }
 
+    const handleTextareaChange = (event) => {
+        const textarea = event.target
+        textarea.style.height = 'auto'
+        textarea.style.height = `${textarea.scrollHeight}px`
+    }
+
     if (!isOpen) return null
 
     return (
@@ -27,6 +33,7 @@ const FormModal = ({ isOpen, onClose, onSubmit, validationSchema, title, fields,
                                 <textarea
                                     {...register(fieldName)}
                                     id={fieldName}
+                                    onChange={handleTextareaChange}
                                     className={errors[fieldName] ? 'input-error' : ''} />
                             ) : (
                                 <input

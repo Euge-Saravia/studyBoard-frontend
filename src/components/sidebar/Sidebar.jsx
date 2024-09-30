@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import FormModal from "../modals/formModal/FormModal";
-import { createGroupSchema } from "../../hooks/validationSchemas";
+import { createGroupSchema, createPostItSchema } from "../../hooks/validationSchemas";
 
 const groupFields = [
     {
@@ -19,6 +19,20 @@ const groupFields = [
         fieldType: "text"
     },
 ]
+
+const postItFields = [
+    {
+        fieldLabel: 'Título',
+        fieldName: 'postItTitle',
+        fieldType: 'text'
+    },
+    {
+        fieldLabel: 'Contenido',
+        fieldName: 'postItContent',
+        fieldType: 'textarea'
+    }
+];
+
 
 const Sidebar = ({ state, onClick, isOpen, toggleSidebar }) => {
 
@@ -36,6 +50,12 @@ const Sidebar = ({ state, onClick, isOpen, toggleSidebar }) => {
         console.log("Grupo y board creados: ", formData)
         alert(`Grupo: ${formData.groupTitle}\nBoard: ${formData.boardTitle}`)
         handleCloseModal()
+    }
+
+    const handleCreatePostIt = () => {
+        console.log("Post-it Creado: ", formData);
+        alert(`Título: ${formData.Title}\nContenido: ${formData.Content}`);
+        handleCloseModal();
     }
 
     const variantArrow = {
@@ -118,6 +138,8 @@ const Sidebar = ({ state, onClick, isOpen, toggleSidebar }) => {
             </motion.aside>
 
             <FormModal isOpen={isModalOpen} onClose={handleCloseModal} onSubmit={handleCreateGroup} title="Crear nuevo grupo de estudio" fields={groupFields} validationSchema={createGroupSchema} submitButtonText="Crear Grupo" cancelButtonText="Cancelar" />
+
+            <FormModal isOpen={isModalOpen} onClose={handleCloseModal} onSubmit={handleCreatePostIt} title="Crear nuevo Post-It" fields={postItFields} validationSchema={createPostItSchema} submitButtonText="Guardar" cancelButtonText="Cancelar" />
         </>
     );
 };
