@@ -1,0 +1,16 @@
+@import "../../../../styles/variables.scss";
+
+.board-form {
+    padding: 1rem 0;
+
+    .form-content {
+        margin-bottom: 1.5rem;
+        width: 100%;
+        gap: 0.5rem
+    }
+
+    .errors {
+        color: #ec433d;
+        margin-left: 0.5rem;
+    }
+}

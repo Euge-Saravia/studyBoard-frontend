@@ -1,0 +1,13 @@
+@import "../../styles/variables.scss";
+
+.boards{
+    margin: 9.813rem 1.313rem 0 2.313rem;
+
+    h1 {
+        color: $dark-blue;
+        font-size: 1.75rem;
+        line-height: 2.25rem;
+        font-weight: 600;
+        margin-bottom: 4.375rem;
+    }
+}
