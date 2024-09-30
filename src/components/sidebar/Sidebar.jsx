@@ -3,8 +3,26 @@ import GroupImage from "./boardImage/GroupImage";
 import MainButton from "../buttons/mainButton/MainButton";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import StudyGroupModal from "./studyGroupModal/StudyGroupModal";
 
 const Sidebar = ({ state, onClick, isOpen, toggleSidebar }) => {
+
+    const [isModalOpen, setIsModalOpen] = useState(false)
+
+    const handleOpenModal = () => {
+        setIsModalOpen(true)
+    }
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false)
+    }
+
+    const handleCreateGroup = () => {
+        console.log("Grupo y board creados: ", formData)
+        alert (`Grupo: ${formData.groupTitle}\nBoard: ${formData.boardTitle}`)
+        handleCloseModal()
+    }
 
     const variantArrow = {
         open: { rotate: 180, x: 0 },
@@ -12,6 +30,7 @@ const Sidebar = ({ state, onClick, isOpen, toggleSidebar }) => {
     };
 
     return (
+        <>
         <motion.aside
             className={`sidebar ${state} ${isOpen ? "sidebar" : "closed"}`}
             animate={{ width: isOpen ? "4.25rem" : "2rem" }}
@@ -36,12 +55,12 @@ const Sidebar = ({ state, onClick, isOpen, toggleSidebar }) => {
                     <GroupImage profileImage="assets/PRUEBA.jpeg" />
                 </div>
                 <section className="bottom">
-                    <MainButton color="accent" size="small" text="+" />
+                    <MainButton color="accent" size="small" text="+" onClick={handleOpenModal} />
                     <div className="logo">
                         <div className="line"></div>
-                        <Link to="/">
+                        <Link to="/aboutus">
                             <img
-                                src="./logo/Icon-Variant2.svg"
+                                src="/logo/Icon-Variant2.svg"
                                 alt="studyboard logo"
                             />
                         </Link>
@@ -83,6 +102,9 @@ const Sidebar = ({ state, onClick, isOpen, toggleSidebar }) => {
                 </motion.div>
             </motion.button>
         </motion.aside>
+
+        <StudyGroupModal isOpen={isModalOpen} onClose={handleCloseModal} onSubmit={handleCreateGroup}/>
+        </>
     );
 };
 
