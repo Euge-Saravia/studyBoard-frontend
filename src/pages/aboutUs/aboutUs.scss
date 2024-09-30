@@ -1,0 +1,57 @@
+@import "../../styles/variables.scss";
+
+.about-us {
+    margin: 0 auto;
+    padding: 0 4rem 4.5rem;
+   
+    img {
+        display: block;
+        margin: 0 auto;
+
+        &:first-child {
+            width: 12rem;
+            height: 12rem;
+        }
+
+        &:nth-child(2) {
+            width: 11rem;
+            padding: 1rem 0 1.5rem 0;
+        }
+    }
+
+    p {
+        text-align: justify;
+        font-size: 1rem;
+        color: $dark-blue;
+        font-family: "Karla", sans-serif;
+    }
+
+    .ourTeam{
+        text-align: center;
+        padding: 0.5rem 0;
+    }
+
+    .ourTeamLinkedin{
+        list-style: none;
+    }
+
+    a {
+        text-decoration: none;
+        display: block;
+        margin: 5px 0;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .about-us{
+        padding: 0 8rem 8.5rem;
+    }
+
+    .ourTeam{
+        text-align: left;
+    }
+}

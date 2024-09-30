@@ -1,20 +1,23 @@
 import { useState } from "react";
 import "./boardTagsContainer.scss";
 import Board from "../Board";
-const BoardTagsContainer = ({ groupId }) => {
+import CreateBoard from "../createBoard/CreateBoard";
+
+
+const BoardTagsContainer = ({ isCreator }) => {
     /* Fetch con los boards del grupo */
     const boards = [
         {
             name: "Javascript",
-            color: "red",
+            color: "blue",
         },
         {
             name: "React",
-            color: "yellow",
+            color: "red",
         },
         {
             name: "Tailwind",
-            color: "blue",
+            color: "yellow",
         },
         {
             name: "HTML",
@@ -24,19 +27,25 @@ const BoardTagsContainer = ({ groupId }) => {
 
     const [openCardIndex, setOpenCardIndex] = useState(null);
 
-    const toggleCard = (index) => {
+    const toggleBoard = (index) => {
         setOpenCardIndex(openCardIndex === index ? null : index);
     };
 
     return (
         <section className="tags">
+            { isCreator &&
+            <CreateBoard 
+            key={0}
+            isOpen={openCardIndex === 0}
+            toggleBoard={() => toggleBoard(0)}
+            />}
             {boards.map((board, index) => (
                 <Board
-                    key={index}
+                    key={index+1}
                     color={board.color}
                     name={board.name}
-                    isOpen={openCardIndex === index}
-                    toggleCard={() => toggleCard(index)}
+                    isOpen={openCardIndex === index+1}
+                    toggleBoard={() => toggleBoard(index+1)}
                 />
             ))}
         </section>

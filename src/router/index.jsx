@@ -6,6 +6,10 @@ import SignUpPage from "../pages/signUp/SignUpPage";
 import LoginPage from "../pages/login/LoginPage";
 import UseProfile from "../pages/userProfile/UserProfile";
 import Group from "../pages/group/Group";
+import UserProfile from "../pages/userProfile/UserProfile";
+import Group from "../pages/group/Group"
+import AboutUs from "../pages/aboutUs/AboutUs";
+
 
 export const router = createBrowserRouter([
     {
@@ -33,8 +37,11 @@ export const router = createBrowserRouter([
                 element:<UseProfile />
             },
             {
-                path: "/group",
+                path: "/group/:name?",
                 element: <Group />
+            {
+                path:"/aboutus",
+                element:<AboutUs />
             }
         ],
     },
