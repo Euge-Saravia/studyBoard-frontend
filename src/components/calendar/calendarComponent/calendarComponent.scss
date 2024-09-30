@@ -3,36 +3,25 @@
 .calendar-comp {
     
     .calendar-section {
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-
-    .top-navigation {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        gap: 5rem;
-        padding-left: 3rem;
-    }
-
-    .week-cal {
-        width: 21.5rem;
-        margin-top: 1.5rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
 
-        .linebt {
-            border: solid 1px $light-gray;
-            width: 80%;
+        .week-cal {
+            width: 22rem;
+            margin-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-left: 0.8rem;
+
+            .linebt {
+                border: solid 1px $light-gray;
+                width: 80%;
+            }
         }
-    }
 
     .today-cal {
         align-self: flex-start;
@@ -67,14 +56,38 @@
         justify-content: center;
 
         .calendar-section {
-            width: 51.875rem;
+            width: 28rem;
        
+            .week-cal {
+                width: 18rem;
+                margin-top: 1.5rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+        .today-cal {
+            align-self: flex-start;
+            margin-left: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            margin-top: 1.5rem;
+        }
 
         .linebt {
             border: solid 1px $light-gray;
             width: 80%;
             margin-top: 0.8rem;
         }
+
+        .cal-post-it {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem 1rem;
+            margin-top: 1.6rem;
+            margin-left: 0.6rem;;
+        }
     }
-    }
+}
 }

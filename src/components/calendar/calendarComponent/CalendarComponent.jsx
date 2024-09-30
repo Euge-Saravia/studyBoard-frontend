@@ -1,7 +1,5 @@
 import "./calendarComponent.scss";
 import WeekCalendar from "../weekCalendar/WeekCalendar.jsx"
-import ViewSelector from "../../buttons/viewSelector/ViewSelector.jsx"
-import GroupImage from "../../sidebar/boardImage/GroupImage.jsx";
 import TodayCard from "../todayCard/TodayCard.jsx";
 import PostIt from "../../board/postIt/PostIt.jsx";
 import { isSameDay, format } from "date-fns";
@@ -49,12 +47,7 @@ const CalendarComponent = () => {
   return (
     <div className="calendar-comp">
         <section className="calendar-section">
-            <div className="top-navigation">
-                <GroupImage onClick="" profileImage="" position="position"/>
-                <ViewSelector page="" isActive="" onClick=""/>
-            </div>
             <div className="week-cal">
-                <div className="linebt"></div>
                 <WeekCalendar />
             </div>
             <div className="today-cal">

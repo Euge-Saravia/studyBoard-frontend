@@ -1,0 +1,30 @@
+@import "../../../styles/variables.scss";
+
+
+.group-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    .top-navigation {
+        display: flex;
+        flex-direction: row;
+        gap: 5rem;
+        padding-left: 3rem;
+    }
+
+    .linebt {
+        border: solid 1px $light-gray;
+        width: 80%;
+        align-self: center;
+        margin-top: 1rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    
+    .group-nav {
+        display: none;
+    }
+
+}
