@@ -18,7 +18,7 @@ export const useCookies = (cookieName) => {
             setCookieValue(null)
         }
     }, [cookieName])
-    
-  return cookieValue
+
+    return cookieValue
 
 }
