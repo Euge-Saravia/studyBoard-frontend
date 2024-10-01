@@ -1,4 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form'
 import { loginSchema } from '../../hooks/validationSchemas'
 import './loginPage.scss'
@@ -13,40 +14,71 @@ import { useState, useEffect } from "react";
 import LoadingModal from '../../components/modals/loadingModal/LoadingModal'
 
 
+
 const LoginPage = () => {
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(loginSchema)
-    })
+    });
 
-    const [loading, setLoading] = useState(false)
-    const [githubLoading, setGithubLoading] = useState(false)
-    const navigate = useNavigate()
-
-    const { data, loading: postLoading, error, executePost } = usePost('')
+    const [loading, setLoading] = useState(false);
+    const [githubLoading, setGithubLoading] = useState(false);
+    const navigate = useNavigate();
     
+    const { data, loading: postLoading, executePost } = usePost('');
 
     const onSubmit = (formData) => {
-        setLoading(true)
-        executePost(formData)
-    }
-
-    const handleGithubLogin = () => {
-        setGithubLoading(true)
-        window.location.href = 'http://localhost:4001/oauth2/authorization/github'
+        setLoading(true);
+        executePost(formData);
     };
 
-    useEffect(()=>{
-        if (data) {
-            const date = new Date();
-            date.setTime(date.getTime() + 24 * 60 * 60 * 1000);
-            let expires = "expires=" + date.toUTCString();
-            
-            document.cookie = `authToken=${data.token}; ${expires}; path=/`;
-            document.cookie = `user=${data.user.id}; ${expires}; path=/`;
-            setLoading(false)
-            navigate("/home");
+    const handleGithubLogin = () => {
+        const clientID = "Ov23li8Mgk1hbihsVQKk"; 
+        const redirectURI = 'http://localhost:5173/login/'
+        window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientID}&redirect_uri=${redirectURI}`;
+    };
+
+    useEffect(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get('code');
+    
+        if (code) {
+            //Mostrar loader
+            const finalUrl = "http://localhost:4001/auth/github/callback?code="+code
+            fetch(finalUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                // body: JSON.stringify({ code }),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(userData => {
+                //ocultar loader
+                if (userData.token) {
+                    const date = new Date();
+                    date.setTime(date.getTime() + 24 * 60 * 60 * 60 * 1000); 
+                    let expires = "expires=" + date.toUTCString();
+                    document.cookie = `authToken=${userData.token}; ${expires}; path=/`;
+                    document.cookie = `userId=${userData.user.id}; ${expires}; path=/`;
+                    document.cookie = `userName=${userData.user.name}; ${expires}; path=/`;
+                    document.cookie = `userEmail=${userData.user.email}; ${expires}; path=/`;
+                    document.cookie = `userProfilePicture=${userData.user.avatarUrl}; ${expires}; path=/`;
+                    navigate('/home'); 
+                } else {
+                    //`mostrar un alert con el error
+                    console.error("No se recibió un token válido.");
+                }
+            })
+            .catch(error => {
+                //ocultar loader
+                //`mostrar un alert con el error
+                console.error('Error en la autenticación con GitHub:', error);
+            });
         }
-    }, [data, navigate])
+    }, [navigate]); // Asegúrate de incluir navigate como dependencia
 
     return (
         <section className='login-body'>
@@ -68,17 +100,18 @@ const LoginPage = () => {
                             onClick={handleGithubLogin} />
                         </div>
                     </form>
+
                     <div>
                         <p>¿No tienes cuenta aún?</p>
-                        <span className='login-span'>
-                            <p className='login-text'>Regístrate</p>
-                            <Link to='/signup' className='link'>aquí</Link>
+                        <span>
+                            <p>Regístrate</p>
+                            <Link to='/signup'>aquí</Link>
                         </span>
                     </div>
                 </div>
             </div>
         </section>
-    )
-}
+    );
+};
 
-export default LoginPage
+export default LoginPage;

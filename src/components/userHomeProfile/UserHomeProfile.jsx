@@ -3,11 +3,17 @@ import Input from "../inputs/Input";
 import MainButton from "../buttons/mainButton/MainButton";
 import LogOut from "../buttons/logOut/LogOut";
 import "./userHomeProfile.scss";
+import { useState } from "react";
 
 const UserHomeProfile = () => {
+  const [profileImage, setProfileImage] = useState(""); 
+
+  const handleImageUpload = (imageUrl) => {
+    setProfileImage(imageUrl); 
+  };
   return (
     <seccion className="userProfileContainer">
-      <ProfileImg />
+      <ProfileImg profileImage={profileImage} onImageUpload={handleImageUpload}/>
       <div className="inputsContainer">
       <Input type="text" placeholder="Name" size="size" border="border" icon="../../../public/assets/icons/Edit only pencil.svg" pencil="pencil"/>
       <Input />

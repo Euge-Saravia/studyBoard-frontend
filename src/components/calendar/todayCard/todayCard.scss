@@ -1,0 +1,42 @@
+@import "../../../styles/variables.scss";
+
+.today-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-left: 0.8rem;
+
+    .month-year {
+        width: auto;
+        height: 1.313rem;
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0.4rem;
+
+        p {
+            color: $light-blue;
+            font-family: $font-karla;
+            font-size: 0.89rem;
+            background-color: $dark-blue;
+            color: $light-blue;
+            border-radius: 1rem;
+            padding: 0.1rem 0.6rem;
+        }
+    }
+
+    .today-date {
+        width: 7.875rem;
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        margin-left: 0.8rem;
+
+        p {
+            color: $dark-blue;
+        }
+    }
+
+}
