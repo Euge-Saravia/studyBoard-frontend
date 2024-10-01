@@ -1,0 +1,46 @@
+@import '../../../styles/variables.scss';
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 2rem;
+}
+
+.modal-content {
+    background-color: $white-cream;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner {
+    border: 4px solid $white-cream;
+    border-left-color: $light-blue;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+.modal-text{
+    color: $dark-blue;
+    font-size: 0.813rem;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}

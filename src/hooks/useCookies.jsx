@@ -8,17 +8,17 @@ export const useCookies = (cookieName) => {
         if (cookies) {
             cookies = cookies.split("; ")
             let value = cookies.find((row) => row.startsWith(cookieName))
-            // Ensure value exists and is not null before splitting
             if (value) {
                 value = value.split("=")
-                setCookieValue(value.length > 1 ? value[1] : null) // Check if there is a value after the '='
+                setCookieValue(value.length > 1 ? value[1] : null)
             } else {
-                setCookieValue(null) // Set cookieValue to null if no match found
+                setCookieValue(null)
             }
         } else {
-            setCookieValue(null) // Handle case where cookies string is empty
+            setCookieValue(null)
         }
     }, [cookieName])
+    
+  return cookieValue
 
-    return cookieValue
 }
