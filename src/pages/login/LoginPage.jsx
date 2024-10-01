@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import usePost from '../../hooks/usePost'
 import LoadingModal from '../../components/modals/loadingModal/LoadingModal'
+import { useGithubLogin } from '../../hooks/useGithubLogin';
 
 
 
@@ -20,7 +21,6 @@ const LoginPage = () => {
     });
 
     const [loading, setLoading] = useState(false);
-    const [githubLoading, setGithubLoading] = useState(false);
     const navigate = useNavigate();
     
     const { data, loading: postLoading, executePost } = usePost('');
@@ -30,54 +30,7 @@ const LoginPage = () => {
         executePost(formData);
     };
 
-    const handleGithubLogin = () => {
-        const clientID = "Ov23li8Mgk1hbihsVQKk"; 
-        const redirectURI = 'http://localhost:5173/login/'
-        window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientID}&redirect_uri=${redirectURI}`;
-    };
-
-    useEffect(() => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const code = urlParams.get('code');
-    
-        if (code) {
-            //Mostrar loader
-            const finalUrl = "http://localhost:4001/auth/github/callback?code="+code
-            fetch(finalUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                // body: JSON.stringify({ code }),
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(userData => {
-                //ocultar loader
-                if (userData.token) {
-                    const date = new Date();
-                    date.setTime(date.getTime() + 24 * 60 * 60 * 60 * 1000); 
-                    let expires = "expires=" + date.toUTCString();
-                    document.cookie = `authToken=${userData.token}; ${expires}; path=/`;
-                    document.cookie = `userId=${userData.user.id}; ${expires}; path=/`;
-                    document.cookie = `userName=${userData.user.name}; ${expires}; path=/`;
-                    document.cookie = `userEmail=${userData.user.email}; ${expires}; path=/`;
-                    document.cookie = `userProfilePicture=${userData.user.avatarUrl}; ${expires}; path=/`;
-                    navigate('/home'); 
-                } else {
-                    //`mostrar un alert con el error
-                    console.error("No se recibió un token válido.");
-                }
-            })
-            .catch(error => {
-                //ocultar loader
-                //`mostrar un alert con el error
-                console.error('Error en la autenticación con GitHub:', error);
-            });
-        }
-    }, [navigate]); // Asegúrate de incluir navigate como dependencia
+    const { handleGithubLogin, githubLoading } = useGithubLogin(navigate);
 
     return (
         <section className='login-body'>
