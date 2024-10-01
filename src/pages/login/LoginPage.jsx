@@ -10,7 +10,8 @@ import githubIcon from '/assets/icons/github-mark.svg'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import usePost from '../../hooks/usePost'
-
+import { useState, useEffect } from "react";
+import LoadingModal from '../../components/modals/loadingModal/LoadingModal'
 
 
 
@@ -83,48 +84,22 @@ const LoginPage = () => {
         <section className='login-body'>
             <div className='form-page'>
                 <div className='form-container'>
-                    {loading || postLoading || githubLoading ? (
-                        <div className="modal-overlay">
-                            <div className="modal-content">
-                                <div className="spinner"></div>
-                                <p className='modal-text'>Cargando, por favor espera...</p>
-                            </div>
+                <LoadingModal isOpen={loading || postLoading || githubLoading}/>
+                    <form className='form-content'>
+                        <img className='logo' src='/logo\Icon-Variant2.svg' />
+                        <div className='form-content'>
+                            <Input id="email" border="border" type="text" placeholder="Correo electrónico" />
+                            {errors.email && <p className="errors">{errors.email.message}</p>}
+                            <Input {...register("password")} id="password" type="password" border="border" placeholder="Contraseña" />
+                            {errors.password && <p className="errors">{errors.password.message}</p>}
                         </div>
-                    ) : (
-                        <form className='form-content' onSubmit={handleSubmit(onSubmit)}>
-                            <img className='logo' src='/logo/Icon-Variant2.svg' alt="Logo" />
-                            <div className='form-content'>
-                                <Input 
-                                    {...register("email")} 
-                                    id="email" 
-                                    border="border" 
-                                    type="text" 
-                                    placeholder="Correo electrónico" 
-                                />
-                                {errors.email && <p className="errors">{errors.email.message}</p>}
-                                <Input 
-                                    {...register("password")} 
-                                    id="password" 
-                                    type="password" 
-                                    border="border" 
-                                    placeholder="Contraseña" 
-                                />
-                                {errors.password && <p className="errors">{errors.password.message}</p>}
-                            </div>
-                            <div className='buttons'>
-                                <MainButton color="accent" text="Iniciar sesión" type="submit" />
-                                <MainButton
-                                    color="secondary"
-                                    text="Iniciar sesión con GitHub"
-                                    iconVisibility="icon-visible"
-                                    iconButton={githubIcon}
-                                    label="githubIcon"
-                                    type="button"
-                                    onClick={handleGithubLogin} 
-                                />
-                            </div>
-                        </form>
-                    )}
+                        <div className='buttons'>
+                            <MainButton color="accent" text="Iniciar sesión"/>
+                            <MainButton color="secondary" text="Iniciar sesión con github" iconVisibility="icon-visible" iconButton={githubIcon} label="githubIcon"
+                            type="button"
+                            onClick={handleGithubLogin} />
+                        </div>
+                    </form>
 
                     <div>
                         <p>¿No tienes cuenta aún?</p>

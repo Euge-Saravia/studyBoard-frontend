@@ -24,3 +24,14 @@ export const loginSchema = yup.object().shape({
         .matches(/[a-z]/, "La contraseña debe tener al menos una minúscula"),
 })
 
+export const createGroupSchema = yup.object().shape({
+    groupTitle: yup.string()
+        .required('El nombre del grupo es obligatorio')
+        .min(6, "El nombre del grupo debe tener al menos 6 caractéres"),
+    boardTitle: yup.string().required('El título del board es obligatorio')
+})
+
+export const createPostItSchema = yup.object().shape({
+    postItContent: yup.string().required('El contenido es obligatorio')
+})
+
