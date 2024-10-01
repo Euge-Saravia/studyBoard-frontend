@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import FormModal from "../modals/formModal/FormModal";
 import { createGroupSchema, createPostItSchema } from "../../hooks/validationSchemas";
+import AlertModal from "../modals/alertModal/AlertModal";
 
 const groupFields = [
     {
@@ -137,9 +138,11 @@ const Sidebar = ({ state, onClick, isOpen, toggleSidebar }) => {
                 </motion.button>
             </motion.aside>
 
-            <FormModal isOpen={isModalOpen} onClose={handleCloseModal} onSubmit={handleCreateGroup} title="Crear nuevo grupo de estudio" fields={groupFields} validationSchema={createGroupSchema} submitButtonText="Crear Grupo" cancelButtonText="Cancelar" />
+            <FormModal onClose={handleCloseModal} onSubmit={handleCreateGroup} title="Crear nuevo grupo de estudio" fields={groupFields} validationSchema={createGroupSchema} submitButtonText="Crear Grupo" cancelButtonText="Cancelar" />
 
-            <FormModal isOpen={isModalOpen} onClose={handleCloseModal} onSubmit={handleCreatePostIt} title="Crear nuevo Post-It" fields={postItFields} validationSchema={createPostItSchema} submitButtonText="Guardar" cancelButtonText="Cancelar" />
+            <FormModal onClose={handleCloseModal} onSubmit={handleCreatePostIt} title="Crear nuevo Post-It" fields={postItFields} validationSchema={createPostItSchema} submitButtonText="Guardar" cancelButtonText="Cancelar" />
+
+            <AlertModal isOpen={isModalOpen} onClose={handleCloseModal}/>
         </>
     );
 };
