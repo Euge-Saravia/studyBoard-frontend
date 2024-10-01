@@ -2,7 +2,8 @@
 
 .big-post-it {
     width: 20rem;
-    height: 30rem;
+    min-height: 30rem;
+    height: auto;
     border-radius: 1.25rem;
     max-height: 40rem;
     background-color: $rose-bud;
@@ -12,7 +13,22 @@
     padding: 2.5rem 2rem;
     position: relative;
     gap: 1.7rem;
+    
 
+    code {
+        font-family: $font-fira;
+        background-color: #f4f4f4;
+        padding: 0.5rem;
+        border-radius: 1rem;
+        display: flex;
+        white-space: pre-wrap;
+    }
+
+    .code-block-cont {
+        display: flex;
+        flex-direction: column;
+
+    }
 
     &.wheat{
         background-color: $wheat;
