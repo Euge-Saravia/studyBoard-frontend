@@ -10,7 +10,6 @@ import githubIcon from '/assets/icons/github-mark.svg'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import usePost from '../../hooks/usePost'
-import { useState, useEffect } from "react";
 import LoadingModal from '../../components/modals/loadingModal/LoadingModal'
 
 

@@ -1,4 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
+import {API_URL} from "../config";
 
 const useFetch = (endpoint, options = {}, shouldFetch = true) => {
 
