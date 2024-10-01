@@ -1,25 +1,33 @@
-import CalendarComponent from "../../components/calendar/calendarComponent/CalendarComponent"
-import GroupNav from "../../components/group/groupNav/GroupNav"
-import BoardTagsContainer from "../../components/board/boardTagsContainer/BoardTagsContainer"
-import "./group.scss"
+import { useState } from "react";
+import CalendarComponent from "../../components/calendar/calendarComponent/CalendarComponent";
+import GroupNav from "../../components/group/groupNav/GroupNav";
+import BoardTagsContainer from "../../components/board/boardTagsContainer/BoardTagsContainer";
+import "./group.scss";
 
-const Group = () => {
+const Group = ({ name }) => {
     //comprobar si user actual es creador
     const isCreator = true;
+    const [activeView, setActiveView] = useState("Boards");
 
-  return (
+    const handleViewChange = (view) => {
+        if (view !== activeView) {
+            setActiveView(view);
+        }
+    };
 
-    <>
-    <section className="boards">
-        <h1>{name}Estudio de Java y Spring Boot</h1>
-      <BoardTagsContainer isCreator={isCreator}/>
-    </section>
-    <section className="calendar">
-      <GroupNav />
-      <CalendarComponent />
-    </section>
-    </>
-  )
-}
+    const components = {
+        'Boards' : <BoardTagsContainer key="boards" isCreator={isCreator} name={name} />,
+        'Calendar': <CalendarComponent key="calendar" />,
+    };
 
-export default Group
+    return (
+        <>
+        <GroupNav onViewChange={handleViewChange}/>
+        <section className={activeView}>
+            {components[activeView]} 
+        </section>
+        </>
+    );
+};
+
+export default Group;
