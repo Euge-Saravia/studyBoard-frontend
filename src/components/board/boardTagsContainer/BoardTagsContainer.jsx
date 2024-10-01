@@ -3,8 +3,7 @@ import "./boardTagsContainer.scss";
 import Board from "../Board";
 import CreateBoard from "../createBoard/CreateBoard";
 
-
-const BoardTagsContainer = ({ isCreator }) => {
+const BoardTagsContainer = ({ isCreator, name }) => {
     /* Fetch con los boards del grupo */
     const boards = [
         {
@@ -32,22 +31,26 @@ const BoardTagsContainer = ({ isCreator }) => {
     };
 
     return (
-        <section className="tags">
-            { isCreator &&
-            <CreateBoard 
-            key={0}
-            isOpen={openCardIndex === 0}
-            toggleBoard={() => toggleBoard(0)}
-            />}
-            {boards.map((board, index) => (
-                <Board
-                    key={index+1}
-                    color={board.color}
-                    name={board.name}
-                    isOpen={openCardIndex === index+1}
-                    toggleBoard={() => toggleBoard(index+1)}
-                />
-            ))}
+        <section className="boards">
+            <h1>{name}Estudio de Java y Spring Boot</h1>
+            <section className="tags">
+                {isCreator && (
+                    <CreateBoard
+                        key={0}
+                        isOpen={openCardIndex === 0}
+                        toggleBoard={() => toggleBoard(0)}
+                    />
+                )}
+                {boards.map((board, index) => (
+                    <Board
+                        key={index + 1}
+                        color={board.color}
+                        name={board.name}
+                        isOpen={openCardIndex === index + 1}
+                        toggleBoard={() => toggleBoard(index + 1)}
+                    />
+                ))}
+            </section>
         </section>
     );
 };

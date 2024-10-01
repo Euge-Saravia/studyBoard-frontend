@@ -1,8 +1,20 @@
-.tags {
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: relative;
+@import "../../../styles/variables.scss";
+
+.boards {
+    h1 {
+        color: $dark-blue;
+        font-size: 1.75rem;
+        line-height: 2.25rem;
+        font-weight: 600;
+        margin-bottom: 4.375rem;
+    }
+
+    .tags {
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        position: relative;
+    }
 }
