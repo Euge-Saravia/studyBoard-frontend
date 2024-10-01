@@ -11,13 +11,26 @@
     margin: 1.8px;
     width: 53px;
 
+    p{
+        font-size: 0.7rem;
+    }
+
     &.today {
         background-color: $light-blue;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
         position: relative;
+        
+        .date-week{
+            color: $dark-blue;
+        }
+
     }
 
     &.not-today {
+        .date-number,.date-week {
+            color: $dark-gray;
+        }
+
         &:hover {
             background-color: $dark-blue;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
