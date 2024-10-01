@@ -14,11 +14,11 @@
 
     &:focus {
         .copied {
-            color: $light-gray;
+            color: $dark-gray;
         }
 
         svg {
-            stroke:$light-gray;
+            stroke:$dark-gray;
         }
     }
     
