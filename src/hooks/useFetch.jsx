@@ -1,24 +1,20 @@
-import { useCallback, useEffect, useState } from 'react'
-import {API_URL} from "../config";
+import {  useEffect, useState } from 'react'
+import { API_URL } from "../config";
 
-const useFetch = (endpoint, options = {}, shouldFetch = true) => {
+const useFetch = (endpoint, options, shouldFetch = true) => {
 
     const [data, setData] = useState(null)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
 
-    const fetchData = useCallback(
-        async (fetchOption = {}) => {
+    const fetchData =
+        async (fetchOption = undefined) => {
             setLoading(true)
             setError(null)
 
-            const controller = new AbortController()
-            const { signal } = controller
-
             try {
-
                 const response = await fetch(`${API_URL}${endpoint}`, {
-                    ...options, ...fetchOption, signal
+                    ...options, ...fetchOption
                 })
 
                 if (!response.ok) {
@@ -28,24 +24,22 @@ const useFetch = (endpoint, options = {}, shouldFetch = true) => {
                 const result = await response.json()
                 setData(result)
 
-            } catch (error) {
-                if (error.name !== "AbortError") {
-                    setError(error.message || "Error inesperado")
+            } catch (err) {
+                if (err.name !== "AbortError") {
+                    setError(err.message || "Error inesperado")
                 }
             } finally {
                 setLoading(false)
             }
 
-            return () => controller.abort()
-
-        }, [endpoint, options])
+        }
 
     useEffect(() => {
-        if (shouldFetch) {
-            fetchData()
-        }
-    }, [shouldFetch, fetchData])
+        if (!shouldFetch) return
+        fetchData()
+    }, [endpoint, shouldFetch])
     return { data, loading, error, fetch: fetchData }
+
 }
 
 export default useFetch
