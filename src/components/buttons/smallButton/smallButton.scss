@@ -34,6 +34,11 @@
         color: $dark-gray;
     }
 
+    &.alert{
+        background-color: red;
+        color: $white-cream;
+    }
+
     &:hover {
         opacity: 0.9;
     }

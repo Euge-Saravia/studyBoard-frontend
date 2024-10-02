@@ -1,21 +1,24 @@
 import { useEffect, useState } from 'react'
 
 export const useCookies = (cookieName) => {
-
     const [cookieValue, setCookieValue] = useState(null)
 
-    useEffect(()=>{
-        let cookies =document.cookie
+    useEffect(() => {
+        let cookies = document.cookie
         if (cookies) {
             cookies = cookies.split("; ")
-            let value = cookies.find((row)=> row.startsWith(cookieName))
-            value = value ? value.split("=") : null
-            setCookieValue(value[1])
-        } else{
-            setCookieValue(false)
+            let value = cookies.find((row) => row.startsWith(cookieName))
+            if (value) {
+                value = value.split("=")
+                setCookieValue(value.length > 1 ? value[1] : null)
+            } else {
+                setCookieValue(null)
+            }
+        } else {
+            setCookieValue(null)
         }
     }, [cookieName])
-    return (
-        cookieValue
-    )
+
+    return cookieValue
+
 }

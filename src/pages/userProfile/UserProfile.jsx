@@ -1,11 +1,20 @@
+import { useState } from "react";
+import LoadingModal from "../../components/modals/loadingModal/LoadingModal";
 import UserHomeProfile from "../../components/userHomeProfile/UserHomeProfile";
- 
+
 const UserProfile = () => {
+  const [loading, setLoading] = useState(false)
+
   return (
-    <div>
-      <UserHomeProfile />
-    </div>
+    <>
+      <LoadingModal isOpen={loading} />
+      <div>
+        <UserHomeProfile />
+      </div>
+    </>
+
   )
 }
+
 
 export default UserProfile
