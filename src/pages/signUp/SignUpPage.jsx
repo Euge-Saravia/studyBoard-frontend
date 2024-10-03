@@ -24,20 +24,17 @@ const SignUpPage = () => {
   const { data, loading, error, executePost } = usePost("/api/users/register");
 
   const onSubmit = (formData) => {
-    executePost(formData);
+    console.log("submitted", formData);
+    executePost({ name: formData.name, email: formData.email, password: formData.password });
   };
 
   useEffect(() => {
     if (data) {
-      const date = new Date();
-      date.setTime(date.getTime() + 24 * 60 * 60 * 1000);
-      let expires = "expires=" + date.toUTCString();
-
-      document.cookie = `authToken=${data.token}; ${expires}; path=/`;
-      document.cookie = `user=${data.user.id}; ${expires}; path=/`;
       navigate("/home");
     }
   }, [data, navigate]);
+
+  console.log("errorrsss", errors);
 
   return (
     <section className="signup-body">
@@ -62,7 +59,7 @@ const SignUpPage = () => {
               {errors.confirmPassword && <p className="errors">{errors.confirmPassword.message}</p>}
             </div>
             <div className="buttons">
-              <MainButton color="accent" text="Registrarse" />
+              <MainButton type="submit" color="accent" text="Registrarse" />
               <MainButton
                 color="secondary"
                 text="Registrarse con github"
@@ -72,6 +69,7 @@ const SignUpPage = () => {
               />
             </div>
           </form>
+          {error && <p className="error-message">Error: {error}</p>}
           <div>
             <p className="signup-span">¿Ya estás registrado?</p>
             <span>
