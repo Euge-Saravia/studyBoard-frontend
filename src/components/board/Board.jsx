@@ -10,10 +10,10 @@ const Board = ({ name, color, isOpen, toggleBoard }) => {
                 transition={{ layout: { duration: 1, type: "spring" } }}
                 layout
                 animate={isOpen ? "open" : "closed"}
-                onClick={toggleBoard}
+                onClick={isOpen ? () => {} : toggleBoard}
                 className={`board ${isOpen ? `open ${color}` : color}`}
             >
-                <BoardTag name={name} isOpen={isOpen}/>
+                <BoardTag name={name} isOpen={isOpen} onClick={toggleBoard}/>
                 {isOpen && (
                     <motion.div
                         className="expand"
