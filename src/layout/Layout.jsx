@@ -43,11 +43,13 @@ const Layout = () => {
             <main className={backgroundClass}>
                 <Outlet />
             </main>
+            {showNavSidebar && (
             <motion.div
                 className={`overlay ${sidebarIsOpen ? "open" : "closed"}`}
                 animate={sidebarIsOpen ? { opacity: 0.7 } : { opacity: 0 }}
                 transition={{ duration: 0.5 }}
             />
+            )}
         </>
     );
 };
