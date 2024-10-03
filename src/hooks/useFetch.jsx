@@ -38,7 +38,7 @@ const useFetch = (endpoint, options, shouldFetch = true) => {
         if (!shouldFetch) return
         fetchData()
     }, [endpoint, shouldFetch])
-    return { data, loading, error, fetch: fetchData }
+    return { data, loading, error, fetchData }
 
 }
 

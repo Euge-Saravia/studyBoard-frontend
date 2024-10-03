@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import useFetch from "./useFetch";
+import { useNavigate } from "react-router-dom";
 
-export const useGithubLogin = (navigate) => {
+export const useGithubLogin = () => {
     const [githubLoading, setGithubLoading] = useState(false);
 
+    const navigate = useNavigate()
+
     const clientID = "Ov23li8Mgk1hbihsVQKk";
-    const redirectURI = 'http://localhost:5174/login/'
+    const redirectURI = 'http://localhost:5174/home/'
     const { fetchData, loading: fetchLoading } = useFetch('/auth/github/callback', {}, false)
 
     const handleGithubLogin = () => {
@@ -25,7 +28,7 @@ export const useGithubLogin = (navigate) => {
                 headers: { 'Content-Type': 'application/json' }
             })
                 .then(userData => {
-                    if (userData.token) {
+                    if (userData && userData.token) {
                         const date = new Date()
                         date.setTime(date.getTime() + 24 * 60 * 60 * 1000)
                         let expires = "expires=" + date.toUTCString()
