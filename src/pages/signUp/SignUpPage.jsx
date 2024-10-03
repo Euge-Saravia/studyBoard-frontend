@@ -29,10 +29,10 @@ const SignUpPage = () => {
   };
 
   useEffect(() => {
-    if (data) {
-      navigate("/home");
+    if (data && data.token) {
+      document.cookie = `authToken=${data.token}; path=/; max-age=3600`;
     }
-  }, [data, navigate]);
+  }, [data]);
 
   console.log("errorrsss", errors);
 
