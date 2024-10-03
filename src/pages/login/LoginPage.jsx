@@ -22,22 +22,52 @@ const LoginPage = () => {
 
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-    
-    const { data, loading: postLoading, executePost } = usePost('');
 
-    const onSubmit = (formData) => {
+    const { data, loading: postLoading, executePost } = usePost('"/api/users/login"');
+
+    const { handleGithubLogin, githubLoading } = useGithubLogin(navigate)
+
+    const handleUserLogin = (userData) => {
+        console.log(userData.token);
+
+        if (userData && userData.token) {
+            const date = new Date()
+            date.setTime(date.getTime() + 24 * 60 * 60 * 1000)
+            let expires = "expires=" + date.toUTCString()
+            document.cookie = `authToken=${userData.token}; ${expires}; path=/`
+            document.cookie = `userId=${userData.user.id}; ${expires}; path=/`
+            document.cookie = `userName=${userData.user.name}; ${expires}; path=/`
+            document.cookie = `userEmail=${userData.user.email}; ${expires}; path=/`
+            document.cookie = `userProfilePicture=${userData.user.avatarUrl}; ${expires}; path=/`
+            navigate('/home')
+        } else {
+            console.error("No se recibió un token válido.")
+        } setLoading(false)
+
+    }
+
+    const onSubmit = async (formData) => {
         setLoading(true);
-        executePost(formData);
-    };
+        try {
+            const response = await executePost(formData)
 
-    const { handleGithubLogin, githubLoading } = useGithubLogin(navigate);
+            if (response) {
+                handleUserLogin(response)
+            }
+        } catch (error) {
+            console.error("Error en el inicio de sesión:", error)
+        } finally {
+            setLoading(false)
+        }
+    }
+
 
     return (
         <section className='login-body'>
             <div className='form-page'>
                 <div className='form-container'>
-                <LoadingModal isOpen={loading || postLoading || githubLoading}/>
-                    <form className='form-content'>
+                    <LoadingModal isOpen={loading || postLoading || githubLoading} />
+                    <form className='form-content' onSubmit={handleSubmit(onSubmit)}>
                         <img className='logo' src='/logo\Icon-Variant2.svg' />
                         <div className='form-content'>
                             <Input id="email" border="border" type="text" placeholder="Correo electrónico" />
@@ -46,10 +76,10 @@ const LoginPage = () => {
                             {errors.password && <p className="errors">{errors.password.message}</p>}
                         </div>
                         <div className='buttons'>
-                            <MainButton color="accent" text="Iniciar sesión"/>
+                            <MainButton color="accent" text="Iniciar sesión" type="submit" />
                             <MainButton color="secondary" text="Iniciar sesión con github" iconVisibility="icon-visible" iconButton={githubIcon} label="githubIcon"
-                            type="button"
-                            onClick={handleGithubLogin} />
+                                type="button"
+                                onClick={handleGithubLogin} />
                         </div>
                     </form>
 
