@@ -15,13 +15,13 @@ const UserHomeProfile = () => {
     <seccion className="userProfileContainer">
       <ProfileImg profileImage={profileImage} onImageUpload={handleImageUpload}/>
       <div className="inputsContainer">
-      <Input type="text" placeholder="Name" size="size" border="border" icon="../../../public/assets/icons/Edit only pencil.svg" pencil="pencil"/>
-      <Input />
-      <Input />
+        <Input type="text" placeholder="Eugenia Saravia" size="size" border="border" icon="../../../public/assets/icons/Edit only pencil.svg" pencil="pencil"/>
+        <Input type="email" placeholder="eugenia@labella.com"/>
+        <Input type="password" placeholder="********"/>
       </div>
       <div className="buttonsContainer">
-      <MainButton color="accent" text="Guardar cambios"/>
-      <MainButton color="secondary" text="Cancelar"/>
+        <MainButton color="accent" text="Guardar cambios"/>
+        <MainButton color="secondary" text="Cancelar"/>
       </div>
       <LogOut />
     </seccion>
