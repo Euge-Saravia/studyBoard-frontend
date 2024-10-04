@@ -59,13 +59,13 @@ const LoginPage = () => {
                     setGithubLoading(false)
                     if (userData.token) {
                     const date = new Date();
-                    date.setTime(date.getTime() + 24 * 60 * 60 * 60 * 1000); 
+                    date.setTime(date.getTime() + 24 * 60 * 60 * 1000); 
                     let expires = "expires=" + date.toUTCString();
                     document.cookie = `authToken=${userData.token}; ${expires}; path=/`;
-                    document.cookie = `userId=${userData.user.id}; ${expires}; path=/`;
+                    /* document.cookie = `userId=${userData.user.id}; ${expires}; path=/`;
                     document.cookie = `userName=${userData.user.name}; ${expires}; path=/`;
                     document.cookie = `userEmail=${userData.user.email}; ${expires}; path=/`;
-                    document.cookie = `userProfilePicture=${userData.user.avatarUrl}; ${expires}; path=/`;
+                    document.cookie = `userProfilePicture=${userData.user.avatarUrl}; ${expires}; path=/`; */
                     navigate('/home'); 
                 } else {
                     //`mostrar un alert con el error
