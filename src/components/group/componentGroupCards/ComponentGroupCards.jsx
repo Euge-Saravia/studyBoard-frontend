@@ -1,7 +1,7 @@
 import GroupCard from "../groupCard/GroupCard"
 import "./componentGroupCards.scss"
 
-const ComponentGroupCards = () => {
+const ComponentGroupCards = ({onClick}) => {
     const groups = [
         {
             title: "Estudio de Java y Springboot",
@@ -39,7 +39,7 @@ const ComponentGroupCards = () => {
 
 
   return (
-    <div className="cardgroups-container">
+    <div className="cardgroups-container" onClick={onClick}>
         {groups.map((group, index) => (
             <GroupCard 
                 key={index} 
