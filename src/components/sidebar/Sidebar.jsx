@@ -93,7 +93,7 @@ const Sidebar = ({ state, onClick, isOpen, toggleSidebar }) => {
                         <MainButton color="accent" size="small" text="+" onClick={handleOpenModal} />
                         <div className="logo">
                             <div className="line"></div>
-                            <Link to="/">
+                            <Link to="/aboutus">
                                 <img
                                     src="/logo/Icon-Variant2.svg"
                                     alt="studyboard logo"
