@@ -1,7 +1,7 @@
 import "./sidebar.scss";
 import GroupImage from "./boardImage/GroupImage";
 import MainButton from "../buttons/mainButton/MainButton";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import FormModal from "../modals/formModal/FormModal";
@@ -36,6 +36,7 @@ const postItFields = [
 
 
 const Sidebar = ({ state, onClick, isOpen, toggleSidebar }) => {
+    const navigation = useNavigate();
 
     const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -64,6 +65,10 @@ const Sidebar = ({ state, onClick, isOpen, toggleSidebar }) => {
         closed: { rotate: 0, x: "-20%" },
     };
 
+    const navigateToGroup = () => {
+        navigate("/group")
+    }
+
     return (
         <>
             <motion.aside
@@ -87,7 +92,7 @@ const Sidebar = ({ state, onClick, isOpen, toggleSidebar }) => {
                     layout="open"
                 >
                     <div className="groups">
-                        <GroupImage profileImage="assets/PRUEBA.jpeg" />
+                        <GroupImage profileImage="assets/PRUEBA.jpeg" onClick={navigateToGroup}/>
                     </div>
                     <section className="bottom">
                         <MainButton color="accent" size="small" text="+" onClick={handleOpenModal} />
