@@ -41,12 +41,13 @@
     }
 
     &.open {
+        width: 115%;
         background: white;
         min-height: 30rem;
         z-index: 11;
         position: absolute;
         border-radius: 0.744rem;
-        margin-top: -1rem;
+        margin: -1rem;
         padding-bottom: 0.5rem;
         left: 0;
         top: -9.50rem;
