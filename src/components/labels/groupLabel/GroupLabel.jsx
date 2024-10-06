@@ -2,6 +2,7 @@ import CategoryLabel from '../categoryLabel/CategoryLabel'
 import './groupLabel.scss';
 
 const GroupLabel = ( { categories = [] } ) => {
+    console.log(categories)
 
   return (
     <section className="labels-container">
@@ -10,7 +11,7 @@ const GroupLabel = ( { categories = [] } ) => {
             {categories.map((label, index) => (
                 <CategoryLabel 
                     key={index} 
-                    category={label.category} 
+                    category={label.title} 
                     color={label.color}/> 
             ))}   
         </div>

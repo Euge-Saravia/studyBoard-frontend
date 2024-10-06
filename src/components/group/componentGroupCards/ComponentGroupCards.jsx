@@ -1,54 +1,43 @@
-import GroupCard from "../groupCard/GroupCard"
-import "./componentGroupCards.scss"
+import { useEffect, useState } from "react";
+import GroupCard from "../groupCard/GroupCard";
+import "./componentGroupCards.scss";
+import useFetch from "../../../hooks/useFetch";
 
-const ComponentGroupCards = ({onClick}) => {
-    const groups = [
-        {
-            title: "Estudio de Java y Springboot",
-            categories: [
-                {category: "java", color: 'wheat'},
-                {category: 'springboot', color: 'perano'}
-            ]
+const ComponentGroupCards = () => {
+    const [groups, setGroups] = useState([]);
+    const token =
+        "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbnRvw7FpdG9AZW1haWwuY29tIiwiaWF0IjoxNzI4MjIwMjQ5LCJleHAiOjE3MjgzMDY2NDl9.Tk-MKvY5pRKa_RKkX3hPlyYHFG4nfRUvX1AduAwNwG4";
+    const { data, loading, error } = useFetch("/group/all", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
         },
-        {
-            title: "JavaScript y React",
-            categories: [
-                {category: "javascript", color: 'green'},
-                {category: 'arrays', color: 'perano'},
-                {category: "ES6", color: 'rose'},
-                {category: 'react', color: 'wheat'},
-            ]
-        },
-        {
-            title: "Estudio de Java y Springboot",
-            categories: [
-                {category: "java", color: 'wheat'},
-                {category: 'springboot', color: 'perano'}
-            ]
-        },
-        {
-            title: "Arrays",
-            categories: [
-                {category: "javascript", color: 'green'},
-                {category: 'arrays', color: 'perano'},
-                {category: "Arr", color: 'rose'},
-            ]
-        },
-        
-    ]
+    });
 
+    useEffect(() => {
+        if (data) {
+            setGroups(data);
+        }
+    }, [data]);
 
-  return (
-    <div className="cardgroups-container" onClick={onClick}>
-        {groups.map((group, index) => (
-            <GroupCard 
-                key={index} 
-                title={group.title} 
-                categories={group.categories}
-            />
-        ))}
-    </div>
-  )
-}
+    return (
+        <div className="cardgroups-container">
+            {loading ? (
+                <p>Cargando grupos...</p>
+            ) : (
+                groups.map((group, index) => (
+                    <GroupCard
+                        key={index}
+                        groupId={group.id}
+                        title={group.groupName}
+                        categories={group.boards}
+                    />
+                ))
+            )}
+            {error && <p>{error}</p>}
+        </div>
+    );
+};
 
-export default ComponentGroupCards
+export default ComponentGroupCards;
