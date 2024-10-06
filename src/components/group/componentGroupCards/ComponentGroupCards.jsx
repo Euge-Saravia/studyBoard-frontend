@@ -5,6 +5,7 @@ import useFetch from "../../../hooks/useFetch";
 
 const ComponentGroupCards = () => {
     const [groups, setGroups] = useState([]);
+    // BORRAR CUANDO EL LOGIN FUNCIONE
     const token =
         "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbnRvw7FpdG9AZW1haWwuY29tIiwiaWF0IjoxNzI4MjIwMjQ5LCJleHAiOjE3MjgzMDY2NDl9.Tk-MKvY5pRKa_RKkX3hPlyYHFG4nfRUvX1AduAwNwG4";
     const { data, loading, error } = useFetch("/group/all", {
