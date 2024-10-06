@@ -9,9 +9,13 @@ import { AuthProvider } from "../hooks/useAuth";
 const Layout = () => {
   const location = useLocation();
   const noNavRoutes = ["/", "/login", "/signup"];
-  const showNavSidebar = !noNavRoutes.includes(location.pathname);
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth > 1024);
+
+  const showNavSidebar = !noNavRoutes.some((route) => {
+    const regex = new RegExp(`^${route}(\\/|\\?|$)`);
+    return regex.test(location.pathname);
+  });
 
   useEffect(() => {
     if (isDesktop) {
