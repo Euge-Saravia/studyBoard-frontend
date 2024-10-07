@@ -2,7 +2,6 @@ import CategoryLabel from '../categoryLabel/CategoryLabel'
 import './groupLabel.scss';
 
 const GroupLabel = ( { categories = [] } ) => {
-    console.log(categories)
 
   return (
     <section className="labels-container">

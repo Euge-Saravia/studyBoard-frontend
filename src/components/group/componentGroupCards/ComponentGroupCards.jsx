@@ -7,7 +7,7 @@ const ComponentGroupCards = () => {
     const [groups, setGroups] = useState([]);
     // BORRAR CUANDO EL LOGIN FUNCIONE
     const token =
-        "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbnRvw7FpdG9AZW1haWwuY29tIiwiaWF0IjoxNzI4MjIwMjQ5LCJleHAiOjE3MjgzMDY2NDl9.Tk-MKvY5pRKa_RKkX3hPlyYHFG4nfRUvX1AduAwNwG4";
+        "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbnRvw7FpdG9AZW1haWwuY29tIiwiaWF0IjoxNzI4MjM2OTc3LCJleHAiOjE3MjgzMjMzNzd9.SVq4lbbcl60__2H3xQ6554I1i-kf7sUJ2iM5K3ZLZE4";
     const { data, loading, error } = useFetch("/group/all", {
         method: "GET",
         headers: {
