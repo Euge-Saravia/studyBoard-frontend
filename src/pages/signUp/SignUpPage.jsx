@@ -67,7 +67,7 @@ const SignUpPage = () => {
               />
             </div>
           </form>
-          {error && <p className="error-message">Error: {error}</p>}
+          {error && <p className="errors">Error: {error}</p>}
           <div>
             <p className="signup-span">¿Ya estás registrado?</p>
             <span>

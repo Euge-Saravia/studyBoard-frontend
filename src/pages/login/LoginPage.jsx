@@ -24,16 +24,14 @@ const LoginPage = () => {
   });
 
   const { login } = useAuth();
-  const [loading, setLoading] = useState(false);
   const [githubLoading, setGithubLoading] = useState(false);
   const navigate = useNavigate();
 
-  const { data, loading: postLoading, executePost } = usePost(USER_LOGIN);
+  const { data, error, loading: postLoading, executePost } = usePost(USER_LOGIN);
 
   const [cookies, setCookie] = useCookies(["authToken"]);
 
   const onSubmit = (formData) => {
-    setLoading(true);
     executePost(formData);
   };
 
@@ -96,7 +94,7 @@ const LoginPage = () => {
     <section className="login-body">
       <div className="form-page">
         <div className="form-container">
-          <LoadingModal isOpen={loading || postLoading || githubLoading} />
+          <LoadingModal isOpen={postLoading || githubLoading} />
           <form noValidate className="form-content" onSubmit={handleSubmit(onSubmit)}>
             <img className="logo" src="/logo\Icon-Variant2.svg" />
             <div className="form-content">
@@ -117,8 +115,8 @@ const LoginPage = () => {
                 onClick={handleGithubLogin}
               />
             </div>
+            {error && <p className="errors">Email o contraseña incorrectos</p>}
           </form>
-
           <div>
             <p>¿No tienes cuenta aún?</p>
             <span>

@@ -66,7 +66,7 @@ describe("LoginPage Integration Test", () => {
       target: { value: "john.doe@example.com" },
     });
     fireEvent.input(screen.getByPlaceholderText("Contraseña"), {
-      target: { value: "password123" },
+      target: { value: "Password123" },
     });
 
     // Simulate form submission
@@ -74,7 +74,7 @@ describe("LoginPage Integration Test", () => {
     fireEvent.click(submitButton);
 
     // Check if error message is displayed
-    expect(await screen.findByText("Error: Inicio de sesión fallido")).toBeInTheDocument();
+    expect(await screen.findByText("Email o contraseña incorrectos")).toBeInTheDocument();
   });
 
   it("should submit the form and handle the API response", async () => {
