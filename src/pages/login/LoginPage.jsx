@@ -12,6 +12,9 @@ import githubIcon from "/assets/icons/github-mark.svg";
 import usePost from "../../hooks/usePost";
 import LoadingModal from "../../components/modals/loadingModal/LoadingModal";
 import "./loginPage.scss";
+import { useCookies } from "react-cookie";
+import { useAuth } from "../../hooks/useAuth";
+import { USER_LOGIN } from "../../config";
 
 const LoginPage = () => {
   const {
@@ -27,7 +30,7 @@ const LoginPage = () => {
   const [githubLoading, setGithubLoading] = useState(false);
   const navigate = useNavigate();
 
-  const { data, loading: postLoading, executePost } = usePost("/api/users/login");
+  const { data, loading: postLoading, executePost } = usePost(USER_LOGIN);
 
   const [cookies, setCookie] = useCookies(["authToken"]);
 
