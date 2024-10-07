@@ -2,17 +2,17 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { loginSchema } from "../../hooks/validationSchemas";
-import "./loginPage.scss";
-import "../../components/buttons/mainButton/mainButton.scss";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
 import Input from "../../components/inputs/Input";
 import MainButton from "../../components/buttons/mainButton/MainButton";
 import githubIcon from "/assets/icons/github-mark.svg";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 import usePost from "../../hooks/usePost";
 import LoadingModal from "../../components/modals/loadingModal/LoadingModal";
+import "./loginPage.scss";
 import { useCookies } from "react-cookie";
-import { useAuth } from "../../hooks/useAuth";
+import { USER_LOGIN } from "../../config";
 
 const LoginPage = () => {
   const {
@@ -28,7 +28,7 @@ const LoginPage = () => {
   const [githubLoading, setGithubLoading] = useState(false);
   const navigate = useNavigate();
 
-  const { data, loading: postLoading, executePost } = usePost("/api/users/login");
+  const { data, loading: postLoading, executePost } = usePost(USER_LOGIN);
 
   const [cookies, setCookie] = useCookies(["authToken"]);
 

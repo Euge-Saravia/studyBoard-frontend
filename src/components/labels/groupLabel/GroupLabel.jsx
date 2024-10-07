@@ -10,7 +10,7 @@ const GroupLabel = ( { categories = [] } ) => {
             {categories.map((label, index) => (
                 <CategoryLabel 
                     key={index} 
-                    category={label.category} 
+                    category={label.title} 
                     color={label.color}/> 
             ))}   
         </div>

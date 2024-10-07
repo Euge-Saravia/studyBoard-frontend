@@ -18,7 +18,7 @@ const CreateBoard = ({ isOpen, toggleBoard }) => {
                 layout
                 animate={isOpen ? "open" : "closed"}
                 onClick={isOpen ? () => {} : toggleBoard}
-                className={`board create-board ${isOpen ? `open red` : "red"}`}
+                className={`board create-board ${isOpen ? `open rose` : "rose"}`}
             >
                 <BoardTag
                     name="Nuevo Board"

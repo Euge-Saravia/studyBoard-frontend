@@ -1,6 +1,5 @@
 import { addDays, addWeeks, format, isSameDay, startOfWeek, subWeeks } from 'date-fns'
 import { es } from 'date-fns/locale';
-import React from 'react'
 import { useState } from 'react'
 import DayCard from '../dayCard/DayCard';
 import './weekCalendar.scss'
@@ -32,7 +31,7 @@ const WeekCalendar = () => {
         <div className='calendar-container'>
             <button onClick={goToPreviousWeek} className='arrow-btn'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
-                <path stroke="#7EE6DD" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                <path stroke="#7EE6DD" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
                 </svg>
             </button>
             {daysOfTheWeek.map((day, index) => (
@@ -40,7 +39,7 @@ const WeekCalendar = () => {
             ))}
             <button onClick={goToNextWeek} className='arrow-btn'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
-                    <path stroke="#7EE6DD" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                    <path stroke="#7EE6DD" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                 </svg>
             </button>
 

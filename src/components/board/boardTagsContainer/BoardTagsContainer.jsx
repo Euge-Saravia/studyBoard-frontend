@@ -8,15 +8,15 @@ const BoardTagsContainer = ({ isCreator, name }) => {
     const boards = [
         {
             name: "Javascript",
-            color: "blue",
+            color: "perano",
         },
         {
             name: "React",
-            color: "red",
+            color: "rose",
         },
         {
             name: "Tailwind",
-            color: "yellow",
+            color: "wheat",
         },
         {
             name: "HTML",
