@@ -1,36 +1,34 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import useFetch from './useFetch'
-import { useCookies } from './useCookies'
+import { useCallback, useEffect, useState } from "react";
+import useFetch from "./useFetch";
+import { useAuth } from "./useAuth";
 
 const useDelete = (endpoint) => {
+  const [body, setBody] = useState(null);
+  const [shouldDelete, setShouldDelete] = useState(false);
+  const { authToken } = useAuth();
 
-    const [body, setBody] = useState(null)
-    const [shouldDelete, setShouldDelete] = useState(false)
+  const fetchOption = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      ...(authToken ? { Authorization: `Bearer ${authToken}` } : {}),
+    },
+  };
 
-    const authToken = useCookies('authToken')
+  const { data, loading, error, fetch } = useFetch(endpoint, fetchOption, shouldDelete);
 
-    const fetchOption = {
-        method: "DELETE",
-        headers: {
-            "Content-Type": "application/json",
-            ...(authToken ? { Authorization: `Bearer ${authToken}` } : {}),
-        }
+  const executeDelete = useCallback((deleteData) => {
+    setShouldDelete(true);
+  }, []);
+
+  useEffect(() => {
+    if (shouldDelete) {
+      fetch();
+      setShouldDelete(false);
     }
+  }, [shouldDelete, fetch, body]);
 
-    const { data, loading, error, fetch } = useFetch(endpoint, fetchOption, shouldDelete)
+  return { data, loading, error, executeDelete };
+};
 
-    const executeDelete = useCallback((deleteData) => {
-        setShouldDelete(true);
-    }, [])
-
-    useEffect(() => {
-        if (shouldDelete) {
-            fetch()
-            setShouldDelete(false)
-        }
-    }, [shouldDelete, fetch, body])
-
-    return { data, loading, error, executeDelete }
-}
-
-export default useDelete
+export default useDelete;

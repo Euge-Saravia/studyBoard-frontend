@@ -1,28 +1,17 @@
-import { useNavigate } from "react-router-dom";
 import "./logOut.scss";
+import { useAuth } from "../../../hooks/useAuth";
 
 const LogOut = () => {
-  const navigate = useNavigate(); // Hook para redirigir al usuario
+  const { logout } = useAuth();
 
   const handleLogOut = () => {
-    document.cookie =
-      "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-
-    // Acá se puede hacer la lógica para cerrar sesión en el backend
-
-    navigate("/login");
+    logout();
   };
 
   return (
     <div>
-      <button className="logOutBtn"  onClick={handleLogOut}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
+      <button className="logOutBtn" onClick={handleLogOut}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
           <path
             stroke="#B9C1C2"
             strokeLinecap="round"
