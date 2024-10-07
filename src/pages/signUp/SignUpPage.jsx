@@ -8,8 +8,8 @@ import Input from "../../components/inputs/Input";
 import MainButton from "../../components/buttons/mainButton/MainButton";
 import githubIcon from "/assets/icons/github-mark.svg";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import usePost from "../../hooks/usePost";
+import { useAuth } from "../../hooks/useAuth";
 
 const SignUpPage = () => {
   const {
@@ -20,8 +20,8 @@ const SignUpPage = () => {
     resolver: yupResolver(singUpSchema),
   });
 
-  const navigate = useNavigate();
   const { data, loading, error, executePost } = usePost("/api/users/register");
+  const { login } = useAuth();
 
   const onSubmit = (formData) => {
     console.log("submitted", formData);
@@ -30,11 +30,9 @@ const SignUpPage = () => {
 
   useEffect(() => {
     if (data && data.token) {
-      document.cookie = `authToken=${data.token}; path=/; max-age=3600`;
+      login(data.token);
     }
   }, [data]);
-
-  console.log("errorrsss", errors);
 
   return (
     <section className="signup-body">

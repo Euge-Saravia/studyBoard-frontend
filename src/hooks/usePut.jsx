@@ -1,38 +1,36 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import useFetch from './useFetch'
-import { useCookies } from './useCookies'
+import { useCallback, useEffect, useState } from "react";
+import useFetch from "./useFetch";
+import { useAuth } from "./useAuth";
 
 const usePut = (endpoint) => {
+  const [body, setBody] = useState(null);
+  const [shouldPut, setShouldPut] = useState(false);
+  const { authToken } = useAuth();
 
-    const [body, setBody] = useState(null)
-    const [shouldPut, setShouldPut] = useState(false)
+  const fetchOption = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      ...(authToken ? { Authorization: `Bearer ${authToken}` } : {}),
+    },
+    body: body ? JSON.stringify(body) : null,
+  };
 
-    const authToken = useCookies('authToken')
+  const { data, loading, error, fetch } = useFetch(endpoint, fetchOption, shouldPut);
 
-    const fetchOption = {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-            ...(authToken ? { Authorization: `Bearer ${authToken}` } : {}),
-        },
-        body: body ? JSON.stringify(body) : null 
+  const executePut = useCallback((putData) => {
+    setBody(putData);
+    setShouldPut(true);
+  }, []);
+
+  useEffect(() => {
+    if (shouldPut && body) {
+      fetch();
+      setShouldPut(false);
     }
+  }, [shouldPut, fetch, body]);
 
-    const { data, loading, error, fetch } = useFetch(endpoint, fetchOption, shouldPut)
+  return { data, loading, error, executePut };
+};
 
-    const executePut = useCallback((putData) => {
-        setBody(putData)
-        setShouldPut(true);
-    }, [])
-
-    useEffect(() => {
-        if (shouldPut && body) {
-            fetch()
-            setShouldPut(false)
-        }
-    }, [shouldPut, fetch, body])
-
-    return { data, loading, error, executePut }
-}
-
-export default usePut
+export default usePut;

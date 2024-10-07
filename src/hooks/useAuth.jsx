@@ -1,19 +1,26 @@
-import { useEffect, useState } from 'react'
-import { useCookies } from './useCookies'
+import { createContext, useContext } from "react";
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
 
-export const useAuth = () => {
+const AuthContext = createContext();
 
-    const token = useCookies("authToken")
-    const [isAuthenticated, setIsAuthenticated] = useState(false)
+export const AuthProvider = ({ children }) => {
+  const [cookies, setCookie, removeCookie] = useCookies(["authToken"]);
+  const navigate = useNavigate();
 
-    useEffect(()=>{
-        if(token) {
-            setIsAuthenticated(true)
-        } else {
-            setIsAuthenticated(false)
-        }
-    }, [token])
-    return (
-        isAuthenticated
-    )
-}
+  const login = (token) => {
+    setCookie("authToken", token, { path: "/", maxAge: 3600 });
+    navigate("/home");
+  };
+
+  const logout = () => {
+    removeCookie("authToken", { path: "/" });
+    navigate("/login");
+  };
+
+  return (
+    <AuthContext.Provider value={{ authToken: cookies?.authToken, login, logout }}>{children}</AuthContext.Provider>
+  );
+};
+
+export const useAuth = () => useContext(AuthContext);
