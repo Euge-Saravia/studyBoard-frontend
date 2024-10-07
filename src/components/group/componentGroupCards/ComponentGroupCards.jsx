@@ -1,20 +1,26 @@
 import { useEffect, useState } from "react";
+import { useAuth } from "../../../hooks/useAuth";
 import GroupCard from "../groupCard/GroupCard";
-import "./componentGroupCards.scss";
 import useFetch from "../../../hooks/useFetch";
+import "./componentGroupCards.scss";
 
 const ComponentGroupCards = () => {
     const [groups, setGroups] = useState([]);
-    // BORRAR CUANDO EL LOGIN FUNCIONE
-    const token =
-        "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbnRvw7FpdG9AZW1haWwuY29tIiwiaWF0IjoxNzI4MjM2OTc3LCJleHAiOjE3MjgzMjMzNzd9.SVq4lbbcl60__2H3xQ6554I1i-kf7sUJ2iM5K3ZLZE4";
-    const { data, loading, error } = useFetch("/group/all", {
+    const { authToken } = useAuth();
+    const { data, loading, error, fetch: fetchData } = useFetch("/group/all", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${authToken}`,
         },
-    });
+    }, false);
+
+    useEffect(() => {
+        if (authToken) {
+            fetchData(); 
+        }
+    }, [authToken, fetchData]);
+
 
     useEffect(() => {
         if (data) {

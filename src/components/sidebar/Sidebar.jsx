@@ -2,7 +2,7 @@ import "./sidebar.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { createGroupSchema, /* createPostItSchema */ } from "../../hooks/validationSchemas";
+import { createGroupSchema} from "../../hooks/validationSchemas";
 import usePost from "../../hooks/usePost";
 import GroupImage from "./boardImage/GroupImage";
 import MainButton from "../buttons/mainButton/MainButton";
@@ -80,12 +80,6 @@ const Sidebar = ({ state, isOpen, toggleSidebar }) => {
             setErrorModalOpen(true);
         }
     }, [error])
-
-/*     const handleCreatePostIt = () => {
-        console.log("Post-it Creado: ", formData);
-        alert(`Título: ${formData.Title}\nContenido: ${formData.Content}`);
-        handleCloseModal();
-    } */
 
     const variantArrow = {
         open: { rotate: 180, x: 0 },
