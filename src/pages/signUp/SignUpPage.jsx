@@ -24,7 +24,6 @@ const SignUpPage = () => {
   const { login } = useAuth();
 
   const onSubmit = (formData) => {
-    console.log("submitted", formData);
     executePost({ name: formData.name, email: formData.email, password: formData.password });
   };
 
