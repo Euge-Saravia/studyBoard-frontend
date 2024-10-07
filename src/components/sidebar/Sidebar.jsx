@@ -66,7 +66,7 @@ const Sidebar = ({ state, onClick, isOpen, toggleSidebar }) => {
     };
 
     const navigateToGroup = () => {
-        navigate("/group")
+        navigation("/group")
     }
 
     return (
