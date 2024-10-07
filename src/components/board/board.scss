@@ -24,7 +24,7 @@
 
     }
 
-    &.blue {
+    &.perano {
         background-color: $perano;
     }
 
@@ -32,11 +32,11 @@
         background-color: $green-brut;
     }
 
-    &.red {
+    &.rose {
         background-color: $rose-bud;
     }
 
-    &.yellow {
+    &.wheat {
         background-color: $wheat;
     }
 
@@ -53,7 +53,7 @@
         top: -9.50rem;
         transition: position 1s;
 
-        &.blue {
+        &.perano {
             border: solid 5px $perano;
         }
 
@@ -61,11 +61,11 @@
             border: solid 5px $green-brut;
         }
 
-        &.red {
+        &.rose {
             border: solid 5px $rose-bud;
         }
 
-        &.yellow {
+        &.wheat {
             border: solid 5px $wheat;
         }
     }
