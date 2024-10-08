@@ -72,3 +72,9 @@
         color: $dark-gray;
     }
 }
+
+@media (min-width: 634px) {
+    .big-post-it {
+        width: 23rem;
+    }
+}
