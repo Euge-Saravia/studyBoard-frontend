@@ -19,7 +19,7 @@ const ComponentGroupCards = () => {
         if (authToken) {
             fetchData(); 
         }
-    }, [authToken, fetchData]);
+    }, [authToken]);
 
 
     useEffect(() => {
