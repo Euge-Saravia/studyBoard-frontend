@@ -4,7 +4,7 @@ export const USER_LOGIN = "/api/users/login";
 
 export const USER_REGISTER = "/api/users/register";
 
-export const GROUP_BASE= "/board"
+export const GROUP_BASE= "/group"
 
 export const CREATE_GROUP = GROUP_BASE + "/add"
 
