@@ -196,8 +196,7 @@ El programa debe iniciarse primero en el back.
 Para compilar:
 
 ```
-Da al play para compilar automáticamente.
-
+Compila la aplicación.
 ```
 
 Una vez iniciado el back, en el front:
