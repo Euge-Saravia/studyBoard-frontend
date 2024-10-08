@@ -44,6 +44,24 @@
 }
 }
 
+@media (min-width: 740px) {
+    
+    .today-cal {
+        align-self: flex-start;
+        margin-left: 1.5rem;
+        padding-left: 5.5rem;
+        display: flex;
+        flex-direction: column;
+        margin-top: 1.5rem;
+    }
+
+    .linebt {
+        border: solid 1px $light-gray;
+        width: 60%;
+        margin-top: 0.8rem;
+    }
+
+}
 
 @media (min-width: 1024px)  {
 
@@ -66,15 +84,16 @@
 
         .today-cal {
             align-self: flex-start;
-            margin-left: 1.5rem;
+            margin-left: 1.2rem;
             display: flex;
             flex-direction: column;
             margin-top: 1.5rem;
+            padding-left: 0;
         }
 
         .linebt {
             border: solid 1px $light-gray;
-            width: 80%;
+            width: 88%;
             margin-top: 0.8rem;
         }
 

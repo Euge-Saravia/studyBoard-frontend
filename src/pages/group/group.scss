@@ -3,3 +3,13 @@
 .boards{
     margin: 2.25rem 2rem 0 3rem;
 }
+
+.group-deskt {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: auto;
+    padding: 4rem;
+    gap: 2rem;
+}
+
