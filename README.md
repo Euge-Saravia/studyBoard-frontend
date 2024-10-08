@@ -222,8 +222,8 @@ Abre el enlace que aparece con tu puerto local.
 Este proyecto ha sido desarrollado por una única coder: 
 
 - [Isabel Afonso](https://github.com/IsaLagu)
-- [Flavia Ferri](https://github.com/flaviferri/)
-- [Rebeca Garcia](https://github.com/rebkg87)
+- [Flavia Ferrigno](https://github.com/flaviferri/)
+- [Rebeca García](https://github.com/rebkg87)
 - [Laura Gil](https://github.com/LauraGDev)
 - [Betty Lopez](https://github.com/BettyLopo)
 - [Eugenia Saravia](https://github.com/Euge-Saravia/)
