@@ -5,14 +5,18 @@
     margin-top: -0.625rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     
     .top-navigation {
         display: flex;
         flex-direction: row;
         gap: 5rem;
         padding-left: 3rem;
+
+        .group-img {
+            width: 20%;
+            align-self: flex-end;        }
     }
+
 
     .linebt {
         border: solid 1px $light-gray;
