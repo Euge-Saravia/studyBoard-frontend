@@ -42,12 +42,28 @@
         background-color: $perano;
     }
 
-    .icon-contr {
-        align-self: flex-start;
+
+    .icons-container{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+    }
+
+    .icons-ud{
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    .icon-postIt {
         cursor: pointer;
         transition: transform 0.2s ease-in-out;
         width: 1.5rem;
-        position: absolute;
         right: 2rem;
         top: 2rem;
     }

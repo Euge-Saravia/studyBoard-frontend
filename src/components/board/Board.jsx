@@ -4,7 +4,6 @@ import "./board.scss"
 import PostItContainer from "./postIt/postItContainer/PostItContainer";
 
 const Board = ({ name, color, isOpen, toggleBoard }) => {
-
     return (
         <>
             <motion.div
