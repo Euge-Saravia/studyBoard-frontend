@@ -105,67 +105,76 @@ La estructura actual del front es la siguiente:
 │   ├── src/
 │   │    ├── components
 │   │    │     ├── board
-│   │    │     │      ├── boardTag
-│   │    │     │      │      ├── boardTag.scss
-│   │    │     │      │      └── BoardTag.jsx
-│   │    │     │      ├── boardTagsContainer
-│   │    │     │      ├── createBoard
-│   │    │     │      ├── postIt
-│   │    │     │      ├── board.scss
-│   │    │     │      └── Board.jsx
 │   │    │     ├── buttons
-│   │    │     │      └── Filter.jsx
-│   │    │     ├── header
-│   │    │     │      ├── navbar
-│   │    │     │      │     └── Navbar.jsx
-│   │    │     │      └── Header.jsx
-│   │    │     ├── recipeCard
-│   │    │     │      ├── CarouselRecipes.jsx
-│   │    │     │      ├── ReckpeCard.jsx
-│   │    │     │      ├── InfoContainer.jsx
-│   │    │     │      ├── UnitRecipeUser.jsx
-│   │    │     │      └── UserRecipes.jsx
-│   │    │     ├── input
-│   │    │     │      ├── CategoryInput.jsx
-│   │    │     │      ├── DurationInput.jsx
-│   │    │     │      ├── Input.jsx
-│   │    │     │      ├── InputImg.jsx
-│   │    │     │      ├── InputTextArea.jsx
-│   │    │     │      └── SearchInput.jsx
-│   │    │     └── popUp
-│   │    │          └── PopUp.jsx
+│   │    │     ├── calendar
+│   │    │     ├── choosePostIt
+│   │    │     ├── group
+│   │    │     ├── inputs
+│   │    │     ├── labels
+│   │    │     ├── modals
+│   │    │     ├── navBar
+│   │    │     ├── profileImg
+│   │    │     ├── sidebar
+│   │    │     └── userHomeProfile
 │   │    ├──hooks
-│   │    │    ├── useAuth
-│   │    │    └── useFormatData
+│   │    │     ├── useAuth.jsx
+│   │    │     ├── useCopyToClipboard.jsx
+│   │    │     ├── useDelete.jsx
+│   │    │     ├── useFetch.jsx
+│   │    │     ├── useGet.jsx
+│   │    │     ├── useGithubLogin.jsx
+│   │    │     ├── usePost.jsx
+│   │    │     ├── usePut.jsx
+│   │    │     └── validationSchemas.jsx
 │   │    ├──layout
-│   │    │    └── Layout.jsx
+│   │    │     ├── layout.scss
+│   │    │     └── Layout.jsx
 │   │    ├──pages
-│   │    │      ├── Create.jsx
-│   │    │      ├── Detail.jsx
-│   │    │      ├── Edit.jsx
-│   │    │      ├── Home.jsx
-│   │    │      ├── Login.jsx
-│   │    │      ├── Favs.jsx
-│   │    │      ├── Search.jsx
-│   │    │      ├── UserPage.jsx
-│   │    │      └── Register.jsx
-│   │    ├──routes
+│   │    │      ├── aboutUs
+│   │    │      ├── frontPage
+│   │    │      ├── group
+│   │    │      ├── home
+│   │    │      ├── login
+│   │    │      ├── signUp
+│   │    │      └── userProfile
+│   │    ├──router
+│   │    │    ├── PrivateRoute.jsx
 │   │    │    └── index.jsx
-│   │    └── utils
-│   │        ├── recipeData
-│   │        └── utils
-│   ├── index.css
-│   └── main.jsx
-├── eslint.config.js
-├── index.html
-├── package-lock.json
-├── package.json
-├── postcss.config.js
-├── README.md
-├── tailwind.config.js
-└── vite.config.js
+│   │    ├── styles
+│   │    │   └── variables.scss
+│   │    ├── config.js
+│   │    ├── index.scss
+│   │    ├── main.jsx
+│   │    └── setupTests.js
+│   ├── .env
+│   ├── .gitignore
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── README.md
+└── └── vite.config.js
+
 
 ```
+
+El proyecto se ha distribuido en carpetas que contienen el componente y su correspondiente documento de estilos. También se han realizado tests, tanto unitarios como de integración, que se encuentran en las mismas carpetas.
+
+Por ejemplo: 
+```plaintext
+/
+├── STUDYBOARD-FRONTEND
+│   ├── src/
+│   │    ├── components
+│   │    │     ├── buttons
+│   │    │     │      ├── copyButton
+│   │    │     │      │      ├── CopyButton.jsx
+│   │    │     │      │      ├── copyButton.scss
+│   │    │     │      │      └── CopyButton.test.jsx
+
+```
+
+De esta manera se ha mantenido una estructura limpia y ordenada, donde cada componente tiene un nombre descriptivo junto a sus estilos y tests, en el caso de que los haya. 
 
 ## Tecnologías
 
