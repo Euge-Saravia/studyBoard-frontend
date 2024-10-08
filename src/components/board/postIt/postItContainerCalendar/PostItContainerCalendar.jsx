@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
-import PostIt from '../PostIt'
-import "./postItContainer.scss";
+import { AnimatePresence } from 'framer-motion';
+import React, { useState } from 'react';
+import PostIt from '../PostIt';
 import PostItExpand from '../postItExpand/PostItExpand';
-import { AnimatePresence, motion } from 'framer-motion';
+import './postItContainerCalendar.scss';
 
-const PostItContainer = () => {
-    const [selectedId, setSelectedId] = useState(null)
+const PostItContainerCalendar = () => {
+    const [selectId, setSelectId] = useState(null)
 
     const postits = [
         {
@@ -40,23 +40,23 @@ const PostItContainer = () => {
         },
     ]
 
-    const selectedPostIt = postits.find(postit => postit.id === selectedId);
+    const selectPostIt = postits.find(postit => postit.id === selectId);
 
   return (
-    <div className="postit-sect">
-        <div className="expanded-postit">
+    <div className="postit-section">
+        <div className="expanded-post-it">
             <AnimatePresence>
-                {selectedId && selectedPostIt && (
+                {selectId && selectPostIt && (
                     <PostItExpand 
-                    layoutId={selectedId}
-                    type={selectedPostIt.type} 
-                    title={selectedPostIt.title}
-                    text={selectedPostIt.text}
-                    onClick={() => setSelectedId(null)}/>
+                    layoutId={selectId}
+                    type={selectPostIt.type} 
+                    title={selectPostIt.title}
+                    text={selectPostIt.text}
+                    onClick={() => setSelectId(null)}/>
                 )}
             </AnimatePresence>            
         </div>
-        <div className="postit-cont">
+        <div className="postit-container">
         {postits.map((postit, index) => (
            <PostIt 
             layoutId={postit.id}
@@ -64,12 +64,13 @@ const PostItContainer = () => {
             type={postit.type} 
             title={postit.title} 
             text={postit.text} 
-            onClick={() => setSelectedId(postit.id)} /> 
+            onClick={() => setSelectId(postit.id)} /> 
         ))}
         </div>
 
     </div>
   )
+
 }
 
-export default PostItContainer
+export default PostItContainerCalendar

@@ -9,7 +9,7 @@ const Group = ({ name }) => {
     //comprobar si user actual es creador
     const isCreator = true;
     const [activeView, setActiveView] = useState("Boards");
-    const [isDesktop, setIsDesktop] = useState(window.innerWidth > 1024);
+    const [isDesktop, setIsDesktop] = useState(window.innerWidth > 860);
 
     const handleViewChange = (view) => {
         if (view !== activeView) {
