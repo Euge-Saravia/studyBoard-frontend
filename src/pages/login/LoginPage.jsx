@@ -44,7 +44,7 @@ const LoginPage = () => {
   }, [data]);
 
   const handleGithubLogin = () => {
-    const clientID = "Ov23li8Mgk1hbihsVQKk";
+    const clientID = "Ov23liP3FvUqB3NF84xO";
     const redirectURI = "http://localhost:5173/login/";
     window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientID}&redirect_uri=${redirectURI}`;
   };
