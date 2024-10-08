@@ -35,7 +35,9 @@ El diseño de la interfaz fue generado en un primer momento en Figma, donde se d
 
 Se ha diseñado mobile-first, con diseño responsive en dos puntos de quiebre: tablet y desktop.
 
-[Diseño en Figma](https://www.figma.com/design/oNZF199M4XEQXb1X6M3142/StudyBoard?node-id=57-239&node-type=canvas&t=XIAw5AUvCqypxScB-0)
+![Captura de pantalla 2024-10-08 165606](https://github.com/user-attachments/assets/5e836870-880b-4f8c-98fa-6015ed39ce85)
+
+[Figma: diseño completo](https://www.figma.com/design/oNZF199M4XEQXb1X6M3142/StudyBoard?node-id=57-239&node-type=canvas&t=XIAw5AUvCqypxScB-0)
 
 ## Diagramas
 
