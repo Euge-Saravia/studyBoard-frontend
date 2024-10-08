@@ -11,7 +11,7 @@ const CreateBoardForm = ( { submitFunction }) => {
     }
 
     const randomColor = () => {
-        const colors = ['red', 'yellow', 'blue', 'green'];
+        const colors = ['rose', 'wheat', 'perano', 'green'];
         let randomNum = Math.floor(Math.random() * colors.length);
         return colors[randomNum];
     }

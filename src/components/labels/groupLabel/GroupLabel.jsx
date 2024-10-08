@@ -7,10 +7,10 @@ const GroupLabel = ( { categories = [] } ) => {
     <section className="labels-container">
         <img src="assets/icons/Category.svg" alt="category icon" />
         <div className="list-labels">
-            {categories.map((label, index) => (
+            {categories.slice(0, 4).map((label, index) => (
                 <CategoryLabel 
                     key={index} 
-                    category={label.category} 
+                    category={label.title} 
                     color={label.color}/> 
             ))}   
         </div>
