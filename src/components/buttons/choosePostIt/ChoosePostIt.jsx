@@ -70,13 +70,12 @@ const ChoosePostIt = ({ boardId }) => {
     setErrorModalOpen(false);
   }
 
-  const handleCreatePostit = async(data) => {
+  const handleCreatePostit = async(postit) => {
     const body = {
-      "title": data.postitTitle,
+      "title": postit.postitTitle,
       "color": selectedColor,
-      "textContent": data.textContent,
+      "textContent": postit.textContent,
       "board_id": boardId
-      
     }
     executePost(body);
     handleCloseModal();
@@ -96,22 +95,22 @@ const ChoosePostIt = ({ boardId }) => {
         <motion.div className="colorButton">
           <ColorButtons 
             color="colorPostItRose" 
-            onClick={() => handleOpenModal("colorPostItRose")} />
+            onClick={() => handleOpenModal("rose")} />
         </motion.div>
         <motion.div className="colorButton">
           <ColorButtons 
             color="colorPostItPerano" 
-            onClick={() => handleOpenModal("colorPostItPerano")}/>
+            onClick={() => handleOpenModal("perano")}/>
         </motion.div>
         <motion.div className="colorButton">
           <ColorButtons 
             color="colorPostItGreen" 
-            onClick={() => handleOpenModal("colorPostItGreen")}/>
+            onClick={() => handleOpenModal("green")}/>
         </motion.div>
         <motion.div className="colorButton">
           <ColorButtons 
             color="colorPostItWheat" 
-            onClick={() => handleOpenModal("colorPostItWheat")}/>
+            onClick={() => handleOpenModal("wheat")}/>
         </motion.div>
       </motion.div>
 
