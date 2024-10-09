@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import BoardTag from "./boardTag/BoardTag";
 import "./board.scss";
-import PostItContainerBoard from "./postIt/postItContainerBoard/PostItContainerBoard";
+import PostItContainerBoard from "../postIt/postItContainerBoard/PostItContainerBoard";
 
-const Board = ({ name, color, isOpen, toggleBoard, id }) => {
+const Board = ({ name, color, isOpen, toggleBoard, boardId }) => {
   return (
     <>
       <motion.div
@@ -17,7 +17,7 @@ const Board = ({ name, color, isOpen, toggleBoard, id }) => {
         {isOpen && (
           <motion.div className="expand" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <motion.div className="postits-exp">
-              <PostItContainerBoard boardId={id} />
+              <PostItContainerBoard boardId={boardId} />
             </motion.div>
           </motion.div>
         )}

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import PostIt from "../PostIt";
 import "./postItContainerBoard.scss";
 import PostItExpand from "../postItExpand/PostItExpand";
-import { AnimatePresence, motion } from "framer-motion";
-import useFetch from "../../../../hooks/useFetch";
-import { useAuth } from "../../../../hooks/useAuth";
+import { AnimatePresence } from "framer-motion";
+import PostIt from "../PostIt";
+import ChoosePostIt from "../../buttons/choosePostIt/ChoosePostIt";
+import { useAuth } from "../../../hooks/useAuth";
+import useFetch from "../../../hooks/useFetch";
 //import { READ_POST_IT_BY_BOARD } from "../../../../config";
 
 const PostItContainerBoard = ({ boardId }) => {
@@ -63,6 +64,9 @@ const PostItContainerBoard = ({ boardId }) => {
         ) : (
           <p>No hay post-its disponibles</p>
         )}
+      </div>
+      <div>
+        <ChoosePostIt boardId={boardId} />
       </div>
     </div>
   );

@@ -1,11 +1,11 @@
-@import "../../styles//variables.scss";
+@import "../../../styles//variables.scss";
 
 .choosePostItWrapper {
     margin: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.188rem;
+    gap: 0.8rem;
 
     .colorButton {
         opacity: 0;
