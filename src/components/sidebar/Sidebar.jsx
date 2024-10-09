@@ -71,7 +71,7 @@ const Sidebar = ({ state, isOpen, toggleSidebar }) => {
 
     useEffect(() => {
         if (data) {
-            navigate(`/group/${groupId}`, { state: { data: data.id} })
+            navigate(`/group/${data.groupName}`, { state: { data: data.id} })
         }
     }, [data, navigate]);
 
