@@ -24,7 +24,7 @@ const BoardTag = ({ name, isOpen, addSymbol, onClick }) => {
                     >
                         {addSymbol ? 
                         <img
-                            src="./assets/icons/Add.svg"
+                            src="/assets/icons/Add.svg"
                             alt="Añadir nuevo board"
                             className="add"
                             onClick={onClick}
@@ -32,7 +32,7 @@ const BoardTag = ({ name, isOpen, addSymbol, onClick }) => {
                         : 
                         <img
                             onClick={onClick}
-                            src="./assets/icons/Arrow down.svg"
+                            src="/assets/icons/Arrow down.svg"
                             alt={isOpen ? `cerrar board ${name}` : `abrir board ${name}`}
                         />}
                     </motion.div>

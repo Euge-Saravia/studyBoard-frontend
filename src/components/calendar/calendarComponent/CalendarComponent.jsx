@@ -4,7 +4,7 @@ import TodayCard from "../todayCard/TodayCard.jsx";
 import PostIt from "../../board/postIt/PostIt.jsx";
 import { isSameDay, format } from "date-fns";
 import { es } from "date-fns/locale";
-import PostItContainer from "../../board/postIt/postItContainer/PostItContainer.jsx";
+import PostItContainerCalendar from "../../board/postIt/postItContainerCalendar/PostItContainerCalendar.jsx";
 
 const CalendarComponent = () => {
 
@@ -34,7 +34,7 @@ const CalendarComponent = () => {
             </div>
             <div className="linebt"></div>
             <section className="cal-post-it">
-                <PostItContainer />
+                <PostItContainerCalendar />
             </section>
         </section>
     </div>

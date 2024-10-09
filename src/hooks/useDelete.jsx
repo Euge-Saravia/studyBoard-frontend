@@ -3,7 +3,7 @@ import useFetch from "./useFetch";
 import { useAuth } from "./useAuth";
 
 const useDelete = (endpoint) => {
-  const [body, setBody] = useState(null);
+  const [body] = useState(null);
   const [shouldDelete, setShouldDelete] = useState(false);
   const { authToken } = useAuth();
 

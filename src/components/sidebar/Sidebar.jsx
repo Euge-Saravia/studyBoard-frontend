@@ -1,12 +1,14 @@
 import "./sidebar.scss";
-import GroupImage from "./boardImage/GroupImage";
-import MainButton from "../buttons/mainButton/MainButton";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { createGroupSchema} from "../../hooks/validationSchemas";
+import usePost from "../../hooks/usePost";
+import GroupImage from "./boardImage/GroupImage";
+import MainButton from "../buttons/mainButton/MainButton";
 import FormModal from "../modals/formModal/FormModal";
-import { createGroupSchema, createPostItSchema } from "../../hooks/validationSchemas";
 import AlertModal from "../modals/alertModal/AlertModal";
+import LoadingModal from "../modals/loadingModal/LoadingModal";
 
 const groupFields = [
     {
@@ -21,7 +23,7 @@ const groupFields = [
     },
 ]
 
-const postItFields = [
+/* const postItFields = [
     {
         fieldLabel: 'Título',
         fieldName: 'postItTitle',
@@ -32,13 +34,14 @@ const postItFields = [
         fieldName: 'postItContent',
         fieldType: 'textarea'
     }
-];
+]; */
 
 
-const Sidebar = ({ state, onClick, isOpen, toggleSidebar }) => {
-    const navigation = useNavigate();
-
+const Sidebar = ({ state, isOpen, toggleSidebar }) => {
+    const navigate = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState(false)
+    const [isErrorModalOpen, setErrorModalOpen] = useState(false)
+    const { data, loading, error, executePost } = usePost("/group/add"); 
 
     const handleOpenModal = () => {
         setIsModalOpen(true)
@@ -48,17 +51,35 @@ const Sidebar = ({ state, onClick, isOpen, toggleSidebar }) => {
         setIsModalOpen(false)
     }
 
-    const handleCreateGroup = () => {
-        console.log("Grupo y board creados: ", formData)
-        alert(`Grupo: ${formData.groupTitle}\nBoard: ${formData.boardTitle}`)
-        handleCloseModal()
+    const handleCloseErrorModal = () => {
+        setErrorModalOpen(false)
     }
 
-    const handleCreatePostIt = () => {
-        console.log("Post-it Creado: ", formData);
-        alert(`Título: ${formData.Title}\nContenido: ${formData.Content}`);
+    const handleCreateGroup = async(data) => {
+        const body = {
+            "groupName": data.groupTitle,
+            "boards": [
+                {
+                    "title": data.boardTitle,
+                    "color": "rose"
+                }
+            ]
+        }
+        executePost(body);
         handleCloseModal();
     }
+
+    useEffect(() => {
+        if (data) {
+            navigate(`/group/${data.groupName}`, { state: { data: data.id} })
+        }
+    }, [data, navigate]);
+
+    useEffect(() => {
+        if(error) {
+            setErrorModalOpen(true);
+        }
+    }, [error])
 
     const variantArrow = {
         open: { rotate: 180, x: 0 },
@@ -92,7 +113,7 @@ const Sidebar = ({ state, onClick, isOpen, toggleSidebar }) => {
                     layout="open"
                 >
                     <div className="groups">
-                        <GroupImage profileImage="assets/PRUEBA.jpeg" onClick={navigateToGroup}/>
+                        <GroupImage profileImage="/assets/PRUEBA.jpeg" onClick={navigateToGroup}/>
                     </div>
                     <section className="bottom">
                         <MainButton color="accent" size="small" text="+" onClick={handleOpenModal} />
@@ -142,12 +163,12 @@ const Sidebar = ({ state, onClick, isOpen, toggleSidebar }) => {
                     </motion.div>
                 </motion.button>
             </motion.aside>
-
-            <FormModal onClose={handleCloseModal} onSubmit={handleCreateGroup} title="Crear nuevo grupo de estudio" fields={groupFields} validationSchema={createGroupSchema} submitButtonText="Crear Grupo" cancelButtonText="Cancelar" />
-
+            <LoadingModal isOpen={loading} />
+            <FormModal isOpen={isModalOpen} onClose={handleCloseModal} onSubmit={handleCreateGroup} title="Crear nuevo grupo de estudio" fields={groupFields} validationSchema={createGroupSchema} submitButtonText="Crear Grupo" cancelButtonText="Cancelar" />
+{/* 
             <FormModal onClose={handleCloseModal} onSubmit={handleCreatePostIt} title="Crear nuevo Post-It" fields={postItFields} validationSchema={createPostItSchema} submitButtonText="Guardar" cancelButtonText="Cancelar" />
-
-            <AlertModal isOpen={isModalOpen} onClose={handleCloseModal}/>
+*/}
+            <AlertModal isOpen={isErrorModalOpen}  onClose={handleCloseErrorModal} title="Error" errorText="No se pudo crear el grupo"/> 
         </>
     );
 };
