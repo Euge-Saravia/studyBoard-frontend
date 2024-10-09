@@ -86,10 +86,6 @@ const Sidebar = ({ state, isOpen, toggleSidebar }) => {
         closed: { rotate: 0, x: "-20%" },
     };
 
-    const navigateToGroup = () => {
-        navigate("/group")
-    }
-
     return (
         <>
             <motion.aside
@@ -113,7 +109,7 @@ const Sidebar = ({ state, isOpen, toggleSidebar }) => {
                     layout="open"
                 >
                     <div className="groups">
-                        <GroupImage profileImage="/assets/PRUEBA.jpeg" onClick={navigateToGroup}/>
+                        <GroupImage profileImage="/assets/PRUEBA.jpeg"/>
                     </div>
                     <section className="bottom">
                         <MainButton color="accent" size="small" text="+" onClick={handleOpenModal} />

@@ -21,7 +21,7 @@ const useFetch = (endpoint, options, shouldFetch = true) => {
                 throw new Error(`Error ${response.status}: ${response.statusText}`);
             }
 
-            const result = await response.json();
+            const result = await response.json();            
             setData(result);
         } catch (err) {
             if (err.name !== "AbortError") {

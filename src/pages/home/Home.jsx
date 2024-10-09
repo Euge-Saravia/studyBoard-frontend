@@ -28,7 +28,6 @@ const Home = () => {
                 </div>
                 <div className="groups-cont">
                     <ComponentGroupCards/>
-                    <PostItExpand/>
                 </div>
             </section>
         </div>
