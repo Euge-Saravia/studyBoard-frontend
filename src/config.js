@@ -16,7 +16,7 @@ export const BOARD_BASE = "/board"
 
 export const READ_BOARDS = BOARD_BASE + "/${groupId}/getAll"
 
-export const CREATE_BOARD = BOARD_BASE + "/${groupId}/add"
+export const CREATE_BOARD = BOARD_BASE + "/add/${groupId}"
 
 export const POST_IT_BASE= "/postits"
 

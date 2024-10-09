@@ -15,6 +15,7 @@ const BoardTagsContainer = ({ id }) => {
     const endpoint = READ_BY_ID.replace("${id}", id)
     const [openCardIndex, setOpenCardIndex] = useState(null)
     const [isCreator, setIsCreator] = useState(false)
+    const [boards, setBoards] = useState([])
 
     const fetchOptions = {
         method: "GET",
@@ -28,8 +29,8 @@ const BoardTagsContainer = ({ id }) => {
 
     useEffect(() => {
         if (data) {
-            console.log("DATA: ", data)
             setIsCreator(data.isCreator)
+            setBoards(data.boards || [])
         }
     }, [data])
 
@@ -39,11 +40,13 @@ const BoardTagsContainer = ({ id }) => {
         return <div> <AlertModal errorText="No hay datos disponibles" /> </div>;
     }
 
-    console.log("Tableros disponibles:", data.boards);
-
     const toggleBoard = (index) => {
         setOpenCardIndex(openCardIndex === index ? null : index);
-    };
+    }
+
+    const handleBoardCreated = (newBoard) => {
+        setBoards([...boards, newBoard])
+    }
 
     return (
         <section className="boards">
@@ -54,6 +57,8 @@ const BoardTagsContainer = ({ id }) => {
                         key={0}
                         isOpen={openCardIndex === 0}
                         toggleBoard={() => toggleBoard(0)}
+                        onBoardCreated={handleBoardCreated}
+                        id={id}
                     />
                 )}
                 {data.boards && data.boards.length > 0 ? (data.boards.map((board, index) => {
