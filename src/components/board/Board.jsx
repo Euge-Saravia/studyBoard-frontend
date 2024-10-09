@@ -3,7 +3,7 @@ import BoardTag from "./boardTag/BoardTag";
 import "./board.scss";
 import PostItContainerBoard from "../postIt/postItContainerBoard/PostItContainerBoard";
 
-const Board = ({ name, color, isOpen, toggleBoard, boardId }) => {
+const Board = ({ name, color, isOpen, toggleBoard, id }) => {
   return (
     <>
       <motion.div
@@ -17,7 +17,7 @@ const Board = ({ name, color, isOpen, toggleBoard, boardId }) => {
         {isOpen && (
           <motion.div className="expand" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <motion.div className="postits-exp">
-              <PostItContainerBoard boardId={boardId} />
+              <PostItContainerBoard boardId={id} />
             </motion.div>
           </motion.div>
         )}
