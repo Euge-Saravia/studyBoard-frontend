@@ -1,22 +1,20 @@
 import "./calendarComponent.scss";
 import WeekCalendar from "../weekCalendar/WeekCalendar.jsx"
 import TodayCard from "../todayCard/TodayCard.jsx";
-import { isSameDay, format } from "date-fns";
+import { format } from "date-fns";
 import { es } from "date-fns/locale";
 import PostItContainerCalendar from "../../board/postIt/postItContainerCalendar/PostItContainerCalendar.jsx";
+import { useState } from "react";
 
 const CalendarComponent = () => {
-
-    const today = new Date();
+    const [selectedDate, setSelectedDate] = useState(new Date());
 
     const todayCalendar = () => {
-        const isToday = isSameDay(today, new Date());
         return {
-            dayNumber: format(today, 'd', { locale: es }),
-            dayWeek: format(today, 'EEEE', { locale: es }),
-            dayYear: format(today, 'yyy', { locale: es}),
-            dayMonth: format(today, 'MMM', { locale: es}),
-            isToday
+            dayNumber: format(selectedDate, 'd', { locale: es }),
+            dayWeek: format(selectedDate, 'EEEE', { locale: es }),
+            dayYear: format(selectedDate, 'yyy', { locale: es}),
+            dayMonth: format(selectedDate, 'MMM', { locale: es})
         };
     };
 
@@ -25,6 +23,7 @@ const CalendarComponent = () => {
     const handleDataChange = (date) => {
         //Aquí el get con date
         console.log(date);
+        setSelectedDate(date);
     }
 
   return (
