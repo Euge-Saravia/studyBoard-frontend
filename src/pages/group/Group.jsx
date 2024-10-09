@@ -11,6 +11,7 @@ const Group = ({ name }) => {
     const [activeView, setActiveView] = useState("Boards");
     const location = useLocation();
     const id = location.state.data;
+    const [isDesktop, setIsDesktop] = useState(window.innerWidth > 1024);
     
     const handleViewChange = (view) => {
         if (view !== activeView) {
@@ -18,19 +19,39 @@ const Group = ({ name }) => {
         }
     };
 
+    useEffect(() => {
+        const handleResize = () => {
+            setIsDesktop(window.innerWidth > 1024);
+        }
+
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, [isDesktop]);
+
     const components = {
         'Boards': <BoardTagsContainer key="boards" id={id} />,
         'Calendar': <CalendarComponent key="calendar" />,
     };
 
-    const prueba = {}
 
     return (
         <>
-            <GroupNav onViewChange={handleViewChange} />
-            <section className={activeView}>
-                {components[activeView]}
+            <section>
+                {!isDesktop && <>
+                    <GroupNav onViewChange={handleViewChange} />
+                    <section className={activeView}>
+                        {components[activeView]}
+                    </section>
+                </>
+                }
             </section>
+            {isDesktop && 
+                <section className="group-deskt">
+                    <BoardTagsContainer key="boards" id={id}  />
+                    <CalendarComponent key="calendar" />
+                </section>
+            }
+          
         </>
     );
 };

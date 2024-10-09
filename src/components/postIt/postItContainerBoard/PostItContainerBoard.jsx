@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import PostIt from '../PostIt'
 import "./postItContainerBoard.scss";
 import PostItExpand from '../postItExpand/PostItExpand';
 import { AnimatePresence, motion } from 'framer-motion';
+import PostIt from '../PostIt';
+import ChoosePostIt from '../../buttons/choosePostIt/ChoosePostIt';
 
-const PostItContainerBoard = () => {
+const PostItContainerBoard = ({ boardId }) => {
     const [selectedId, setSelectedId] = useState(null)
 
     const postits = [
@@ -43,7 +44,7 @@ const PostItContainerBoard = () => {
     const selectedPostIt = postits.find(postit => postit.id === selectedId);
 
   return (
-    <div className="postit-sect">
+    <section className="postit-sect">
         <div className="expanded-postit">
             <AnimatePresence>
                 {selectedId && selectedPostIt && (
@@ -66,9 +67,12 @@ const PostItContainerBoard = () => {
             text={postit.text} 
             onClick={() => setSelectedId(postit.id)} /> 
         ))}
+        <div>
+            <ChoosePostIt boardId={boardId}/>
+        </div>
         </div>
 
-    </div>
+    </section>
   )
 }
 

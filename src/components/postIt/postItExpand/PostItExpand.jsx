@@ -7,9 +7,9 @@ import "./postItExpand.scss"
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import CopyButton from "../../../buttons/copyButton/CopyButton.jsx"
-import useDelete from '../../../../hooks/useDelete.jsx'
-import usePut from '../../../../hooks/usePut.jsx'
+import useDelete from '../../../hooks/useDelete.jsx'
+import usePut from '../../../hooks/usePut.jsx'
+import CopyButton from '../../buttons/copyButton/CopyButton.jsx'
 
 const PostItExpand = ({ text, title, type, onClick, layoutId, postIt }) => {
     const {executeDelete} = useDelete();

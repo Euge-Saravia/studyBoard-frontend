@@ -1,10 +1,9 @@
 import "./calendarComponent.scss";
 import WeekCalendar from "../weekCalendar/WeekCalendar.jsx"
 import TodayCard from "../todayCard/TodayCard.jsx";
-import PostIt from "../../board/postIt/PostIt.jsx";
 import { isSameDay, format } from "date-fns";
 import { es } from "date-fns/locale";
-import PostItContainerCalendar from "../../board/postIt/postItContainerCalendar/PostItContainerCalendar.jsx";
+import PostItContainerCalendar from "../../postIt/postItContainerCalendar/PostItContainerCalendar.jsx";
 
 const CalendarComponent = () => {
 

@@ -1,7 +1,6 @@
 import "./home.scss";
 import ComponentGroupCards from "../../components/group/componentGroupCards/ComponentGroupCards"
 import Input from "../../components/inputs/Input";
-import PostItExpand from "../../components/board/postIt/postItExpand/PostItExpand";
 /* import LoadingModal from "../../components/modals/loadingModal/LoadingModal";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; */
