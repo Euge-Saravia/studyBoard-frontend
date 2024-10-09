@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.8rem;
+    gap: 1.2rem;
 
     .colorButton {
         opacity: 0;
@@ -18,5 +18,9 @@
         display: flex;
         flex-direction: column;
         gap: 1rem;
+    }
+
+    .modals-create-pt {
+        z-index: 200;
     }
 }

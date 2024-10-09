@@ -67,9 +67,9 @@ const PostItContainerBoard = ({ boardId }) => {
             text={postit.text} 
             onClick={() => setSelectedId(postit.id)} /> 
         ))}
-        <div>
-            <ChoosePostIt boardId={boardId}/>
-        </div>
+            <div> 
+                <ChoosePostIt boardId={boardId}/>
+            </div>
         </div>
 
     </section>

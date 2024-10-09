@@ -48,6 +48,7 @@ const BoardTagsContainer = ({ id }) => {
         setBoards([...boards, newBoard])
     }
 
+
     return (
         <section className="boards">
             <h1>{data.groupName}</h1>
@@ -65,6 +66,7 @@ const BoardTagsContainer = ({ id }) => {
                     return (
                         <Board
                             key={index + 1}
+                            boardId={board.id}
                             color={board.color}
                             name={board.title}
                             isOpen={openCardIndex === index + 1}

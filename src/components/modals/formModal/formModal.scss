@@ -40,18 +40,22 @@
 
     &.green {
         background-color: $green-brut;
+        color: $dark-blue;
     }
 
     &.rose {
         background-color: $rose-bud;
+        color: $dark-blue;
     }
 
     &.perano {
         background-color: $perano;
+        color: $dark-blue;
     }
 
     &.wheat {
-    background-color: $wheat;
+        background-color: $wheat;
+        color: $dark-blue;
     }
 }
 
@@ -96,7 +100,7 @@
     }
 }
 
-.buttons-modal-group{
+.buttons-modal-group {
     display: flex;
     flex-direction: row;
     align-items: end;

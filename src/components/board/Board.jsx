@@ -4,6 +4,7 @@ import "./board.scss"
 import PostItContainerBoard from "../postIt/postItContainerBoard/PostItContainerBoard";
 
 const Board = ({ name, color, isOpen, toggleBoard, boardId }) => {
+    console.log("boardId in Board:", boardId);
     return (
         <>
             <motion.div

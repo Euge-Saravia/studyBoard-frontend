@@ -160,7 +160,7 @@ const Sidebar = ({ state, isOpen, toggleSidebar }) => {
                 </motion.button>
             </motion.aside>
             <LoadingModal isOpen={loading} />
-            <FormModal isOpen={isModalOpen} onClose={handleCloseModal} onSubmit={handleCreateGroup} title="Crear nuevo grupo de estudio" fields={groupFields} validationSchema={createGroupSchema} submitButtonText="Crear Grupo" cancelButtonText="Cancelar"  />
+            <FormModal isOpen={isModalOpen} onClose={handleCloseModal} onSubmit={handleCreateGroup} title="Crear nuevo grupo de estudio" fields={groupFields} validationSchema={createGroupSchema} submitButtonText="Crear Grupo" cancelButtonText="Cancelar" />
 {/* 
             <FormModal onClose={handleCloseModal} onSubmit={handleCreatePostIt} title="Crear nuevo Post-It" fields={postItFields} validationSchema={createPostItSchema} submitButtonText="Guardar" cancelButtonText="Cancelar" />
 */}
