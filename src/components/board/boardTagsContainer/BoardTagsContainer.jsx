@@ -5,68 +5,41 @@ import CreateBoard from "../createBoard/CreateBoard";
 import { useAuth } from "../../../hooks/useAuth";
 import LoadingModal from "../../modals/loadingModal/LoadingModal";
 import AlertModal from "../../modals/alertModal/AlertModal";
+import { READ_BY_ID } from "../../../config";
+import useFetch from "../../../hooks/useFetch";
 
 
 const BoardTagsContainer = ({ id }) => {
 
     const { authToken } = useAuth();
-    const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
-    const [openCardIndex, setOpenCardIndex] = useState(null);
+    const endpoint = READ_BY_ID.replace("${id}", id)
+    const [openCardIndex, setOpenCardIndex] = useState(null)
     const [isCreator, setIsCreator] = useState(false)
 
-    const fetchData = async () => {
-        try {
-            setLoading(true)
-            setError(null)
-
-            if (!authToken) {
-                throw new Error("Token de autenticación inválido o ausente");
-            }
-
-            const response = await fetch(`http://localhost:4001/group/${id}`, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${authToken}`,
-                }
-            })
-
-            if (!response.ok) {
-                throw new Error(`Error al obtener los datos: ${response.statusText}`);
-            }
-
-            const result = await response.json()
-
-            if (!result || !result.groupName || !result.boards) {
-                throw new Error("Datos no válidos o estructura inesperada en la respuesta")
-            }
-
-            setData(result);
-
-        } catch (err) {
-            setError(err)
-        } finally {
-            setLoading(false)
-        }
+    const fetchOptions = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            ...(authToken ? { Authorization: `Bearer ${authToken}` } : {}),
+        },
     }
 
+    const { data, loading, error } = useFetch(endpoint, fetchOptions, !!authToken)
+
     useEffect(() => {
-        if (authToken && id) {
-            console.log("Ejecutando fetchData con id:", id);
-
-            fetchData()
+        if (data) {
+            console.log("DATA: ", data)
             setIsCreator(data.isCreator)
-
         }
-    }, [authToken, id]);
+    }, [data])
 
     if (loading) return <div> <LoadingModal /> </div>
     if (error) return <div> <AlertModal title="Error:" errorText={error.message} /> </div>
     if (!data) {
         return <div> <AlertModal errorText="No hay datos disponibles" /> </div>;
     }
+
+    console.log("Tableros disponibles:", data.boards);
 
     const toggleBoard = (index) => {
         setOpenCardIndex(openCardIndex === index ? null : index);
@@ -83,15 +56,17 @@ const BoardTagsContainer = ({ id }) => {
                         toggleBoard={() => toggleBoard(0)}
                     />
                 )}
-                {data.boards && data.boards.length > 0 ? (data.boards.map((board, index) => (
-                    <Board
-                        key={index + 1}
-                        color={board.color}
-                        name={board.name}
-                        isOpen={openCardIndex === index + 1}
-                        toggleBoard={() => toggleBoard(index + 1)}
-                    />
-                ))
+                {data.boards && data.boards.length > 0 ? (data.boards.map((board, index) => {
+                    return (
+                        <Board
+                            key={index + 1}
+                            color={board.color}
+                            name={board.title}
+                            isOpen={openCardIndex === index + 1}
+                            toggleBoard={() => toggleBoard(index + 1)}
+                        />
+                    )
+                })
                 ) : (
                     <p>No hay tableros disponibles</p>
                 )}
