@@ -1,7 +1,6 @@
 import "./calendarComponent.scss";
 import WeekCalendar from "../weekCalendar/WeekCalendar.jsx"
 import TodayCard from "../todayCard/TodayCard.jsx";
-import PostIt from "../../board/postIt/PostIt.jsx";
 import { isSameDay, format } from "date-fns";
 import { es } from "date-fns/locale";
 import PostItContainerCalendar from "../../board/postIt/postItContainerCalendar/PostItContainerCalendar.jsx";
@@ -21,13 +20,18 @@ const CalendarComponent = () => {
         };
     };
 
-    const { dayNumber, dayWeek, dayYear, dayMonth, isToday } = todayCalendar(); 
+    const { dayNumber, dayWeek, dayYear, dayMonth, isToday } = todayCalendar();
+    
+    const handleDataChange = (date) => {
+        //Aquí el get con date
+        console.log(date);
+    }
 
   return (
     <div className="calendar-comp">
         <section className="calendar-section">
             <div className="week-cal">
-                <WeekCalendar />
+                <WeekCalendar onDateChange={handleDataChange}/>
             </div>
             <div className="today-cal">
                 <TodayCard month={dayMonth} year={dayYear} date={dayNumber} dayWeek={dayWeek} isToday={isToday}/>
