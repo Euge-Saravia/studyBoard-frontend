@@ -7,18 +7,22 @@ const BoardTagsContainer = ({ isCreator, name }) => {
     /* Fetch con los boards del grupo */
     const boards = [
         {
+            id: 1,
             name: "Javascript",
             color: "perano",
         },
         {
+            id: 2,
             name: "React",
             color: "rose",
         },
         {
+            id: 3,
             name: "Tailwind",
             color: "wheat",
         },
         {
+            id: 4,
             name: "HTML",
             color: "green",
         },
@@ -44,6 +48,7 @@ const BoardTagsContainer = ({ isCreator, name }) => {
                 {boards.map((board, index) => (
                     <Board
                         key={index + 1}
+                        boardId={board.id}
                         color={board.color}
                         name={board.name}
                         isOpen={openCardIndex === index + 1}
