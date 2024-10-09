@@ -1,8 +1,8 @@
 import "./colorButtons.scss";
 
-const ColorButtons = ({color}) => {
+const ColorButtons = ({color, onClick}) => {
   return (
-      <button className={`colorButton ${color}`}></button>
+      <button className={`colorButton ${color}`} onClick={onClick}></button>
   )
 }
 

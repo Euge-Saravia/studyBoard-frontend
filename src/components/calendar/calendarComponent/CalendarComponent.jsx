@@ -6,6 +6,7 @@ import { es } from "date-fns/locale";
 import PostItContainerCalendar from "../../board/postIt/postItContainerCalendar/PostItContainerCalendar.jsx";
 import { useState } from "react";
 
+
 const CalendarComponent = () => {
     const [selectedDate, setSelectedDate] = useState(new Date());
 

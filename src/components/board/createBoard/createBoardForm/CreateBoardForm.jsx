@@ -2,13 +2,13 @@ import MainButton from "../../../buttons/mainButton/MainButton";
 import Input from "../../../inputs/Input";
 import { useForm } from "react-hook-form";
 import "./createBoardForm.scss"
+import usePost from "../../../../hooks/usePost";
+import { CREATE_BOARD } from "../../../../config";
 
-const CreateBoardForm = ( { submitFunction }) => {
+const CreateBoardForm = ( { submitFunction, id }) => {
     const { handleSubmit, register, formState: { errors } } = useForm();
-
-    const onSubmit = (data) => {
-        submitFunction(data, randomColor());
-    }
+    const endpoint = CREATE_BOARD.replace("${groupId}", id)
+    const {data, loading, error, executePost} = usePost(endpoint)
 
     const randomColor = () => {
         const colors = ['rose', 'wheat', 'perano', 'green'];
@@ -16,14 +16,26 @@ const CreateBoardForm = ( { submitFunction }) => {
         return colors[randomNum];
     }
 
+    const onSubmit = async (formData) => {
+        const newBoardData = {
+            title:formData.title,
+            color:randomColor()
+        }
+        await executePost(newBoardData)
+
+        if (submitFunction) {
+            submitFunction(newBoardData)
+        }
+    }
+
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="board-form">
             <div className="form-content">
                 <Input
-                    id="name"
+                    id="title"
                     border="border"
                     type="text"
-                    {...register("name", {
+                    {...register("title", {
                         required: "Debes introducir el nombre del board",
                     })}
                     placeholder="Nombre del nuevo board"
