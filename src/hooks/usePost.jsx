@@ -16,7 +16,7 @@ const usePost = (endpoint) => {
         body: body ? JSON.stringify(body) : null,
     };
 
-    const { data, loading, error, fetch } = useFetch(endpoint, fetchOption, shouldPost);
+    const { data, loading, error, fetch } = useFetch(endpoint, fetchOption, false);
 
     const executePost = useCallback((postData) => {
         setBody(postData);

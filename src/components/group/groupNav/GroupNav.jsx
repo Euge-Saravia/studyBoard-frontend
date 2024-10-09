@@ -2,15 +2,17 @@ import GroupImage from "../../sidebar/boardImage/GroupImage";
 import ViewSelector from "../../buttons/viewSelector/ViewSelector";
 import "./groupNav.scss";
 
-const GroupNav = ({onViewChange}) => {
+const GroupNav = ({onViewChange, onCLick}) => {
     return (
-        <section className="group-nav">
-            <div className="top-navigation">
-                <GroupImage onClick="" profileImage="" />
+        <article className="group-nav">
+            <section className="top-navigation">
+                <div className="group-img">
+                    <GroupImage onClick={onCLick} profileImage="" />
+                </div>
                 <ViewSelector onViewChange={onViewChange}/>
-            </div>
+            </section>
             <div className="linebt"></div>
-        </section>
+        </article>
     );
 };
 

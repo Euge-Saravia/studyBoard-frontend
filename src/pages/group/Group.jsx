@@ -18,6 +18,17 @@ const Group = ({ name }) => {
         }
     };
 
+    useEffect(() => {
+        const handleResize = () => {
+            setIsDesktop(window.innerWidth > 1024);
+        };
+
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, [isDesktop]);
+
+
+
     const components = {
         'Boards': <BoardTagsContainer key="boards" id={id} />,
         'Calendar': <CalendarComponent key="calendar" />,
