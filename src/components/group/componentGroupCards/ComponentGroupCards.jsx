@@ -3,11 +3,12 @@ import { useAuth } from "../../../hooks/useAuth";
 import GroupCard from "../groupCard/GroupCard";
 import useFetch from "../../../hooks/useFetch";
 import "./componentGroupCards.scss";
+import { READ_ALL_GROUP } from "../../../config";
 
 const ComponentGroupCards = () => {
     const [groups, setGroups] = useState([]);
     const { authToken } = useAuth();
-    const { data, loading, error, fetch: fetchData } = useFetch("/group/all", {
+    const { data, loading, error, fetch: fetchData } = useFetch(READ_ALL_GROUP, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",

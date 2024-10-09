@@ -3,53 +3,32 @@ import CalendarComponent from "../../components/calendar/calendarComponent/Calen
 import GroupNav from "../../components/group/groupNav/GroupNav";
 import BoardTagsContainer from "../../components/board/boardTagsContainer/BoardTagsContainer";
 import "./group.scss";
-import Board from "../../components/board/Board";
+import { useLocation } from "react-router-dom";
 
 const Group = ({ name }) => {
     //comprobar si user actual es creador
-    const isCreator = true;
+    //const isCreator = true;
     const [activeView, setActiveView] = useState("Boards");
-    const [isDesktop, setIsDesktop] = useState(window.innerWidth > 860);
-
+    const location = useLocation();
+    const id = location.state.data;
+    
     const handleViewChange = (view) => {
         if (view !== activeView) {
             setActiveView(view);
         }
     };
 
-    useEffect(() => {
-        const handleResize = () => {
-            setIsDesktop(window.innerWidth > 1024);
-        };
-
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
-    }, [isDesktop]);
-
-
-
     const components = {
-        'Boards' : <BoardTagsContainer key="boards" isCreator={isCreator} name={name} />,
+        'Boards': <BoardTagsContainer key="boards" id={id} />,
         'Calendar': <CalendarComponent key="calendar" />,
     };
 
     return (
         <>
-        <div>
-        {!isDesktop && <>
-            <GroupNav onViewChange={handleViewChange}/>
+            <GroupNav onViewChange={handleViewChange} />
             <section className={activeView}>
-                {components[activeView]} 
+                {components[activeView]}
             </section>
-            </>
-        }
-        </div>
-        {isDesktop &&
-            <div className="group-deskt">
-                <BoardTagsContainer key="boards" isCreator={isCreator} name={name} />
-                <CalendarComponent key="calendar"/>
-            </div>
-        }
         </>
     );
 };
