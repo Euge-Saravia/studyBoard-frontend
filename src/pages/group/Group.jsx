@@ -33,6 +33,8 @@ const Group = ({ name }) => {
         'Calendar': <CalendarComponent key="calendar" />,
     };
 
+    const prueba = {}
+
     return (
         <>
         <div>
