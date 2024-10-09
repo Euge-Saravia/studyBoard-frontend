@@ -1,6 +1,7 @@
 @import "../../../styles/variables.scss";
 
 .boards {
+    z-index: 300;
     h1 {
         color: $dark-blue;
         font-size: 1.75rem;
@@ -23,6 +24,7 @@
 @media (min-width: 1024px)  {
 
     .boards {
+        display: block;
         padding-right: 5rem;
         border-right: 1px solid $light-gray;
     }
