@@ -6,16 +6,21 @@ import PostIt from "../PostIt";
 import ChoosePostIt from "../../buttons/choosePostIt/ChoosePostIt";
 import { useAuth } from "../../../hooks/useAuth";
 import useFetch from "../../../hooks/useFetch";
+import useDelete from "../../../hooks/useDelete";
 //import { READ_POST_IT_BY_BOARD } from "../../../../config";
 
 const PostItContainerBoard = ({ boardId }) => {
   const [selectedId, setSelectedId] = useState(null);
   const { authToken } = useAuth();
 
+  const [postitIdToDelete, setPostitIdToDelete] = useState();
+  const { executeDelete } = useDelete(`/postits/${selectedId}`);
+
   const {
     data: postits,
     loading,
     error,
+    fetch,
   } = useFetch(
     `/postits/board/${boardId}`,
     {
@@ -31,6 +36,13 @@ const PostItContainerBoard = ({ boardId }) => {
 
   const selectedPostIt = postits?.find((postit) => postit.id === selectedId);
 
+  const handleDelete = () => {
+    executeDelete();
+    setTimeout(() => {
+      fetch();
+    }, 500);
+  };
+
   if (loading) return <p>Cargando post-its...</p>;
   if (error) return <p>Error al cargar los post-its: {error}</p>;
 
@@ -45,6 +57,7 @@ const PostItContainerBoard = ({ boardId }) => {
               title={selectedPostIt.title}
               text={selectedPostIt.text}
               onClick={() => setSelectedId(null)}
+              onDelete={handleDelete}
             />
           )}
         </AnimatePresence>
