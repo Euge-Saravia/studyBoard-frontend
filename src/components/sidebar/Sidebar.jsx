@@ -71,7 +71,7 @@ const Sidebar = ({ state, isOpen, toggleSidebar }) => {
 
     useEffect(() => {
         if (data) {
-            navigate(`/group/${data.groupName}`, { state: { data: data.id} })
+            navigate(`/group/${groupId}`, { state: { data: data.id} })
         }
     }, [data, navigate]);
 
@@ -85,10 +85,6 @@ const Sidebar = ({ state, isOpen, toggleSidebar }) => {
         open: { rotate: 180, x: 0 },
         closed: { rotate: 0, x: "-20%" },
     };
-
-    const navigateToGroup = () => {
-        navigate("/group")
-    }
 
     return (
         <>
@@ -113,7 +109,7 @@ const Sidebar = ({ state, isOpen, toggleSidebar }) => {
                     layout="open"
                 >
                     <div className="groups">
-                        <GroupImage profileImage="/assets/PRUEBA.jpeg" onClick={navigateToGroup}/>
+                        <GroupImage profileImage="/assets/PRUEBA.jpeg"/>
                     </div>
                     <section className="bottom">
                         <MainButton color="accent" size="small" text="+" onClick={handleOpenModal} />

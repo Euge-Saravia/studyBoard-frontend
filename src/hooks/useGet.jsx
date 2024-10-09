@@ -17,6 +17,7 @@ const useGet = (endpoint) => {
   const { data, loading, error, fetch } = useFetch(endpoint, fetchOption, shouldGet);
 
   const executeGet = useCallback(() => {
+    console.log(data);
     setShouldGet(true);
   }, []);
 
