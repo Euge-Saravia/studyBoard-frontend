@@ -29,6 +29,12 @@
     .ourTeam{
         text-align: center;
         padding: 0.5rem 0;
+        margin-top: 2.2rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        text-decoration: underline;
+        color: $dark-blue;
+        
     }
 
     .ourTeamLinkedin{
@@ -39,9 +45,12 @@
         text-decoration: none;
         display: block;
         margin: 5px 0;
+        color: $dark-blue;
+        font-weight: 500;
 
         &:hover {
             text-decoration: underline;
+            color: $light-blue;
         }
     }
 }
@@ -49,9 +58,17 @@
 @media (min-width: 1024px) {
     .about-us{
         padding: 0 8rem 8.5rem;
+        width: 70%;
     }
 
-    .ourTeam{
+    .ourTeam {
         text-align: left;
+    }
+
+    .ourTeamLinkedin {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, auto);
+        text-align: center;
     }
 }

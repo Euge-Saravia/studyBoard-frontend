@@ -2,17 +2,17 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { loginSchema } from "../../hooks/validationSchemas";
-import "./loginPage.scss";
-import "../../components/buttons/mainButton/mainButton.scss";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
 import Input from "../../components/inputs/Input";
 import MainButton from "../../components/buttons/mainButton/MainButton";
 import githubIcon from "/assets/icons/github-mark.svg";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 import usePost from "../../hooks/usePost";
 import LoadingModal from "../../components/modals/loadingModal/LoadingModal";
+import "./loginPage.scss";
 import { useCookies } from "react-cookie";
-import { useAuth } from "../../hooks/useAuth";
+import { USER_LOGIN } from "../../config";
 
 const LoginPage = () => {
   const {
@@ -24,16 +24,14 @@ const LoginPage = () => {
   });
 
   const { login } = useAuth();
-  const [loading, setLoading] = useState(false);
   const [githubLoading, setGithubLoading] = useState(false);
   const navigate = useNavigate();
 
-  const { data, loading: postLoading, executePost } = usePost("/api/users/login");
+  const { data, error, loading: postLoading, executePost } = usePost(USER_LOGIN);
 
   const [cookies, setCookie] = useCookies(["authToken"]);
 
   const onSubmit = (formData) => {
-    setLoading(true);
     executePost(formData);
   };
 
@@ -44,7 +42,7 @@ const LoginPage = () => {
   }, [data]);
 
   const handleGithubLogin = () => {
-    const clientID = "Ov23li8Mgk1hbihsVQKk";
+    const clientID = "Ov23liP3FvUqB3NF84xO";
     const redirectURI = "http://localhost:5173/login/";
     window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientID}&redirect_uri=${redirectURI}`;
   };
@@ -96,7 +94,7 @@ const LoginPage = () => {
     <section className="login-body">
       <div className="form-page">
         <div className="form-container">
-          <LoadingModal isOpen={loading || postLoading || githubLoading} />
+          <LoadingModal isOpen={postLoading || githubLoading} />
           <form noValidate className="form-content" onSubmit={handleSubmit(onSubmit)}>
             <img className="logo" src="/logo\Icon-Variant2.svg" />
             <div className="form-content">
@@ -117,8 +115,8 @@ const LoginPage = () => {
                 onClick={handleGithubLogin}
               />
             </div>
+            {error && <p className="errors">Email o contraseña incorrectos</p>}
           </form>
-
           <div>
             <p>¿No tienes cuenta aún?</p>
             <span>

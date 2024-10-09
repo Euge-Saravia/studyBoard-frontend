@@ -31,7 +31,7 @@ Input.propTypes = {
     pencil: PropTypes.string,
     type: PropTypes.string,
     placeholder: PropTypes.string,
-    icon: PropTypes.element,
+    icon: PropTypes.string,
 };
 
 Input.displayName = 'Input';

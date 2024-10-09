@@ -35,7 +35,9 @@ El diseño de la interfaz fue generado en un primer momento en Figma, donde se d
 
 Se ha diseñado mobile-first, con diseño responsive en dos puntos de quiebre: tablet y desktop.
 
-[Diseño en Figma](https://www.figma.com/design/oNZF199M4XEQXb1X6M3142/StudyBoard?node-id=57-239&node-type=canvas&t=XIAw5AUvCqypxScB-0)
+![Captura de pantalla 2024-10-08 165606](https://github.com/user-attachments/assets/5e836870-880b-4f8c-98fa-6015ed39ce85)
+
+[Figma: diseño completo](https://www.figma.com/design/oNZF199M4XEQXb1X6M3142/StudyBoard?node-id=57-239&node-type=canvas&t=XIAw5AUvCqypxScB-0)
 
 ## Diagramas
 
@@ -105,67 +107,76 @@ La estructura actual del front es la siguiente:
 │   ├── src/
 │   │    ├── components
 │   │    │     ├── board
-│   │    │     │      ├── boardTag
-│   │    │     │      │      ├── boardTag.scss
-│   │    │     │      │      └── BoardTag.jsx
-│   │    │     │      ├── boardTagsContainer
-│   │    │     │      ├── createBoard
-│   │    │     │      ├── postIt
-│   │    │     │      ├── board.scss
-│   │    │     │      └── Board.jsx
 │   │    │     ├── buttons
-│   │    │     │      └── Filter.jsx
-│   │    │     ├── header
-│   │    │     │      ├── navbar
-│   │    │     │      │     └── Navbar.jsx
-│   │    │     │      └── Header.jsx
-│   │    │     ├── recipeCard
-│   │    │     │      ├── CarouselRecipes.jsx
-│   │    │     │      ├── ReckpeCard.jsx
-│   │    │     │      ├── InfoContainer.jsx
-│   │    │     │      ├── UnitRecipeUser.jsx
-│   │    │     │      └── UserRecipes.jsx
-│   │    │     ├── input
-│   │    │     │      ├── CategoryInput.jsx
-│   │    │     │      ├── DurationInput.jsx
-│   │    │     │      ├── Input.jsx
-│   │    │     │      ├── InputImg.jsx
-│   │    │     │      ├── InputTextArea.jsx
-│   │    │     │      └── SearchInput.jsx
-│   │    │     └── popUp
-│   │    │          └── PopUp.jsx
+│   │    │     ├── calendar
+│   │    │     ├── choosePostIt
+│   │    │     ├── group
+│   │    │     ├── inputs
+│   │    │     ├── labels
+│   │    │     ├── modals
+│   │    │     ├── navBar
+│   │    │     ├── profileImg
+│   │    │     ├── sidebar
+│   │    │     └── userHomeProfile
 │   │    ├──hooks
-│   │    │    ├── useAuth
-│   │    │    └── useFormatData
+│   │    │     ├── useAuth.jsx
+│   │    │     ├── useCopyToClipboard.jsx
+│   │    │     ├── useDelete.jsx
+│   │    │     ├── useFetch.jsx
+│   │    │     ├── useGet.jsx
+│   │    │     ├── useGithubLogin.jsx
+│   │    │     ├── usePost.jsx
+│   │    │     ├── usePut.jsx
+│   │    │     └── validationSchemas.jsx
 │   │    ├──layout
-│   │    │    └── Layout.jsx
+│   │    │     ├── layout.scss
+│   │    │     └── Layout.jsx
 │   │    ├──pages
-│   │    │      ├── Create.jsx
-│   │    │      ├── Detail.jsx
-│   │    │      ├── Edit.jsx
-│   │    │      ├── Home.jsx
-│   │    │      ├── Login.jsx
-│   │    │      ├── Favs.jsx
-│   │    │      ├── Search.jsx
-│   │    │      ├── UserPage.jsx
-│   │    │      └── Register.jsx
-│   │    ├──routes
+│   │    │      ├── aboutUs
+│   │    │      ├── frontPage
+│   │    │      ├── group
+│   │    │      ├── home
+│   │    │      ├── login
+│   │    │      ├── signUp
+│   │    │      └── userProfile
+│   │    ├──router
+│   │    │    ├── PrivateRoute.jsx
 │   │    │    └── index.jsx
-│   │    └── utils
-│   │        ├── recipeData
-│   │        └── utils
-│   ├── index.css
-│   └── main.jsx
-├── eslint.config.js
-├── index.html
-├── package-lock.json
-├── package.json
-├── postcss.config.js
-├── README.md
-├── tailwind.config.js
-└── vite.config.js
+│   │    ├── styles
+│   │    │   └── variables.scss
+│   │    ├── config.js
+│   │    ├── index.scss
+│   │    ├── main.jsx
+│   │    └── setupTests.js
+│   ├── .env
+│   ├── .gitignore
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── README.md
+└── └── vite.config.js
+
 
 ```
+
+El proyecto se ha distribuido en carpetas que contienen el componente y su correspondiente documento de estilos. También se han realizado tests, tanto unitarios como de integración, que se encuentran en las mismas carpetas.
+
+Por ejemplo: 
+```plaintext
+/
+├── STUDYBOARD-FRONTEND
+│   ├── src/
+│   │    ├── components
+│   │    │     ├── buttons
+│   │    │     │      ├── copyButton
+│   │    │     │      │      ├── CopyButton.jsx
+│   │    │     │      │      ├── copyButton.scss
+│   │    │     │      │      └── CopyButton.test.jsx
+
+```
+
+De esta manera se ha mantenido una estructura limpia y ordenada, donde cada componente tiene un nombre descriptivo junto a sus estilos y tests, en el caso de que los haya. 
 
 ## Tecnologías
 
@@ -185,8 +196,7 @@ El programa debe iniciarse primero en el back.
 Para compilar:
 
 ```
-Da al play para compilar automáticamente.
-
+Compila la aplicación.
 ```
 
 Una vez iniciado el back, en el front:
@@ -211,8 +221,8 @@ Abre el enlace que aparece con tu puerto local.
 Este proyecto ha sido desarrollado por una única coder: 
 
 - [Isabel Afonso](https://github.com/IsaLagu)
-- [Flavia Ferri](https://github.com/flaviferri/)
-- [Rebeca Garcia](https://github.com/rebkg87)
+- [Flavia Ferrigno](https://github.com/flaviferri/)
+- [Rebeca García](https://github.com/rebkg87)
 - [Laura Gil](https://github.com/LauraGDev)
 - [Betty Lopez](https://github.com/BettyLopo)
 - [Eugenia Saravia](https://github.com/Euge-Saravia/)

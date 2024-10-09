@@ -1,54 +1,50 @@
-import GroupCard from "../groupCard/GroupCard"
-import "./componentGroupCards.scss"
+import { useEffect, useState } from "react";
+import { useAuth } from "../../../hooks/useAuth";
+import GroupCard from "../groupCard/GroupCard";
+import useFetch from "../../../hooks/useFetch";
+import "./componentGroupCards.scss";
 
-const ComponentGroupCards = ({onClick}) => {
-    const groups = [
-        {
-            title: "Estudio de Java y Springboot",
-            categories: [
-                {category: "java", color: 'wheat'},
-                {category: 'springboot', color: 'perano'}
-            ]
+const ComponentGroupCards = () => {
+    const [groups, setGroups] = useState([]);
+    const { authToken } = useAuth();
+    const { data, loading, error, fetch: fetchData } = useFetch("/group/all", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${authToken}`,
         },
-        {
-            title: "JavaScript y React",
-            categories: [
-                {category: "javascript", color: 'green'},
-                {category: 'arrays', color: 'perano'},
-                {category: "ES6", color: 'rose'},
-                {category: 'react', color: 'wheat'},
-            ]
-        },
-        {
-            title: "Estudio de Java y Springboot",
-            categories: [
-                {category: "java", color: 'wheat'},
-                {category: 'springboot', color: 'perano'}
-            ]
-        },
-        {
-            title: "Arrays",
-            categories: [
-                {category: "javascript", color: 'green'},
-                {category: 'arrays', color: 'perano'},
-                {category: "Arr", color: 'rose'},
-            ]
-        },
-        
-    ]
+    }, false);
+
+    useEffect(() => {
+        if (authToken) {
+            fetchData(); 
+        }
+    }, [authToken]);
 
 
-  return (
-    <div className="cardgroups-container" onClick={onClick}>
-        {groups.map((group, index) => (
-            <GroupCard 
-                key={index} 
-                title={group.title} 
-                categories={group.categories}
-            />
-        ))}
-    </div>
-  )
-}
+    useEffect(() => {
+        if (data) {
+            setGroups(data);
+        }
+    }, [data]);
 
-export default ComponentGroupCards
+    return (
+        <div className="cardgroups-container">
+            {loading ? (
+                <p>Cargando grupos...</p>
+            ) : (
+                groups.map((group, index) => (
+                    <GroupCard
+                        key={index}
+                        groupId={group.id}
+                        title={group.groupName}
+                        categories={group.boards}
+                    />
+                ))
+            )}
+            {error && <p>{error}</p>}
+        </div>
+    );
+};
+
+export default ComponentGroupCards;

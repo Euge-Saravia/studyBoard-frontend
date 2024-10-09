@@ -10,6 +10,7 @@ import githubIcon from "/assets/icons/github-mark.svg";
 import { Link } from "react-router-dom";
 import usePost from "../../hooks/usePost";
 import { useAuth } from "../../hooks/useAuth";
+import { USER_REGISTER } from "../../config";
 
 const SignUpPage = () => {
   const {
@@ -20,11 +21,10 @@ const SignUpPage = () => {
     resolver: yupResolver(singUpSchema),
   });
 
-  const { data, loading, error, executePost } = usePost("/api/users/register");
+  const { data, loading, error, executePost } = usePost(USER_REGISTER);
   const { login } = useAuth();
 
   const onSubmit = (formData) => {
-    console.log("submitted", formData);
     executePost({ name: formData.name, email: formData.email, password: formData.password });
   };
 
@@ -67,7 +67,7 @@ const SignUpPage = () => {
               />
             </div>
           </form>
-          {error && <p className="error-message">Error: {error}</p>}
+          {error && <p className="errors">Error: {error}</p>}
           <div>
             <p className="signup-span">¿Ya estás registrado?</p>
             <span>
