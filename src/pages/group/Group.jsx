@@ -23,6 +23,8 @@ const Group = ({ name }) => {
         'Calendar': <CalendarComponent key="calendar" />,
     };
 
+    const prueba = {}
+
     return (
         <>
             <GroupNav onViewChange={handleViewChange} />
