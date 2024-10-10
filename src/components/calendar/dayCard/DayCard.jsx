@@ -1,9 +1,10 @@
 import './dayCard.scss'
 
-const DayCard = ({isToday, dayNumber, dayWeek, onDayClick}) => {
+const DayCard = ({isToday, dayNumber, dayWeek, dayMonth, dayYear, isSelected, onClick}) => {
+    const date = `${dayYear}-${dayMonth}-${dayNumber}`
     return (
-        <div className={`day-card-container ${isToday ? 'today' : "not-today"}`} onClick={() => onDayClick(dayNumber)}>
-            {isToday && (
+        <div className={`day-card-container ${isToday || isSelected ? 'today' : "not-today"}`} onClick={() => onClick(date)}>
+            {isToday || isSelected && (
                 <span className="is-today-indicator">
                     <span className="is-today-indicator--ping"></span>
                     <span className="is-today-indicator--dot"></span>
