@@ -1,34 +1,29 @@
 import { motion } from "framer-motion";
 import BoardTag from "./boardTag/BoardTag";
-import "./board.scss"
-import PostItContainerBoard from "./postIt/postItContainerBoard/PostItContainerBoard";
+import "./board.scss";
+import PostItContainerBoard from "../postIt/postItContainerBoard/PostItContainerBoard";
 
-const Board = ({ name, color, isOpen, toggleBoard }) => {
-    return (
-        <>
-            <motion.div
-                transition={{ layout: { duration: 1, type: "spring" } }}
-                layout
-                animate={isOpen ? "open" : "closed"}
-                onClick={isOpen ? () => {} : toggleBoard}
-                className={`board ${isOpen ? `open ${color}` : color}`}
-            >
-                <BoardTag name={name} isOpen={isOpen} onClick={toggleBoard}/>
-                {isOpen && (
-                    <motion.div
-                        className="expand"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                    >
-                        <motion.div className="postits-exp">
-                            <PostItContainerBoard />
-                        </motion.div>
-                    </motion.div>
-                    
-                )}
+const Board = ({ name, color, isOpen, toggleBoard, id }) => {
+  return (
+    <>
+      <motion.div
+        transition={{ layout: { duration: 1, type: "spring" } }}
+        layout
+        animate={isOpen ? "open" : "closed"}
+        onClick={isOpen ? () => {} : toggleBoard}
+        className={`board ${isOpen ? `open ${color}` : color}`}
+      >
+        <BoardTag name={name} isOpen={isOpen} onClick={toggleBoard} />
+        {isOpen && (
+          <motion.div className="expand" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+            <motion.div className="postits-exp">
+              <PostItContainerBoard boardId={id} />
             </motion.div>
-        </>
-    );
+          </motion.div>
+        )}
+      </motion.div>
+    </>
+  );
 };
 
 export default Board;

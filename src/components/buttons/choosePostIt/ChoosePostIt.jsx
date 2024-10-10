@@ -45,11 +45,10 @@ function useButtonAnimation(isOpen) {
   return scope;
 }
 
-const ChoosePostIt = () => {
-  const navigate = useNavigate();
+const ChoosePostIt = ({ boardId }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isErrorModalOpen, setErrorModalOpen] = useState(false);
-  const { data, loading, error, excutePost} = usePost("/{boardId}")
+  const { data, loading, error, executePost} = usePost(`/${boardId}`)
   const [isOpen, setIsOpen] = useState(false);
   const [selectedColor, setSelectedColor] = useState("");
   const scope = useButtonAnimation(isOpen);
@@ -71,15 +70,22 @@ const ChoosePostIt = () => {
     setErrorModalOpen(false);
   }
 
-  const handleCreatePostit = async(data) => {
+  const handleCreatePostit = async(postit) => {
     const body = {
-      "title": data.positTitle,
+      "title": postit.postitTitle,
       "color": selectedColor,
-      "textContent": data.textContent
-    };
+      "textContent": postit.textContent,
+      "board_id": boardId
+    }
     executePost(body);
     handleCloseModal();
   }
+
+  useEffect(() => {
+    if(error) {
+        setErrorModalOpen(true);
+    }
+}, [error])
 
 
 
@@ -89,22 +95,22 @@ const ChoosePostIt = () => {
         <motion.div className="colorButton">
           <ColorButtons 
             color="colorPostItRose" 
-            onClick={() => handleOpenModal("colorPostItRose")} />
+            onClick={() => handleOpenModal("rose")} />
         </motion.div>
         <motion.div className="colorButton">
           <ColorButtons 
             color="colorPostItPerano" 
-            onClick={() => handleOpenModal("colorPostItPerano")}/>
+            onClick={() => handleOpenModal("perano")}/>
         </motion.div>
         <motion.div className="colorButton">
           <ColorButtons 
             color="colorPostItGreen" 
-            onClick={() => handleOpenModal("colorPostItGreen")}/>
+            onClick={() => handleOpenModal("green")}/>
         </motion.div>
         <motion.div className="colorButton">
           <ColorButtons 
             color="colorPostItWheat" 
-            onClick={() => handleOpenModal("colorPostItWheat")}/>
+            onClick={() => handleOpenModal("wheat")}/>
         </motion.div>
       </motion.div>
 
@@ -124,6 +130,7 @@ const ChoosePostIt = () => {
         fields={postitFields} 
         submitButtonText="Crear post-it" 
         cancelButtonText="Cancelar" 
+        color="perano"
       />
       <AlertModal 
         isOpen={isErrorModalOpen}  
