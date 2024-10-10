@@ -4,11 +4,14 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { createGroupSchema } from "../../hooks/validationSchemas";
 import usePost from "../../hooks/usePost";
-import GroupImage from "./boardImage/GroupImage";
 import MainButton from "../buttons/mainButton/MainButton";
 import FormModal from "../modals/formModal/FormModal";
 import AlertModal from "../modals/alertModal/AlertModal";
 import LoadingModal from "../modals/loadingModal/LoadingModal";
+import { useAuth } from "../../hooks/useAuth";
+import useFetch from "../../hooks/useFetch";
+import GroupListSidebar from "../group/groupListSideBar/GroupListSidebar";
+
 
 const groupFields = [
   {
@@ -23,23 +26,22 @@ const groupFields = [
   },
 ];
 
-/* const postItFields = [
-    {
-        fieldLabel: 'Título',
-        fieldName: 'postItTitle',
-        fieldType: 'text'
-    },
-    {
-        fieldLabel: 'Contenido',
-        fieldName: 'postItContent',
-        fieldType: 'textarea'
-    }
-]; */
-
 const Sidebar = ({ state, isOpen, toggleSidebar }) => {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isErrorModalOpen, setErrorModalOpen] = useState(false);
+  const { authToken } = useAuth(); // Obtenemos el token de autenticación
+  const { data: fetchData, fetch: fetchGroups } = useFetch(
+    "/group/user",
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${authToken}`,
+      },
+    },
+    false
+  );
   const { data, loading, error, executePost } = usePost("/group/add");
 
   const handleOpenModal = () => {
@@ -67,6 +69,17 @@ const Sidebar = ({ state, isOpen, toggleSidebar }) => {
     executePost(body);
     handleCloseModal();
   };
+
+  useEffect(() => {
+    if (authToken) {
+      fetchGroups();
+    }
+  }, [authToken]);
+
+  // Filtrar grupos donde isMember es true
+  const memberGroups = fetchData
+    ? fetchData.filter((group) => group.isMember)
+    : [];
 
   useEffect(() => {
     if (data) {
@@ -108,7 +121,7 @@ const Sidebar = ({ state, isOpen, toggleSidebar }) => {
           layout="open"
         >
           <div className="groups">
-            <GroupImage profileImage="/assets/PRUEBA.jpeg" />
+            <GroupListSidebar groups={memberGroups} />
           </div>
           <section className="bottom">
             <MainButton
@@ -171,9 +184,7 @@ const Sidebar = ({ state, isOpen, toggleSidebar }) => {
         submitButtonText="Crear Grupo"
         cancelButtonText="Cancelar"
       />
-      {/* 
-            <FormModal onClose={handleCloseModal} onSubmit={handleCreatePostIt} title="Crear nuevo Post-It" fields={postItFields} validationSchema={createPostItSchema} submitButtonText="Guardar" cancelButtonText="Cancelar" />
-*/}
+
       <AlertModal
         isOpen={isErrorModalOpen}
         onClose={handleCloseErrorModal}
