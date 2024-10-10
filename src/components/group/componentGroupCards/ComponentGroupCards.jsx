@@ -39,7 +39,7 @@ const ComponentGroupCards = ({ searchQuery = "" }) => {
 
   const filteredGroups = groups.filter(
     (group) =>
-      group.groupName && // Check if groupName exists
+      group.groupName && 
       group.groupName.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -49,7 +49,7 @@ const ComponentGroupCards = ({ searchQuery = "" }) => {
         <p>Cargando grupos...</p>
       ) : filteredGroups.length > 0 ? (
         filteredGroups.map((group, index) => (
-          <GroupCard key={index} groupId={group.id} title={group.groupName} categories={group.boards} />
+          <GroupCard key={index} groupId={group.id} title={group.groupName} categories={group.boards} isMember={group.isMember} />
         ))
       ) : (
         <p>No se encontraron grupos que coincidan con la búsqueda.</p>
