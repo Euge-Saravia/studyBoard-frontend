@@ -7,15 +7,15 @@ import ChoosePostIt from "../../buttons/choosePostIt/ChoosePostIt";
 import { useAuth } from "../../../hooks/useAuth";
 import useFetch from "../../../hooks/useFetch";
 import useDelete from "../../../hooks/useDelete";
+import DeleteModal from "../../modals/deleteModal/DeleteModal";
 //import { READ_POST_IT_BY_BOARD } from "../../../../config";
 
 const PostItContainerBoard = ({ boardId }) => {
-  const [selectedId, setSelectedId] = useState(null);
   const { authToken } = useAuth();
-
-  const [postitIdToDelete, setPostitIdToDelete] = useState();
-  const { executeDelete } = useDelete(`/postits/${selectedId}`);
-
+  const [selectedId, setSelectedId] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [postitIdToDelete, setPostitIdToDelete] = useState(null);
+  const { executeDelete } = useDelete(`/postits/${postitIdToDelete}`);
   const {
     data: postits,
     loading,
@@ -32,12 +32,21 @@ const PostItContainerBoard = ({ boardId }) => {
     true
   );
 
-  console.log("postit", postits);
-
   const selectedPostIt = postits?.find((postit) => postit.id === selectedId);
+
+  const openDeleteModal = (id) => {
+    setPostitIdToDelete(id);
+    setIsModalOpen(true);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+    setPostitIdToDelete(null);
+  };
 
   const handleDelete = () => {
     executeDelete();
+    setIsModalOpen(false);
     setTimeout(() => {
       fetch();
     }, 500);
@@ -57,9 +66,10 @@ const PostItContainerBoard = ({ boardId }) => {
               title={selectedPostIt.title}
               text={selectedPostIt.text}
               onClick={() => setSelectedId(null)}
-              onDelete={handleDelete}
+              onDelete={() => openDeleteModal(selectedId)}
             />
           )}
+          {isModalOpen && <DeleteModal onOk={handleDelete} onCancel={handleCancel} />}
         </AnimatePresence>
       </div>
       <div className="postit-cont">
@@ -72,11 +82,13 @@ const PostItContainerBoard = ({ boardId }) => {
               title={postit.title}
               text={postit.textContent}
               onClick={() => setSelectedId(postit.id)}
+              onDelete={() => openDeleteModal(postit.id)}
             />
           ))
         ) : (
           <p>No hay post-its disponibles</p>
         )}
+        {isModalOpen && <DeleteModal onOk={handleDelete} onClose={handleCancel} />}
       </div>
       <div>
         <ChoosePostIt boardId={boardId} />
