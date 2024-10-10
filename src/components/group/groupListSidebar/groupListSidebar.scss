@@ -1,0 +1,23 @@
+@import "../../../styles//variables.scss";
+
+.group-list {
+    list-style: none;
+
+    li {
+        margin-bottom: 0.5rem;
+        background-color: $white-cream;
+        color: $dark-blue;
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid $light-blue;
+        font-weight: 700;
+
+        &:hover{
+            background-color: $light-blue;
+        }
+    }
+}
