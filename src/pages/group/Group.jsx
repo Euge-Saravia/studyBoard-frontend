@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom";
 
 const Group = ({ name }) => {
     //comprobar si user actual es creador
-    //const isCreator = true;
+    const isCreator = true;
     const [activeView, setActiveView] = useState("Boards");
     const location = useLocation();
     const id = location.state.data;
