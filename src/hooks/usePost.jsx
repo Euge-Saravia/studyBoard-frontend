@@ -1,13 +1,11 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import useFetch from './useFetch'
-import { useCookies } from './useCookies'
+import { useCallback, useEffect, useState } from "react";
+import useFetch from "./useFetch";
+import { useAuth } from "./useAuth";
 
 const usePost = (endpoint) => {
-
-    const [body, setBody] = useState(null)
-    const [shouldPost, setShouldPost] = useState(false)
-
-    const authToken = useCookies('authToken')
+    const [body, setBody] = useState(null);
+    const [shouldPost, setShouldPost] = useState(false);
+    const { authToken } = useAuth();
 
     const fetchOption = {
         method: "POST",
@@ -15,28 +13,24 @@ const usePost = (endpoint) => {
             "Content-Type": "application/json",
             ...(authToken ? { Authorization: `Bearer ${authToken}` } : {}),
         },
-        body: body ? JSON.stringify(body) : null
-    }
+        body: body ? JSON.stringify(body) : null,
+    };
 
-    const { data, loading, error, fetch } = useFetch(endpoint, fetchOption, shouldPost)
+    const { data, loading, error, fetch } = useFetch(endpoint, fetchOption, false);
 
     const executePost = useCallback((postData) => {
-        setBody(postData)
+        setBody(postData);
         setShouldPost(true);
-    }, [])
+    }, []);
 
     useEffect(() => {
         if (shouldPost && body) {
-            fetch(body)
-            setShouldPost(false)
+            fetch(body);
+            setShouldPost(false);
         }
-    }, [shouldPost, fetch, body])
+    }, [shouldPost, fetch, body]);
 
-    return { data, loading, error, executePost }
-}
+    return { data, loading, error, executePost };
+};
 
-
-
-
-
-export default usePost
+export default usePost;

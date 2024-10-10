@@ -1,9 +1,9 @@
 import "./smallButton.scss"
 
-const SmallButton = ({ type, text }) => {
+const SmallButton = ({ type = "button", text, onClick }) => {
     return (
 
-        <button className={`small-btn ${type}`}>
+        <button type={type} className={`small-btn ${type}`} onClick={onClick}>
             {text}
         </button>
     )

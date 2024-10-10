@@ -18,10 +18,16 @@
     text-transform: uppercase;
     cursor: pointer;
 
-    .arrow {
+    .icon {
         display: flex;
         align-items: center;
         transform-origin: center;
+
+        .add {
+            width: 14px;
+        }
     }
 }
+
+
 

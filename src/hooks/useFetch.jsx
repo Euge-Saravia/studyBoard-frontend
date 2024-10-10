@@ -1,50 +1,46 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
+import { API_URL } from "../config";
 
-const useFetch = (endpoint, options = {}, shouldFetch = true) => {
+const useFetch = (endpoint, options, shouldFetch = true) => {
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const [hasFetched, setHasFetched] = useState(false);
 
-    const [data, setData] = useState(null)
-    const [loading, setLoading] = useState(false)
-    const [error, setError] = useState(null)
+    const fetchData = async (fetchOption = undefined) => {
+        setLoading(true);
+        setError(null);
 
-    const fetchData = useCallback(
-        async (fetchOption = {}) => {
-            setLoading(true)
-            setError(null)
+        try {
+            const response = await fetch(`${API_URL}${endpoint}`, {
+                ...options,
+                ...fetchOption,
+            });
 
-            const controller = new AbortController()
-            const { signal } = controller
-
-            try {
-
-                const response = await fetch(`${API_URL}${endpoint}`, {
-                    ...options, ...fetchOption, signal
-                })
-
-                if (!response.ok) {
-                    throw new Error(`Error ${response.status}: ${response.statusText}`)
-                }
-
-                const result = await response.json()
-                setData(result)
-
-            } catch (error) {
-                if (error.name !== "AbortError") {
-                    setError(error.message || "Error inesperado")
-                }
-            } finally {
-                setLoading(false)
+            if (!response.ok) {
+                const errorData = await response.json();
+                
+                throw new Error(errorData.message || `Error ${response.status}: ${response.statusText}`);
             }
 
-            return () => controller.abort()
-
-        }, [endpoint, options])
+            const result = await response.json();            
+            setData(result);
+        } catch (err) {
+            if (err.name !== "AbortError") {
+                setError(err.message || "Error inesperado");
+            }
+        } finally {
+            setLoading(false);
+        }
+    };
 
     useEffect(() => {
-        if (shouldFetch) {
-            fetchData()
-        }
-    }, [shouldFetch, fetchData])
+        if (!shouldFetch || !endpoint || hasFetched) return
+        fetchData()
+        setHasFetched(true)
+    }, [shouldFetch, endpoint])
+
     return { data, loading, error, fetch: fetchData }
 }
 
-export default useFetch
+export default useFetch;

@@ -1,0 +1,82 @@
+@import "../../../styles/variables.scss";
+
+.big-post-it {
+    width: 19.4rem;
+    min-height: 30rem;
+    height: auto;
+    border-radius: 1.25rem;
+    /* max-height: 40rem; */
+    background-color: $rose-bud;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 2.5rem 2rem;
+    position: relative;
+    gap: 1.7rem;
+    margin-bottom: 5rem;
+    
+    
+
+    code {
+        font-family: $font-fira;
+        background-color: #f4f4f4;
+        padding: 0.5rem;
+        border-radius: 1rem;
+        display: flex;
+        white-space: pre-wrap;
+    }
+
+    .code-block-cont {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    &.wheat{
+        background-color: $wheat;
+    }
+
+    &.green{
+        background-color: $green-brut;
+    }
+
+    &.perano{
+        background-color: $perano;
+    }
+
+
+    .icons-container{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+    }
+
+    .icons-ud{
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    .icon-postIt {
+        cursor: pointer;
+        transition: transform 0.2s ease-in-out;
+        width: 1.5rem;
+        right: 2rem;
+        top: 2rem;
+    }
+
+    p {
+        color: $dark-gray;
+    }
+}
+
+@media (min-width: 634px) {
+    .big-post-it {
+        width: 23rem;
+    }
+}

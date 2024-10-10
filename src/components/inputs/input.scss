@@ -27,6 +27,7 @@
         font-size: 0.813rem;
         padding-left: 1.563rem;
         color: $dark-gray;
+        outline: none;
 
         &.size {
             font-weight: 700;
@@ -36,6 +37,7 @@
             border: 0.063rem solid $light-blue;
 
         }
+        
 
     }
 }

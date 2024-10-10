@@ -1,0 +1,69 @@
+@import "../../../styles/variables.scss";
+
+
+.postit-section {
+    position: relative;
+    margin-bottom: 2rem;
+
+    .postit-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem 0.5rem;
+        margin-left: 0.5rem;
+        justify-content: center;
+        align-items:flex-start;
+
+    }
+
+    .expanded-post-it {
+        position: absolute;
+        z-index: 20;
+        top:1;
+    }
+
+    .messages {
+        color: $dark-gray;
+        width: 100%;
+    }
+
+}
+
+@media (min-width: 660px) {
+    .postit-section {
+        position: relative;
+        margin-bottom: 2rem;
+
+        .postit-container {
+            width: 12rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+    }
+
+}
+
+
+@media (min-width: 1024px) {
+    .postit-section {
+        position: relative;
+        margin-bottom: 2rem;
+        
+        .postit-container {
+            gap: 0.8rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            margin-left: 0.5rem;
+            justify-content: center;
+            align-items:flex-start;
+        }
+
+        .expanded-post-it {
+            position: absolute;
+            z-index: 20;
+            top:1;
+            left: -5rem;
+        }
+    }
+}
+    

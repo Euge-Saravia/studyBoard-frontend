@@ -10,6 +10,7 @@
     position: relative;
     transition: z-index 0.5s;
     margin-top: -1rem;
+    
 
     &:first-child {
         margin-top: 0;
@@ -21,9 +22,10 @@
 
     &.expand {
         width: 100%;
+
     }
 
-    &.blue {
+    &.perano {
         background-color: $perano;
     }
 
@@ -31,26 +33,33 @@
         background-color: $green-brut;
     }
 
-    &.red {
+    &.rose {
         background-color: $rose-bud;
     }
 
-    &.yellow {
+    &.wheat {
         background-color: $wheat;
     }
 
     &.open {
+        width: 110%;
         background: white;
-        z-index: 30;
+        min-height: 30rem;
+        z-index: 11;
         position: absolute;
         border-radius: 0.744rem;
-        margin-top: 0;
+        margin: 0.5rem -1.2rem;
         padding-bottom: 0.5rem;
-        left: 0;
-        top: 0;
+        left: 0.6rem;
+        top: -9.50rem;
         transition: position 1s;
 
-        &.blue {
+        .postits-exp {
+            margin-left: -0.5rem;
+            margin-top: 1rem;
+        }
+
+        &.perano {
             border: solid 5px $perano;
         }
 
@@ -58,12 +67,40 @@
             border: solid 5px $green-brut;
         }
 
-        &.red {
+        &.rose {
             border: solid 5px $rose-bud;
         }
 
-        &.yellow {
+        &.wheat {
             border: solid 5px $wheat;
         }
     }
+}
+
+@media (min-width: 730px) {
+    .board {
+        width: 80%;
+
+        &.open {
+            width: 88%;
+            margin: 0.9rem 3rem;
+        }
+
+    }
+
+}
+
+
+@media (min-width: 1024px) {
+    .board {
+        width: 24rem;
+
+        &.open {
+            width: 120%;
+            margin: 0.5rem -4rem;
+
+        }
+
+    }
+
 }

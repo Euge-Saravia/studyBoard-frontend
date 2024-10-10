@@ -1,0 +1,109 @@
+@import "../../../styles/variables.scss";
+
+.calendar-comp {
+    
+    .calendar-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+        .week-cal {
+            width: 22rem;
+            margin-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-left: 0.8rem;
+
+            .linebt {
+                border: solid 1px $light-gray;
+                width: 80%;
+            }
+        }
+
+    .today-cal {
+        align-self: flex-start;
+        margin-left: 3rem;
+        display: flex;
+        flex-direction: column;
+        margin-top: 1.5rem;
+    }
+
+    .linebt {
+        border: solid 1px $light-gray;
+        width: 70%;
+        margin-top: 0.8rem;
+    }
+
+    .cal-post-it {
+        margin-top: 1rem;
+        margin-left: 0.8rem;;
+    }
+}
+}
+
+@media (min-width: 740px) {
+    
+    .today-cal {
+        align-self: flex-start;
+        margin-left: 1.5rem;
+        padding-left: 5.5rem;
+        display: flex;
+        flex-direction: column;
+        margin-top: 1.5rem;
+    }
+
+    .linebt {
+        border: solid 1px $light-gray;
+        width: 60%;
+        margin-top: 0.8rem;
+    }
+
+}
+
+@media (min-width: 1024px)  {
+
+    .calendar-comp {
+        width: 32rem;
+        display:flex;
+        justify-content: center;
+
+        .calendar-section {
+            width: 28rem;
+       
+            .week-cal {
+                width: 18rem;
+                margin-top: 1.5rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+        .today-cal {
+            align-self: flex-start;
+            margin-left: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            margin-top: 1.5rem;
+            padding-left: 0;
+        }
+
+        .linebt {
+            border: solid 1px $light-gray;
+            width: 88%;
+            margin-top: 0.8rem;
+        }
+
+        .cal-post-it {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem 1rem;
+            margin-top: 1.6rem;
+            margin-left: 7rem;;
+        }
+    }
+}
+}
