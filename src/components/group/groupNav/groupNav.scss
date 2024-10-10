@@ -26,33 +26,6 @@
     }
 }
 
-@media (min-width: 724px) {
-    
-    .group-nav {
-        display: flex;
-
-        .top-navigation {
-            display: flex;
-            flex-direction: row;
-            gap: 5rem;
-            padding-left: 3rem;
-    
-            .group-img {
-                width: 33%;
-                align-self: flex-end;        }
-        }
-    
-    
-        .linebt {
-            border: solid 1px $light-gray;
-            width: 84%;
-            align-self: center;
-            margin-top: 1rem;
-        }
-    }
-
-}
-
 @media (min-width: 1024px) {
     
     .group-nav {

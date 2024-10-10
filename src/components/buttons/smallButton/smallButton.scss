@@ -39,8 +39,14 @@
         color: $white-cream;
     }
 
+    &.alertOK{
+        background-color: $white-cream;
+        color: $dark-blue;
+    }
+
     &:hover {
         opacity: 0.9;
+
     }
 
 }

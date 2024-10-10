@@ -70,7 +70,7 @@ const UserHomeProfile = () => {
     return <div>Error: {error || avatarPutError || namePutError}</div>;
 
   return (
-    <seccion className="userProfileContainer">
+    <section className="userProfileContainer">
       <ProfileImg
         profileImage={profileImage}
         onImageUpload={handleImageUpload}
@@ -99,7 +99,7 @@ const UserHomeProfile = () => {
         />
       </div>
       <LogOut />
-    </seccion>
+    </section>
   );
 };
 
