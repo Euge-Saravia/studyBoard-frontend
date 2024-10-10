@@ -23,8 +23,8 @@ const FormModal = ({ isOpen, onClose, onSubmit, validationSchema, title, fields,
 
     return (
         <div className='modal-overlay-group'>
-            <div className='modal-content-group' color={color}>
-                <h5 className='title-modal'>{title}</h5>
+            <div className='modal-content-group'>
+                <h5 className={`title-modal ${color}`}>{title}</h5>
                 <form onSubmit={handleSubmit(onFormSubmit)} className='form-container'>
                 {fields.map(({ fieldLabel, fieldName, fieldType }) => (
                         <div key={fieldName} className='form-group'>

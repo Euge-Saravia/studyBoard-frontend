@@ -20,7 +20,7 @@ const Group = ({ name }) => {
     };
 
     useEffect(() => {
-        const handleResize = () => {
+        const handleResize = () => {
             setIsDesktop(window.innerWidth > 1024);
         }
 
@@ -29,10 +29,9 @@ const Group = ({ name }) => {
     }, [isDesktop]);
 
     const components = {
-        'Boards' : <BoardTagsContainer key="boards" isCreator={isCreator} name={name} />,
-        'Calendar': <CalendarComponent key="calendar" />,
+        'Boards': <BoardTagsContainer key="boards" id={id} />,
+        'Calendar': <CalendarComponent key="calendar" groupId={id} />,
     };
-
 
     return (
         <>
@@ -48,7 +47,7 @@ const Group = ({ name }) => {
             {isDesktop && 
                 <section className="group-deskt">
                     <BoardTagsContainer key="boards" id={id}  />
-                    <CalendarComponent key="calendar" />
+                    <CalendarComponent key="calendar" groupId={id} />
                 </section>
             }
           
