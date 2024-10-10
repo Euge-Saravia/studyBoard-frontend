@@ -10,7 +10,7 @@ import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
 //import usePut from "../../../hooks/usePut.jsx";
 import CopyButton from "../../buttons/copyButton/CopyButton.jsx";
 
-const PostItExpand = ({ text, title, type, onClick, onDelete, layoutId }) => {
+const PostItExpand = ({ text, title, isOwner, type, onClick, onDelete, layoutId }) => {
   //const { executePut } = usePut();
 
   //   const handleEditPostIt = () => {
@@ -21,7 +21,7 @@ const PostItExpand = ({ text, title, type, onClick, onDelete, layoutId }) => {
     <motion.div className={`big-post-it ${type}`} layoutId={layoutId}>
       <section className="icons-container">
         <div className="icons-ud">
-          <img src={trashIcon} alt="trash icon" onClick={onDelete} className="icon-postIt" />
+          {isOwner && <img src={trashIcon} alt="trash icon" onClick={onDelete} className="icon-postIt" />}
           {/* <img src={editIcon} alt="edit icon" onClick={handleEditPostIt} className="edit-postIt" /> */}
         </div>
         <img src={contractIcon} alt="contract icon" onClick={onClick} className="icon-postIt" />
