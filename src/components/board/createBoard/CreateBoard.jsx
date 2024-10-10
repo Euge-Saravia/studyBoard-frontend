@@ -4,12 +4,9 @@ import CreateBoardForm from "./createBoardForm/CreateBoardForm";
 import "./createBoard.scss";
 
 const CreateBoard = ({ isOpen, toggleBoard, onBoardCreated, id }) => {
-    const onSubmit = (newBoardData) => {
-        // post con data.name y color
-        console.log("Nombre del board: " + newBoardData.title + " Color: " + newBoardData.color); //borrar
-        onBoardCreated(newBoardData)
+    const onSubmit = () => {
+        onBoardCreated();
         toggleBoard();
-        // hacer algo para que recarguen los boards
     };
 
     return (

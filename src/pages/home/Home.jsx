@@ -3,7 +3,6 @@ import ComponentGroupCards from "../../components/group/componentGroupCards/Comp
 import Input from "../../components/inputs/Input";
 import { useState } from "react";
 
-
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -14,7 +13,6 @@ const Home = () => {
   return (
     <div className="home-container">
       <section className="cont-wrap">
-        {/* <LoadingModal isOpen={loading} /> */}
         <div className="search-container">
           <Input
             type="text"
