@@ -41,9 +41,9 @@ const PostItContainerBoard = ({ boardId }) => {
           {selectedId && selectedPostIt && (
             <PostItExpand
               layoutId={selectedId}
-              type={selectedPostIt.type}
+              type={selectedPostIt.color}
               title={selectedPostIt.title}
-              text={selectedPostIt.text}
+              text={selectedPostIt.textContent}
               onClick={() => setSelectedId(null)}
             />
           )}
