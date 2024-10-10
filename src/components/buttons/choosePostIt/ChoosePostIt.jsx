@@ -9,19 +9,18 @@ import FormModal from "../../modals/formModal/FormModal";
 import AlertModal from "../../modals/alertModal/AlertModal";
 import usePost from "../../../hooks/usePost";
 
-
 const postitFields = [
   {
-      fieldLabel: "Título del post-it",
-      fieldName: "postitTitle",
-      fieldType: "text"
+    fieldLabel: "Título del post-it",
+    fieldName: "postitTitle",
+    fieldType: "text",
   },
   {
-      fieldLabel: "Cuerpo del post-it",
-      fieldName: "textContent",
-      fieldType: "textarea"
+    fieldLabel: "Cuerpo del post-it",
+    fieldName: "textContent",
+    fieldType: "textarea",
   },
-]
+];
 
 const staggerButtons = stagger(0.1, { startDelay: 0.15 });
 
@@ -45,87 +44,77 @@ function useButtonAnimation(isOpen) {
 }
 
 const ChoosePostIt = ({ boardId }) => {
-  console.log("boardId:", boardId);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isErrorModalOpen, setErrorModalOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedColor, setSelectedColor] = useState("");
   const [buttonText, setButtonText] = useState("+");
   const scope = useButtonAnimation(isOpen);
-  const { data, loading, error, executePost} = usePost(`/postits/${boardId}`)
-
+  const { loading, error, executePost } = usePost(`/postits/${boardId}`);
 
   const handleOpenModal = (color) => {
     if (!color) {
       console.error("Color is undefined");
-      return
+      return;
     }
     setSelectedColor(color);
-    setIsModalOpen(true)
-  }
+    setIsModalOpen(true);
+  };
 
   const handleCloseModal = () => {
-    setIsModalOpen(false)
-  }
+    setIsModalOpen(false);
+  };
 
   const handleCloseErrorModal = () => {
     setErrorModalOpen(false);
-  }
+  };
 
   const handleClick = () => {
     setIsOpen(!isOpen);
     setButtonText(isOpen ? "+" : "-");
-  }
+  };
 
-  const handleCreatePostit = async(postit) => {
+  const handleCreatePostit = (postit) => {
+    const today = new Date().toISOString().split("T")[0];
+
     const body = {
-      "title": postit.postitTitle,
-      "color": selectedColor,
-      "text_content": postit.textContent,
-      "board_id": boardId
-    }
-    console.log("Executing post with body:", body)
+      title: postit.postitTitle,
+      color: selectedColor,
+      textContent: postit.textContent,
+      date: today,
+    };
     executePost(body);
-    //handleCloseModal();
-  }
+  };
 
   useEffect(() => {
-    if (data) {
-      console.log(data);
+    if (error) {
+      setErrorModalOpen(true);
     }
-}, [data]);
-
-  useEffect(() => {
-    if(error) {
-        setErrorModalOpen(true);
-    }
-}, [error])
-
-
+  }, [error]);
 
   return (
     <div className="choosePostItWrapper">
       <motion.div className="colorButtonsWrapper" ref={scope}>
         <motion.div className="colorButton">
-          <ColorButtons 
-            color="rose" 
-            onClick={() => handleOpenModal("rose")} />
+          <ColorButtons color="rose" onClick={() => handleOpenModal("rose")} />
         </motion.div>
         <motion.div className="colorButton">
-          <ColorButtons 
-            color="perano" 
-            onClick={() => handleOpenModal("perano")}/>
+          <ColorButtons
+            color="perano"
+            onClick={() => handleOpenModal("perano")}
+          />
         </motion.div>
         <motion.div className="colorButton">
-          <ColorButtons 
-            color="green" 
-            onClick={() => handleOpenModal("green")}/>
+          <ColorButtons
+            color="green"
+            onClick={() => handleOpenModal("green")}
+          />
         </motion.div>
         <motion.div className="colorButton">
-          <ColorButtons 
-            color="wheat" 
-            onClick={() => handleOpenModal("wheat")}/>
+          <ColorButtons
+            color="wheat"
+            onClick={() => handleOpenModal("wheat")}
+          />
         </motion.div>
       </motion.div>
 
@@ -138,25 +127,24 @@ const ChoosePostIt = ({ boardId }) => {
 
       <div className="modals-create-pt">
         <LoadingModal isOpen={loading} />
-        <FormModal 
-          isOpen={isModalOpen} 
-          onClose={handleCloseModal} 
-          
-          validationSchema={createPostItSchema} 
-          onSubmit={handleCreatePostit} 
-          title="Crear nuevo post-it" 
-          fields={postitFields} 
-          submitButtonText="Crear post-it" 
-          cancelButtonText="Cancelar" 
+        <FormModal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          validationSchema={createPostItSchema}
+          onSubmit={handleCreatePostit}
+          title="Crear nuevo post-it"
+          fields={postitFields}
+          submitButtonText="Crear post-it"
+          cancelButtonText="Cancelar"
           color={selectedColor}
         />
-        <AlertModal 
-          isOpen={isErrorModalOpen}  
-          onClose={handleCloseErrorModal} 
-          title="Error" 
-          errorText="No se pudo crear el post-it"/> 
+        <AlertModal
+          isOpen={isErrorModalOpen}
+          onClose={handleCloseErrorModal}
+          title="Error"
+          errorText="No se pudo crear el post-it"
+        />
       </div>
-      
     </div>
   );
 };

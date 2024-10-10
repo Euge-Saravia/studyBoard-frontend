@@ -32,6 +32,6 @@ export const createGroupSchema = yup.object().shape({
 })
 
 export const createPostItSchema = yup.object().shape({
-    postItContent: yup.string().required('El contenido es obligatorio')
+    textContent: yup.string().required('El contenido es obligatorio')
 })
 
