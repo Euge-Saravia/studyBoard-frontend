@@ -3,7 +3,7 @@ import CalendarComponent from "../../components/calendar/calendarComponent/Calen
 import GroupNav from "../../components/group/groupNav/GroupNav";
 import BoardTagsContainer from "../../components/board/boardTagsContainer/BoardTagsContainer";
 import "./group.scss";
-import Board from "../../components/board/Board";
+import { useLocation } from "react-router-dom";
 
 const Group = ({ name }) => {
     //comprobar si user actual es creador
