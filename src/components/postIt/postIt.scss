@@ -15,6 +15,14 @@
     justify-content: space-between;
     max-height: 300px;
     gap: 8px;
+    overflow: hidden;
+
+    h6, p {
+        margin: 0;
+        overflow-wrap: break-word; // Ensures long words break within the box
+        word-break: break-word;     // Allows for long strings to break
+        white-space: normal;        // Allows line wrapping
+    }
 
     p {
         color: $dark-gray;
