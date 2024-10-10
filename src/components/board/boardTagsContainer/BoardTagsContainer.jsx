@@ -85,7 +85,7 @@ const BoardTagsContainer = ({ id }) => {
                 name={board.title}
                 isOpen={openCardIndex === index + 1}
                 toggleBoard={() => toggleBoard(index + 1)}
-                id={board.id}
+                boardId={board.id}
               />
             );
           })
