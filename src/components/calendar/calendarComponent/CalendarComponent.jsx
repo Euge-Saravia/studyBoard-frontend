@@ -1,5 +1,5 @@
 import "./calendarComponent.scss";
-import WeekCalendar from "../weekCalendar/WeekCalendar.jsx"
+import WeekCalendar from "../weekCalendar/WeekCalendar.jsx";
 import TodayCard from "../todayCard/TodayCard.jsx";
 import PostItContainerCalendar from "../../postIt/postItContainerCalendar/PostItContainerCalendar"
 import { format } from "date-fns";
@@ -17,12 +17,14 @@ const CalendarComponent = ( {groupId} ) => {
             dayMonth: format(selectedDate, 'MMM', { locale: es}),
             formatedDate: format(selectedDate, 'yyyy-MM-dd')
         };
+
     };
+  };
+
 
     const { dayNumber, dayWeek, dayYear, dayMonth, isToday, formatedDate } = todayCalendar();
     
     const handleDataChange = (date) => {
-        //Aquí el get con date
         setSelectedDate(date);
     }
 
@@ -39,9 +41,11 @@ const CalendarComponent = ( {groupId} ) => {
             <section className="cal-post-it">
                 <PostItContainerCalendar date={formatedDate} groupId={groupId} />
             </section>
-        </section>
-    </div>
-  )
-}
 
-export default CalendarComponent
+        </section>
+      </section>
+    </div>
+  );
+};
+
+export default CalendarComponent;

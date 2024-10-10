@@ -1,0 +1,87 @@
+@import "../../../styles/variables.scss";
+
+.modal-overlay-alert {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 2rem;
+
+
+.modal-content-alert {
+    background-color: $dark-blue;
+    padding: 4rem;
+    border: #ff0000 solid 4px;
+    border-radius: 1.875rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 5rem 2rem 5rem;
+
+    h5 {
+        margin-top: 0.8rem;
+        text-align: center;
+    }
+
+    p {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+        text-align: left;
+        color: $white-cream;
+        margin-top: 0.5rem;
+    }
+}
+
+.title-modal-alert {
+    color: $white-cream;
+    margin: 0;
+    border-radius: 0.9rem 0.9rem 0 0;
+    display: flex;
+    justify-content: center;
+
+    .text-alerts {
+        text-align: center;
+    }
+}
+
+.svg-alert{
+    width: 1.875rem;
+    height: auto;
+}
+
+.alert {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+}
+
+.wrapperSmallButton{
+    display: flex;
+    gap: 1.8rem;
+}
+}
+
+@media (max-width: 450px) {
+
+    .modal-overlay-alert {
+
+        .modal-content-alert {
+
+            padding: 2rem 1.5rem;
+    }
+}
+
+}
