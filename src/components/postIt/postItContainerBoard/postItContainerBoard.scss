@@ -20,4 +20,66 @@
         top:1;
     }
 
+    .create-postit-btn {
+        grid-column: 2 / span 1;
+        justify-self: end;
+    
+    }
+
+}
+
+@media (min-width: 600px) {
+    .postit-sect {
+        position: relative;
+        margin-bottom: 2rem;
+    
+        .postit-cont {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem 0.5rem;
+            margin-left: 0.5rem;
+            justify-content: space-evenly;
+            align-items:flex-start;
+    
+        }
+    
+        .expanded-postit {
+            position: absolute;
+            z-index: 20;
+            top:1;
+        }
+
+        .create-postit-btn {
+            grid-row: 3 / span 1;
+            grid-column: 3 / span 1;
+        }
+    
+    }
+}
+
+@media (min-width: 1024px) {
+    .postit-sect {
+        position: relative;
+        margin-bottom: 2rem;
+    
+        .postit-cont {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem 0.5rem;
+            margin-left: 0.5rem;
+            justify-content: space-evenly;
+            align-items:flex-start;
+    
+        }
+    
+        .expanded-postit {
+            position: absolute;
+            z-index: 20;
+            top:1;
+        }
+
+        .create-postit-btn {
+            grid-column: 2 / span 1;
+    }
+    }
 }

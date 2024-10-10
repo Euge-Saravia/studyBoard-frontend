@@ -42,13 +42,13 @@
     }
 
     &.open {
-        width: 105%;
+        width: 107%;
         background: white;
         min-height: 30rem;
         z-index: 11;
         position: absolute;
         border-radius: 0.744rem;
-        margin: 0.5rem -1rem;
+        margin: 0.5rem -1.2rem;
         padding-bottom: 0.5rem;
         left: 0.6rem;
         top: -9.50rem;
@@ -75,4 +75,32 @@
             border: solid 5px $wheat;
         }
     }
+}
+
+@media (min-width: 830px) {
+    .board {
+        width: 80%;
+
+        &.open {
+            width: 82%;
+            margin: 0.9rem 4rem;
+        }
+
+    }
+
+}
+
+
+@media (min-width: 1024px) {
+    .board {
+        width: 130%;
+
+        &.open {
+            width: 150%;
+            margin: 0.5rem -5rem;
+
+        }
+
+    }
+
 }

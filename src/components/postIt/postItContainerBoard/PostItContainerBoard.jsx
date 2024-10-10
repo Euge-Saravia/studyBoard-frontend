@@ -67,7 +67,7 @@ const PostItContainerBoard = ({ boardId }) => {
             text={postit.text} 
             onClick={() => setSelectedId(postit.id)} /> 
         ))}
-            <div> 
+            <div className="create-postit-btn"> 
                 <ChoosePostIt boardId={boardId}/>
             </div>
         </div>
