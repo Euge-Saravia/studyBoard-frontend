@@ -18,7 +18,6 @@ const CalendarComponent = ( {groupId} ) => {
             formatedDate: format(selectedDate, 'yyyy-MM-dd')
         };
 
-    };
   };
 
 
@@ -43,7 +42,6 @@ const CalendarComponent = ( {groupId} ) => {
             </section>
 
         </section>
-      </section>
     </div>
   );
 };
