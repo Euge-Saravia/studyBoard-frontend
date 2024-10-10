@@ -1,56 +1,61 @@
-import React from "react";
-import { motion } from "framer-motion";
+import "./postItExpand.scss";
 import contractIcon from "/assets/icons/Contract.svg";
 import trashIcon from "/assets/icons/Trash.svg";
-//import editIcon from "/assets/icons/Edit.svg";
-import "./postItExpand.scss";
 import ReactMarkdown from "react-markdown";
+import CopyButton from "../../buttons/copyButton/CopyButton.jsx";
+import { motion } from "framer-motion";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
-//import usePut from "../../../hooks/usePut.jsx";
-import CopyButton from "../../buttons/copyButton/CopyButton.jsx";
 
 const PostItExpand = ({ text, title, type, onClick, onDelete, layoutId }) => {
-  //const { executePut } = usePut();
+    return (
+        <motion.div className={`big-post-it ${type}`} layoutId={layoutId}>
+            <section className="icons-container">
+                <div className="icons-ud">
+                    <img
+                        src={trashIcon}
+                        alt="trash icon"
+                        onClick={onDelete}
+                        className="icon-postIt"
+                    />
+                </div>
+                <img
+                    src={contractIcon}
+                    alt="contract icon"
+                    onClick={onClick}
+                    className="icon-postIt"
+                />
+            </section>
+            <h6>{title}</h6>
+            <ReactMarkdown
+                components={{
+                    code({ inline, className, children, ...props }) {
+                        const codeString = String(children).replace(/\n$/, "");
 
-  //   const handleEditPostIt = () => {
-  //     executePut(postIt);
-  //   };
-
-  return (
-    <motion.div className={`big-post-it ${type}`} layoutId={layoutId}>
-      <section className="icons-container">
-        <div className="icons-ud">
-          <img src={trashIcon} alt="trash icon" onClick={onDelete} className="icon-postIt" />
-          {/* <img src={editIcon} alt="edit icon" onClick={handleEditPostIt} className="edit-postIt" /> */}
-        </div>
-        <img src={contractIcon} alt="contract icon" onClick={onClick} className="icon-postIt" />
-      </section>
-      <h6>{title}</h6>
-      <ReactMarkdown
-        children={text}
-        components={{
-          code({ node, inline, className, children, ...props }) {
-            const match = /language-(\w+)/.exec(className || "");
-            const codeString = String(children).replace(/\n$/, "");
-
-            return !inline && match ? (
-              <div className="code-block-cont">
-                <CopyButton textToCopy={codeString} />
-                <SyntaxHighlighter style={tomorrow} language={match[1]} PreTag="div" {...props}>
-                  {codeString}
-                </SyntaxHighlighter>
-              </div>
-            ) : (
-              <code className={className} {...props}>
-                {children}
-              </code>
-            );
-          },
-        }}
-      />
-    </motion.div>
-  );
+                        return !inline ? (
+                            <div className="code-block-cont">
+                                <CopyButton textToCopy={codeString} />
+                                <SyntaxHighlighter
+                                    style={tomorrow}
+                                    language={"javascript"}
+                                    PreTag="div"
+                                    {...props}
+                                >
+                                    {codeString}
+                                </SyntaxHighlighter>
+                            </div>
+                        ) : (
+                            <code className={className} {...props}>
+                                {children}
+                            </code>
+                        );
+                    },
+                }}
+            >
+                {text}
+            </ReactMarkdown>
+        </motion.div>
+    );
 };
 
 export default PostItExpand;
