@@ -8,7 +8,7 @@ import { CREATE_BOARD } from "../../../../config";
 const CreateBoardForm = ( { submitFunction, id }) => {
     const { handleSubmit, register, formState: { errors } } = useForm();
     const endpoint = CREATE_BOARD.replace("${groupId}", id)
-    const {data, loading, error, executePost} = usePost(endpoint)
+    const {executePost} = usePost(endpoint)
 
     const randomColor = () => {
         const colors = ['rose', 'wheat', 'perano', 'green'];
@@ -24,7 +24,7 @@ const CreateBoardForm = ( { submitFunction, id }) => {
         await executePost(newBoardData)
 
         if (submitFunction) {
-            submitFunction(newBoardData)
+            submitFunction()
         }
     }
 
