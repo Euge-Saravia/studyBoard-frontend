@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./postItContainerBoard.scss";
 import PostItExpand from "../postItExpand/PostItExpand";
 import { AnimatePresence } from "framer-motion";
@@ -8,7 +8,6 @@ import { useAuth } from "../../../hooks/useAuth";
 import useFetch from "../../../hooks/useFetch";
 import useDelete from "../../../hooks/useDelete";
 import DeleteModal from "../../modals/deleteModal/DeleteModal";
-//import { READ_POST_IT_BY_BOARD } from "../../../../config";
 
 const PostItContainerBoard = ({ boardId }) => {
   const { authToken } = useAuth();
@@ -62,9 +61,9 @@ const PostItContainerBoard = ({ boardId }) => {
           {selectedId && selectedPostIt && (
             <PostItExpand
               layoutId={selectedId}
-              type={selectedPostIt.type}
+              type={selectedPostIt.color}
               title={selectedPostIt.title}
-              text={selectedPostIt.text}
+              text={selectedPostIt.textContent}
               onClick={() => setSelectedId(null)}
               onDelete={() => openDeleteModal(selectedId)}
             />
