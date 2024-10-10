@@ -42,7 +42,7 @@
     }
 
     &.open {
-        width: 107%;
+        width: 110%;
         background: white;
         min-height: 30rem;
         z-index: 11;
@@ -77,13 +77,13 @@
     }
 }
 
-@media (min-width: 830px) {
+@media (min-width: 730px) {
     .board {
         width: 80%;
 
         &.open {
-            width: 82%;
-            margin: 0.9rem 4rem;
+            width: 88%;
+            margin: 0.9rem 3rem;
         }
 
     }
