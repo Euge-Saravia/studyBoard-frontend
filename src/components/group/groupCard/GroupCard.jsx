@@ -9,11 +9,9 @@ const GroupCard = ({ groupId, title, categories, isMember }) => {
   const navigate = useNavigate();
   const { authToken } = useAuth();
 
-  // Hook para hacer la petición de unirse al grupo
   const {
     fetch: joinGroup,
     loading,
-    error,
   } = useFetch(
     `/group/join/${groupId}`,
     {
