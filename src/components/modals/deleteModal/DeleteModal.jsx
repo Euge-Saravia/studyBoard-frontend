@@ -2,7 +2,7 @@ import React from "react";
 import SmallButton from "../../buttons/smallButton/SmallButton";
 import "./deleteModal.scss";
 
-const AlertModal = ({ onOK, onCancel }) => {
+const AlertModal = ({ onOk, onCancel }) => {
   return (
     <div className="modal-overlay-alert">
       <div className="modal-content-alert">
@@ -24,7 +24,7 @@ const AlertModal = ({ onOK, onCancel }) => {
           <p>Esta acción es irreversible</p>
         </div>
         <div className="wrapperSmallButton">
-          <SmallButton text="Eliminar" type="alertOK" onClick={() => onOK()} />
+          <SmallButton text="Eliminar" type="alertOK" onClick={() => onOk()} />
           <SmallButton text="Cancelar" type="alert" onClick={onCancel} />
         </div>
       </div>

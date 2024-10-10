@@ -88,7 +88,7 @@ const PostItContainerBoard = ({ boardId }) => {
         ) : (
           <p>No hay post-its disponibles</p>
         )}
-        {isModalOpen && <DeleteModal onOk={handleDelete} onClose={handleCancel} />}
+        {isModalOpen && <DeleteModal onOk={handleDelete} onCancel={handleCancel} />}
       </div>
       <div>
         <ChoosePostIt boardId={boardId} />
