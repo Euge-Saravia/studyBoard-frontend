@@ -3,6 +3,9 @@
 .postit-sect {
     position: relative;
     margin-bottom: 2rem;
+    overflow: hidden;
+    overflow-y: auto;
+
 
     .postit-cont {
         display: grid;
@@ -11,6 +14,16 @@
         margin-left: 0.5rem;
         justify-content: center;
         align-items:flex-start;
+        height: auto;
+
+        .create-postit-btn {
+            grid-column: 2 / span 1;
+        }
+
+        p {
+            color: $dark-gray;
+            margin-top: 1rem;
+        }
 
     }
 
@@ -18,13 +31,14 @@
         position: absolute;
         z-index: 20;
         top:1;
+        overflow: hidden;
+        overflow-y: auto;
+        padding: 0.6rem;
+        margin: auto;
+        height: auto;
+        
     }
 
-    .create-postit-btn {
-        grid-column: 2 / span 1;
-        justify-self: end;
-    
-    }
 
 }
 

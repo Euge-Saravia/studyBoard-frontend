@@ -12,10 +12,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 
     p {
         @include short-paragraph($dark-gray);
         text-transform: uppercase;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: clip;
+        max-width: 90%;
     }
 
     &.rose {
