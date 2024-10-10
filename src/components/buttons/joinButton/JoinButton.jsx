@@ -1,13 +1,19 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import "./joinButton.scss"
 
-const JoinButton = ( { color, onClick} ) => {
+const JoinButton = ( { color, onClick, initialJoined} ) => {
 
   const [hasJoined, setHasJoined] = useState(false);
 
+  useEffect(() => {
+    setHasJoined(initialJoined);
+  }, [initialJoined]);
+
   const handleClick = () => {
-    setHasJoined(!hasJoined);
-    if (onClick) onClick();
+    if (!hasJoined) {
+      setHasJoined(true); // Cambiamos el estado a true solo si aún no se ha unido
+      if (onClick) onClick();
+    }
   }
 
   return (
