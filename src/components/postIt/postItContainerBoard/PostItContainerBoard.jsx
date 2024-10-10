@@ -64,6 +64,7 @@ const PostItContainerBoard = ({ boardId }) => {
               type={selectedPostIt.color}
               title={selectedPostIt.title}
               text={selectedPostIt.textContent}
+              isOwner={selectedPostIt.isOwner}
               onClick={() => setSelectedId(null)}
               onDelete={() => openDeleteModal(selectedId)}
             />

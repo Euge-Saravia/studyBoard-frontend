@@ -31,11 +31,9 @@ describe("LoginPage Integration Test", () => {
       </BrowserRouter>
     );
 
-    // Simulate form submission without entering any data
     const submitButton = screen.getByText("Iniciar sesión");
     fireEvent.click(submitButton);
 
-    // Check if validation errors appear
     expect(await screen.findAllByText("Este campo es obligatorio")).toHaveLength(2);
   });
 
@@ -61,7 +59,6 @@ describe("LoginPage Integration Test", () => {
       </BrowserRouter>
     );
 
-    // Simulate user input
     fireEvent.input(screen.getByPlaceholderText("Correo electrónico"), {
       target: { value: "john.doe@example.com" },
     });
@@ -69,11 +66,9 @@ describe("LoginPage Integration Test", () => {
       target: { value: "Password123" },
     });
 
-    // Simulate form submission
     const submitButton = screen.getByText("Iniciar sesión");
     fireEvent.click(submitButton);
 
-    // Check if error message is displayed
     expect(await screen.findByText("Email o contraseña incorrectos")).toBeInTheDocument();
   });
 
@@ -98,7 +93,6 @@ describe("LoginPage Integration Test", () => {
       </BrowserRouter>
     );
 
-    // Simulate user input
     fireEvent.input(screen.getByPlaceholderText("Correo electrónico"), {
       target: { value: "john.doe@example.com" },
     });
@@ -106,11 +100,9 @@ describe("LoginPage Integration Test", () => {
       target: { value: "password123" },
     });
 
-    // Simulate form submission
     const submitButton = screen.getByText("Iniciar sesión");
     fireEvent.click(submitButton);
 
-    // Ensure the post function was called with the correct data
     act(async () => {
       await waitFor(() =>
         expect(mockExecutePost).toHaveBeenCalledWith({
@@ -119,7 +111,6 @@ describe("LoginPage Integration Test", () => {
         })
       );
 
-      // Check that the login function was called with the mock token
       expect(mockLogin).toHaveBeenCalledWith("mockToken");
     });
   });

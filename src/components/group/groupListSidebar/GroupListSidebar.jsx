@@ -18,20 +18,17 @@ const GroupListSidebar = ({ groups }) => {
 
   return (
     <ul className="group-list">
-    {groups.length > 0 ? (
-      groups.map((group) => (
-        <li
-          key={group.id}
-          className="group-initial"
-          onClick={() => handleGroupClick(group.id, group.groupName)}
-        >
-          {getInitials(group.groupName)}
-        </li>
-      ))
-    ) : (
-      <p>No hay grupos disponibles</p>
-    )}
-  </ul>
+  {groups.length > 0 &&
+    groups.map((group) => (
+      <li
+        key={group.id}
+        className="group-initial"
+        onClick={() => handleGroupClick(group.id, group.groupName)}
+      >
+        {getInitials(group.groupName)}
+      </li>
+    ))}
+</ul>
   );
 };
 
