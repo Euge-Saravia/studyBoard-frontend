@@ -26,3 +26,5 @@ export const CREATE_POST_IT = POST_IT_BASE + "/${boardId}"
 
 export const READ_POST_IT_BY_BOARD = POST_IT_BASE + "/board/${boardId}"
 
+export const GET_POST_IT_BY_DATE = POST_IT_BASE + "/date/${groupId}?date="
+
