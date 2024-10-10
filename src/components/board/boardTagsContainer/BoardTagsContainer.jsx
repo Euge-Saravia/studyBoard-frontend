@@ -23,7 +23,7 @@ const BoardTagsContainer = ({ id }) => {
         },
     };
 
-    const { data, loading, error, fetch: fetchData } = useFetch(endpoint, fetchOptions, !!authToken);
+    const { data, loading, error, fetch: fetchData } = useFetch(endpoint, fetchOptions, false);
 
     useEffect(() => {
         if (data) {
@@ -31,6 +31,12 @@ const BoardTagsContainer = ({ id }) => {
             setBoards(data.boards || []);
         }
     }, [data]);
+
+    useEffect(() => {
+        if (id) {
+            fetchData()
+        }
+    }, [id])
 
     if (loading) return <LoadingModal />;
     if (error) return <AlertModal title="Error:" errorText={error.message} />;
@@ -43,8 +49,10 @@ const BoardTagsContainer = ({ id }) => {
 
     const handleBoardCreated = () => {
         setOpenCardIndex(null)
-        fetchData()
-        .then(()=> setBoards(data.boards || []))
+        setTimeout(() => {
+            fetchData()
+                .then(() => setBoards(data.boards || []))
+        }, 500);
     };
 
     return (
@@ -61,7 +69,7 @@ const BoardTagsContainer = ({ id }) => {
                     />
                 )}
                 {boards.length > 0 ? (
-                    data.boards.map((board, index) => {
+                    boards.map((board, index) => {
                         return (
                             <Board
                                 key={index + 1}
