@@ -39,8 +39,14 @@
         color: $white-cream;
     }
 
+    &.alertOK{
+        background-color: rgba(25, 235, 88, 0.463);
+        color: $white-cream;
+    }
+
     &:hover {
         opacity: 0.9;
+
     }
 
 }
