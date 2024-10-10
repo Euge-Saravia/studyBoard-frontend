@@ -40,8 +40,8 @@
     }
 
     &.alertOK{
-        background-color: rgba(25, 235, 88, 0.463);
-        color: $white-cream;
+        background-color: $white-cream;
+        color: $dark-blue;
     }
 
     &:hover {
