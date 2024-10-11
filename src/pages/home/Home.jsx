@@ -4,31 +4,31 @@ import Input from "../../components/inputs/Input";
 import { useState } from "react";
 
 const Home = () => {
-  const [searchQuery, setSearchQuery] = useState("");
+    const [searchQuery, setSearchQuery] = useState("");
 
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
+    const handleSearchChange = (e) => {
+        setSearchQuery(e.target.value);
+    };
 
-  return (
-    <div className="home-container">
-      <section className="cont-wrap">
-        <div className="search-container">
-          <Input
-            type="text"
-            border="border"
-            icon="assets/icons/Search.svg"
-            placeholder="Búsqueda"
-            value={searchQuery}
-            onChange={handleSearchChange}
-          />
+    return (
+        <div className="home-container">
+            <section className="cont-wrap">
+                <div className="search-container">
+                <Input
+                    type="text"
+                    border="border"
+                    icon="assets/icons/Search.svg"
+                    placeholder="Búsqueda"
+                    value={searchQuery}
+                    onChange={handleSearchChange}
+                />
+                </div>
+                <div className="groups-cont">
+                    <ComponentGroupCards searchQuery={searchQuery} />
+                </div>
+            </section>
         </div>
-        <div className="groups-cont">
-          <ComponentGroupCards searchQuery={searchQuery} />
-        </div>
-      </section>
-    </div>
-  );
+    );
 };
 
 export default Home;

@@ -15,16 +15,16 @@ import { CREATE_GROUP, READ_BY_USER_GROUP } from "../../config";
 
 
 const groupFields = [
-  {
-    fieldLabel: "Nombre de Grupo",
-    fieldName: "groupTitle",
-    fieldType: "text",
-  },
-  {
-    fieldLabel: "Título del Board",
-    fieldName: "boardTitle",
-    fieldType: "text",
-  },
+    {
+        fieldLabel: "Nombre de Grupo",
+        fieldName: "groupTitle",
+        fieldType: "text",
+    },
+    {
+        fieldLabel: "Título del Board",
+        fieldName: "boardTitle",
+        fieldType: "text",
+    },
 ];
 
 const Sidebar = ({ state, isOpen, toggleSidebar }) => {
@@ -45,154 +45,154 @@ const Sidebar = ({ state, isOpen, toggleSidebar }) => {
   );
   const { data, loading, error, executePost } = usePost(CREATE_GROUP);
 
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCloseErrorModal = () => {
-    setErrorModalOpen(false);
-  };
-
-  const handleCreateGroup = async (data) => {
-    const body = {
-      groupName: data.groupTitle,
-      boards: [
-        {
-          title: data.boardTitle,
-          color: "rose",
-        },
-      ],
+    const handleOpenModal = () => {
+        setIsModalOpen(true);
     };
-    executePost(body);
-    handleCloseModal();
-  };
 
-  useEffect(() => {
-    if (authToken) {
-      fetchGroups();
-    }
-  }, [authToken]);
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
+
+    const handleCloseErrorModal = () => {
+        setErrorModalOpen(false);
+    };
+
+    const handleCreateGroup = async (data) => {
+        const body = {
+        groupName: data.groupTitle,
+        boards: [
+            {
+            title: data.boardTitle,
+            color: "rose",
+            },
+        ],
+        };
+        executePost(body);
+        handleCloseModal();
+    };
+
+    useEffect(() => {
+        if (authToken) {
+        fetchGroups();
+        }
+    }, [authToken]);
 
   const memberGroups = fetchData
     ? fetchData.filter((group) => group.isMember)
     : [];
 
-  useEffect(() => {
-    if (data) {
-      navigate(`/group/${data.groupName}`, { state: { data: data.id } });
-    }
-  }, [data, navigate]);
+    useEffect(() => {
+        if (data) {
+        navigate(`/group/${data.groupName}`, { state: { data: data.id } });
+        }
+    }, [data, navigate]);
 
-  useEffect(() => {
-    if (error) {
-      setErrorModalOpen(true);
-    }
-  }, [error]);
+    useEffect(() => {
+        if (error) {
+        setErrorModalOpen(true);
+        }
+    }, [error]);
 
-  const variantArrow = {
-    open: { rotate: 180, x: 0 },
-    closed: { rotate: 0, x: "-20%" },
-  };
+    const variantArrow = {
+        open: { rotate: 180, x: 0 },
+        closed: { rotate: 0, x: "-20%" },
+    };
 
-  return (
-    <>
-      <motion.aside
-        className={`sidebar ${state} ${isOpen ? "sidebar" : "closed"}`}
-        animate={{ width: isOpen ? "4.25rem" : "2rem" }}
-        transition={{ duration: 0.2 }}
-        layout
-      >
-        <motion.div
-          className="container"
-          animate={isOpen ? "open" : "closed"}
-          variants={{
-            open: {
-              display: "flex",
-              opacity: 1,
-              transition: { delay: 0.3 },
-            },
-            closed: { display: "none", opacity: 0 },
-          }}
-          transition={{ duration: 0.3 }}
-          layout="open"
+    return (
+        <>
+        <motion.aside
+            className={`sidebar ${state} ${isOpen ? "sidebar" : "closed"}`}
+            animate={{ width: isOpen ? "4.25rem" : "2rem" }}
+            transition={{ duration: 0.2 }}
+            layout
         >
-          <div className="groups">
-            <GroupListSidebar groups={memberGroups} />
-          </div>
-          <section className="bottom">
-            <MainButton
-              color="accent"
-              size="small"
-              text="+"
-              onClick={handleOpenModal}
-            />
-            <div className="logo">
-              <div className="line"></div>
-              <Link to="/aboutus">
-                <img src="/logo/Icon-Variant2.svg" alt="studyboard logo" />
-              </Link>
-            </div>
-          </section>
-        </motion.div>
-
-        <motion.button
-          className="circle"
-          animate={isOpen ? "open" : "closed"}
-          variants={{
-            open: { x: 0 },
-            closed: { x: "-140%" },
-          }}
-          transition={{ duration: 0.7 }}
-          onClick={toggleSidebar}
-          layout="position"
-        >
-          <motion.div
-            className="arrow"
+            <motion.div
+            className="container"
             animate={isOpen ? "open" : "closed"}
-            variants={variantArrow}
-            transition={{ duration: 0.7 }}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              fill="none"
-              viewBox="0 0 24 24"
+            variants={{
+                open: {
+                display: "flex",
+                opacity: 1,
+                transition: { delay: 0.3 },
+                },
+                closed: { display: "none", opacity: 0 },
+            }}
+            transition={{ duration: 0.3 }}
+            layout="open"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="1.5"
-                d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-              />
-            </svg>
-          </motion.div>
-        </motion.button>
-      </motion.aside>
-      <LoadingModal isOpen={loading} />
-      <FormModal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        onSubmit={handleCreateGroup}
-        title="Crear nuevo grupo de estudio"
-        fields={groupFields}
-        validationSchema={createGroupSchema}
-        submitButtonText="Crear Grupo"
-        cancelButtonText="Cancelar"
-      />
+            <div className="groups">
+                <GroupListSidebar groups={memberGroups} />
+            </div>
+            <section className="bottom">
+                <MainButton
+                color="accent"
+                size="small"
+                text="+"
+                onClick={handleOpenModal}
+                />
+                <div className="logo">
+                <div className="line"></div>
+                <Link to="/aboutus">
+                    <img src="/logo/Icon-Variant2.svg" alt="studyboard logo" />
+                </Link>
+                </div>
+            </section>
+            </motion.div>
 
-      <AlertModal
-        isOpen={isErrorModalOpen}
-        onClose={handleCloseErrorModal}
-        title="Error"
-        errorText="No se pudo crear el grupo"
-      />
-    </>
-  );
+            <motion.button
+            className="circle"
+            animate={isOpen ? "open" : "closed"}
+            variants={{
+                open: { x: 0 },
+                closed: { x: "-140%" },
+            }}
+            transition={{ duration: 0.7 }}
+            onClick={toggleSidebar}
+            layout="position"
+            >
+            <motion.div
+                className="arrow"
+                animate={isOpen ? "open" : "closed"}
+                variants={variantArrow}
+                transition={{ duration: 0.7 }}
+            >
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+                >
+                <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="1.5"
+                    d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+                />
+                </svg>
+            </motion.div>
+            </motion.button>
+        </motion.aside>
+        <LoadingModal isOpen={loading} />
+        <FormModal
+            isOpen={isModalOpen}
+            onClose={handleCloseModal}
+            onSubmit={handleCreateGroup}
+            title="Crear nuevo grupo de estudio"
+            fields={groupFields}
+            validationSchema={createGroupSchema}
+            submitButtonText="Crear Grupo"
+            cancelButtonText="Cancelar"
+        />
+
+        <AlertModal
+            isOpen={isErrorModalOpen}
+            onClose={handleCloseErrorModal}
+            title="Error"
+            errorText="No se pudo crear el grupo"
+        />
+        </>
+    );
 };
 
-export default Sidebar;
+    export default Sidebar;
