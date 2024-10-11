@@ -10,7 +10,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    max-height: 18rem;
+    max-height: 18.6rem;
     gap: 0.2rem;
     overflow: hidden;
 
@@ -50,6 +50,8 @@
         padding: 0.2rem;
         border-radius: 1rem;
     }
+
+
 }
 
 @media (min-width: 634px) {
