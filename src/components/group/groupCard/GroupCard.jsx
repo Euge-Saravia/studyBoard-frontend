@@ -4,16 +4,18 @@ import GroupLabel from "../../labels/groupLabel/GroupLabel";
 import "./groupCard.scss";
 import { useAuth } from "../../../hooks/useAuth";
 import useFetch from "../../../hooks/useFetch";
+import { JOIN_GROUP } from "../../../config";
 
 const GroupCard = ({ groupId, title, categories, isMember }) => {
   const navigate = useNavigate();
   const { authToken } = useAuth();
+  const endpoint = JOIN_GROUP.replace("${groupId}", groupId)
 
   const {
     fetch: joinGroup,
     loading,
   } = useFetch(
-    `/group/join/${groupId}`,
+    endpoint,
     {
       method: "POST",
       headers: {
@@ -30,7 +32,7 @@ const GroupCard = ({ groupId, title, categories, isMember }) => {
 
   const handleJoin = async () => {
     try {
-      await joinGroup(); // Realiza la petición al backend
+      await joinGroup(); 
       console.log("Te has unido al grupo con éxito");
     } catch (err) {
       console.error(err);

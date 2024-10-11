@@ -6,13 +6,12 @@ import "./group.scss";
 import { useLocation } from "react-router-dom";
 
 const Group = ({ name }) => {
-    //comprobar si user actual es creador
     const isCreator = true;
     const [activeView, setActiveView] = useState("Boards");
     const location = useLocation();
     const id = location.state.data;
     const [isDesktop, setIsDesktop] = useState(window.innerWidth > 1024);
-    
+
     const handleViewChange = (view) => {
         if (view !== activeView) {
             setActiveView(view);
@@ -44,13 +43,13 @@ const Group = ({ name }) => {
                 </>
                 }
             </section>
-            {isDesktop && 
+            {isDesktop &&
                 <section className="group-deskt">
-                    <BoardTagsContainer key="boards" id={id}  />
+                    <BoardTagsContainer key="boards" id={id} />
                     <CalendarComponent key="calendar" groupId={id} />
                 </section>
             }
-          
+
         </>
     );
 };

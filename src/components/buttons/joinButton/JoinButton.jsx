@@ -11,7 +11,7 @@ const JoinButton = ( { color, onClick, initialJoined} ) => {
 
   const handleClick = () => {
     if (!hasJoined) {
-      setHasJoined(true); // Cambiamos el estado a true solo si aún no se ha unido
+      setHasJoined(true); 
       if (onClick) onClick();
     }
   }

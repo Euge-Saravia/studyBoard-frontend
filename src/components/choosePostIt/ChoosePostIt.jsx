@@ -3,12 +3,12 @@ import { useAnimate, stagger, motion } from "framer-motion";
 import ColorButtons from "../colorButtons/ColorButtons";
 import MainButton from "../mainButton/MainButton";
 import "./choosePostIt.scss";
-import { useNavigate } from "react-router-dom";
 import LoadingModal from "../../modals/loadingModal/LoadingModal";
 import FormModal from "../../modals/formModal/FormModal";
 import AlertModal from "../../modals/alertModal/AlertModal";
 import usePost from "../../../hooks/usePost";
 import { createPostItSchema } from "../../../hooks/validationSchemas";
+import { CREATE_POST_IT } from "../../config";
 
 
 const postitFields = [
@@ -46,10 +46,10 @@ function useButtonAnimation(isOpen) {
 }
 
 const ChoosePostIt = () => {
-  const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isErrorModalOpen, setErrorModalOpen] = useState(false);
-  const { data, loading, error, excutePost} = usePost("/{boardId}")
+  const endpoint = CREATE_POST_IT.replace("/{boardId}", boardId)
+  const { loading, executePost} = usePost(endpoint)
   const [isOpen, setIsOpen] = useState(false);
   const [selectedColor, setSelectedColor] = useState("");
   const scope = useButtonAnimation(isOpen);
