@@ -30,7 +30,7 @@ const GroupCard = ({ groupId, title, categories, isMember }) => {
 
   const handleJoin = async () => {
     try {
-      await joinGroup(); // Realiza la petición al backend
+      await joinGroup(); 
       console.log("Te has unido al grupo con éxito");
     } catch (err) {
       console.error(err);

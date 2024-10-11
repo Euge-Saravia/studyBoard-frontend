@@ -5,9 +5,7 @@ import BoardTagsContainer from "../../components/board/boardTagsContainer/BoardT
 import "./group.scss";
 import { useLocation } from "react-router-dom";
 
-const Group = ({ name }) => {
-    //comprobar si user actual es creador
-    const isCreator = true;
+const Group = () => {
     const [activeView, setActiveView] = useState("Boards");
     const location = useLocation();
     const id = location.state.data;
@@ -50,7 +48,6 @@ const Group = ({ name }) => {
                     <CalendarComponent key="calendar" groupId={id} />
                 </section>
             }
-          
         </>
     );
 };

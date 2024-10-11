@@ -11,7 +11,6 @@ const GroupListSidebar = ({ groups }) => {
       .join("");
   };
 
-   // Función para manejar el clic en un grupo
    const handleGroupClick = (groupId, groupName) => {
     navigate(`/group/${groupName}`, { state: { data: groupId } });
   };

@@ -1,8 +1,7 @@
-import GroupImage from "../../sidebar/boardImage/GroupImage";
 import ViewSelector from "../../buttons/viewSelector/ViewSelector";
 import "./groupNav.scss";
 
-const GroupNav = ({onViewChange, onCLick}) => {
+const GroupNav = ({ onViewChange }) => {
     return (
         <article className="group-nav">
             <section className="top-navigation">
