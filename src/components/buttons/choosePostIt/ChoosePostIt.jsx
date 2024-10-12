@@ -8,6 +8,7 @@ import LoadingModal from "../../modals/loadingModal/LoadingModal";
 import FormModal from "../../modals/formModal/FormModal";
 import AlertModal from "../../modals/alertModal/AlertModal";
 import usePost from "../../../hooks/usePost";
+import { CREATE_POST_IT } from "../../../config";
 
 const postitFields = [
   {
@@ -50,7 +51,8 @@ const ChoosePostIt = ({ boardId }) => {
   const [selectedColor, setSelectedColor] = useState("");
   const [buttonText, setButtonText] = useState("+");
   const scope = useButtonAnimation(isOpen);
-  const { loading, error, executePost } = usePost(`/postits/${boardId}`);
+  const endpoint = CREATE_POST_IT.replace("${boardId}", boardId)
+  const { loading, error, executePost } = usePost(endpoint);
 
   const handleOpenModal = (color) => {
     if (!color) {

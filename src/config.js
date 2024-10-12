@@ -8,7 +8,11 @@ export const GROUP_BASE= "/group"
 
 export const CREATE_GROUP = GROUP_BASE + "/add"
 
+export const JOIN_GROUP =  GROUP_BASE + "/join/${groupId}"
+
 export const READ_ALL_GROUP = GROUP_BASE + "/all"
+
+export const READ_BY_USER_GROUP = GROUP_BASE + "/user"
 
 export const READ_BY_ID = GROUP_BASE + "/${id}"
 
@@ -27,4 +31,10 @@ export const CREATE_POST_IT = POST_IT_BASE + "/${boardId}"
 export const READ_POST_IT_BY_BOARD = POST_IT_BASE + "/board/${boardId}"
 
 export const GET_POST_IT_BY_DATE = POST_IT_BASE + "/date/${groupId}?date="
+
+export const USER_PROFILE = "/api/users/me";
+
+export const UPDATE_PROFILE_AVATAR = USER_PROFILE + "/avatar"
+
+export const UPDATE_PROFILE_NAME = USER_PROFILE + "/name"
 
