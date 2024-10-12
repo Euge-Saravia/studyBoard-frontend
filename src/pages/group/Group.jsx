@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
 import CalendarComponent from "../../components/calendar/calendarComponent/CalendarComponent";
 import GroupNav from "../../components/group/groupNav/GroupNav";
 import BoardTagsContainer from "../../components/board/boardTagsContainer/BoardTagsContainer";
-import "./group.scss";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { PostItProvider } from "../../context/PostItContext";
+import "./group.scss";
 
 const Group = () => {
     const [activeView, setActiveView] = useState("Boards");
@@ -32,7 +33,7 @@ const Group = () => {
     };
 
     return (
-        <>
+        <PostItProvider>
             <section>
                 {!isDesktop && <>
                     <GroupNav onViewChange={handleViewChange} />
@@ -48,7 +49,7 @@ const Group = () => {
                     <CalendarComponent key="calendar" groupId={id} />
                 </section>
             }
-        </>
+        </PostItProvider>
     );
 };
 
