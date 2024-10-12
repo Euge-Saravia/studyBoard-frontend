@@ -34,6 +34,7 @@ const GroupCard = ({ groupId, title, categories, isMember }) => {
     try {
       await joinGroup(); 
       console.log("Te has unido al grupo con éxito");
+      location.reload();
     } catch (err) {
       console.error(err);
       console.log("Hubo un error al unirse al grupo");
