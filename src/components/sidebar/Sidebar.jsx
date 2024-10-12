@@ -11,6 +11,7 @@ import LoadingModal from "../modals/loadingModal/LoadingModal";
 import { useAuth } from "../../hooks/useAuth";
 import useFetch from "../../hooks/useFetch";
 import GroupListSidebar from "../group/groupListSideBar/GroupListSidebar";
+import { CREATE_GROUP, READ_BY_USER_GROUP } from "../../config";
 
 const groupFields = [
     {
@@ -26,22 +27,22 @@ const groupFields = [
 ];
 
 const Sidebar = ({ state, isOpen, toggleSidebar }) => {
-    const navigate = useNavigate();
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [isErrorModalOpen, setErrorModalOpen] = useState(false);
-    const { authToken } = useAuth();
-    const { data: fetchData, fetch: fetchGroups } = useFetch(
-        "/group/user",
-        {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${authToken}`,
-            },
-        },
-        false
-    );
-    const { data, loading, error, executePost } = usePost("/group/add");
+  const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isErrorModalOpen, setErrorModalOpen] = useState(false);
+  const { authToken } = useAuth(); 
+  const { data: fetchData, fetch: fetchGroups } = useFetch(
+    READ_BY_USER_GROUP,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${authToken}`,
+      },
+    },
+    false
+  );
+  const { data, loading, error, executePost } = usePost(CREATE_GROUP);
 
     const handleOpenModal = () => {
         setIsModalOpen(true);
@@ -75,9 +76,9 @@ const Sidebar = ({ state, isOpen, toggleSidebar }) => {
         }
     }, [authToken]);
 
-    const memberGroups = fetchData
-        ? fetchData.filter((group) => group.isMember)
-        : [];
+  const memberGroups = fetchData
+    ? fetchData.filter((group) => group.isMember)
+    : [];
 
     useEffect(() => {
         if (data) {
