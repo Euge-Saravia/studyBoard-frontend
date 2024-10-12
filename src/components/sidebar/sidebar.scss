@@ -1,27 +1,25 @@
 @import "../../styles/variables.scss";
 
 .sidebar {
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    border: none;
     background-color: $dark-blue;
     height: 42rem;
     width: 4.75rem;
-    border-radius: 0  0.94rem 0.94rem 0;
+    border-radius: 0 0.94rem 0.94rem 0;
     display: flex;
     flex-direction: column;
     gap: 2rem;
     justify-content: space-between;
     align-items: center;
     padding-bottom: 1.9rem;
-    position: relative;
     transition: width 0.5s ease;
     position: fixed;
     left: 0;
-    top: 50%;
-    transform: translateY(-50%);
     z-index: 30;
+
+    @media (max-height: 800px) {
+        height: 37rem;
+        padding-bottom: 1.9rem;
+    }
 
     .container {
         display: flex;
@@ -39,18 +37,18 @@
             justify-content: center;
             align-items: flex-start;
             gap: 1rem;
-    
         }
+    }
 
-        .bottom {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            order: 1;
-            gap: 1rem;
-    
-            .logo {
+    .bottom {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        order: 1;
+        gap: 1rem;
+
+        .logo {
             width: 4.2rem;
             height: 4.5rem;
             display: flex;
@@ -58,32 +56,30 @@
             gap: 1rem;
             justify-content: center;
             align-items: center;
-    
-                .line {
-                    width: 4rem;
-                    height: 0.2rem;
-                    border-bottom:0.06rem solid $light-blue;
-                }
-    
-                img {
-                    object-fit: cover;
-                    width: 3.25rem;
-                    height: 3.46rem;
-                }
+
+            .line {
+                width: 4rem;
+                height: 0.2rem;
+                border-bottom: 0.06rem solid $light-blue;
+            }
+
+            img {
+                object-fit: cover;
+                width: 3.25rem;
+                height: 3.46rem;
             }
         }
     }
 
-    
     .circle {
         width: 2.1rem;
         height: 2.37rem;
-        border-radius: 0 1.2rem 1.2rem 0;;
+        border-radius: 0 1.2rem 1.2rem 0;
         background-color: $dark-blue;
         position: absolute;
         z-index: 1;
         top: 2rem;
-        left: 3.8rem;
+        left: 3.25rem;
         display: flex;
         justify-content: flex-end;
         align-items: center;
@@ -95,39 +91,35 @@
             align-items: center;
             transform-origin: center;
             padding: 0.4rem;
-
-                svg {
-                    stroke: $light-blue;
-                    width: 1.125rem;
-                    height: 1.188rem;
-                }
+            cursor: pointer;
+            svg {
+                stroke: $light-blue;
+                width: 1.125rem;
+                height: 1.188rem;
+            }
         }
         @media (min-width: 1024px) {
             display: none;
         }
     }
 
-
-
     &.closed {
-        .sidebar {
-            width: 2.06rem;
+        width: 2.06rem;
 
-            .content {
-                visibility: hidden;
-                display: none;
-                opacity: 0;
-            }
+        .content {
+            visibility: hidden;
+            display: none;
+            opacity: 0;
+        }
 
-            .bottom {
-                visibility: hidden;
-                display: none;
-                opacity: 0;
-            }
+        .bottom {
+            visibility: hidden;
+            display: none;
+            opacity: 0;
+        }
 
-            .circle {
-                left: 2rem;
-            }
-        }   
+        .circle {
+            left: 1rem;
+        }
     }
 }
