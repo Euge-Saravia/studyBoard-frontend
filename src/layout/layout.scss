@@ -1,5 +1,11 @@
 @import "../styles/variables.scss";
 
+.sidebar-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    position: absolute;
+}
 .overlay {
     &.open {
         position: fixed;
@@ -9,6 +15,7 @@
         height: 100vh;
         background-color: $white-cream;
         z-index: 20;
+        pointer-events: none;
     }
     &.closed {
         opacity: 0;
