@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import useFetch from './useFetch';
-import { GITHUB_AUTH, SIGNUP_PAGE, GITHUB_CLIENT_ID, GITHUB_REDIRECT } from '../config';
+import { GITHUB_AUTH, GITHUB_CLIENT_ID, GITHUB_REDIRECT } from '../config';
 
 const useGithubAuth = (login, page) => {
     const [githubLoading, setGithubLoading] = useState(false);
