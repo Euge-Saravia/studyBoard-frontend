@@ -46,7 +46,7 @@ function useButtonAnimation(isOpen) {
 }
 
 const ChoosePostIt = ({ boardId }) => {
-    const { setPostIts } = useContext(PostItContext);
+    const { triggerChange } = useContext(PostItContext);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isErrorModalOpen, setErrorModalOpen] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
@@ -90,11 +90,11 @@ const ChoosePostIt = ({ boardId }) => {
         executePost(body);
     };
 
-    useEffect(() => {
-        if (data) {
-            setPostIts(prevPostIts => [...prevPostIts, data]);
+    useEffect(()=>{
+        if (data){
+            triggerChange();
         }
-    }, [data]);
+    }, [data])
 
     useEffect(() => {
         if (error) {

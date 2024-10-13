@@ -12,12 +12,10 @@ const PostIt = ({ type, title, text, onClick, layoutId, id }) => {
         <motion.div className={`post-it-container ${type}`} onClick={onClick} layoutId={layoutId} id={id}>
         <h6>{title}</h6>
         <ReactMarkdown
-            children={truncatedText}
             components={{
-            code({ node, inline, className, children, ...props }) {
-                const match = /language-(\w+)/.exec(className || "");
-                return !inline && match ? (
-                <SyntaxHighlighter style={tomorrow} language={match[1]} PreTag="div" {...props}>
+            code({ inline, className, children, ...props }) {
+                return !inline ? (
+                <SyntaxHighlighter style={tomorrow} language={"javascript"} PreTag="div" {...props}>
                     {String(children).replace(/\n$/, "")}
                 </SyntaxHighlighter>
                 ) : (
@@ -26,7 +24,7 @@ const PostIt = ({ type, title, text, onClick, layoutId, id }) => {
                 </code>
                     );},
             }}
-        />
+        >{truncatedText}</ReactMarkdown>
         <img src={expandIcon} alt="Expand Icon" className="post-it-container_icon" />
         </motion.div>
     );

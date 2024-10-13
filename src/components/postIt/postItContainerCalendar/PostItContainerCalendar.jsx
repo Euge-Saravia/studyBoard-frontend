@@ -10,7 +10,7 @@ import "./postItContainerCalendar.scss";
 
 const PostItContainerCalendar = ({ date, groupId }) => {
     const [postits, setPostits] = useState([]);
-    const { postIts: contextPostIts } = useContext(PostItContext);
+    const { hasChanged } = useContext(PostItContext);
     const [loader, setLoader] = useState(false);
     const [selectId, setSelectId] = useState(null);
     const endpoint = `${GET_POST_IT_BY_DATE.replace(
@@ -46,16 +46,16 @@ const PostItContainerCalendar = ({ date, groupId }) => {
     }, [date, groupId]);
 
     useEffect(() => {
-        if (data) {
+        if (data && data.length > 0) {
             setPostits(data);
         }
     }, [data]);
 
     useEffect(() => {
-        if (contextPostIts) {
+        if (hasChanged) {
             fetchData();
         }
-    }, [contextPostIts]);
+    }, [hasChanged]);
 
     const selectPostIt = postits.find((postit) => postit.id === selectId);
     return (
