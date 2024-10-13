@@ -49,9 +49,6 @@ const PostItContainerCalendar = ({ date, groupId }) => {
         if (data && data.length > 0) {
             setPostits(data);
         }
-        if (error) {
-            console.log(error)
-        }
     }, [data]);
 
     useEffect(() => {
