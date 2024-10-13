@@ -26,8 +26,8 @@ const PostItContainerBoard = ({ boardId }) => {
         `/postits/board/${boardId}`,
         {
             headers: {
-            "Content-Type": "application/json",
-            ...(authToken ? { Authorization: `Bearer ${authToken}` } : {}),
+                "Content-Type": "application/json",
+                ...(authToken ? { Authorization: `Bearer ${authToken}` } : {}),
             },
         },
         true
@@ -45,63 +45,61 @@ const PostItContainerBoard = ({ boardId }) => {
         setPostitIdToDelete(null);
     };
 
-    const handleDelete = () => {
-        executeDelete();
+    const handleDelete = async () => {
+        await executeDelete();
         setIsModalOpen(false);
-        setTimeout(() => {
-        fetch();
-        }, 500);
+        fetchData();
         triggerChange();
     };
 
     useEffect(() => {
-      if (hasChanged) {
-          fetchData();
-      }
-  }, [hasChanged]);
+        if (hasChanged) {
+            fetchData();
+        }
+    }, [hasChanged]);
 
     if (loading) return <p>Cargando post-its...</p>;
     if (error) return <p>Error al cargar los post-its: {error}</p>;
 
     return (
         <div className="postit-sect">
-        <div className="expanded-postit">
-            <AnimatePresence>
-            {selectedId && selectedPostIt && (
-                <PostItExpand
-                layoutId={selectedId}
-                type={selectedPostIt.color}
-                title={selectedPostIt.title}
-                text={selectedPostIt.textContent}
-                isOwner={selectedPostIt.isOwner}
-                onClick={() => setSelectedId(null)}
-                onDelete={() => openDeleteModal(selectedId)}
-                />
-            )}
-            {isModalOpen && <DeleteModal onOk={handleDelete} onCancel={handleCancel} />}
-            </AnimatePresence>
-        </div>
-        <div className="postit-cont">
-            {postits?.length > 0 ? (
-            postits.map((postit, index) => (
-                <PostIt
-                layoutId={postit.id}
-                key={index}
-                type={postit.color}
-                title={postit.title}
-                text={postit.textContent}
-                onClick={() => setSelectedId(postit.id)}
-                onDelete={() => openDeleteModal(postit.id)}
-                />
-            ))
-            ) : (
-            <p>No hay post-its disponibles</p>
-            )}
-            {isModalOpen && <DeleteModal onOk={handleDelete} onCancel={handleCancel} />}
-            <div className="create-postit-btn">
-                <ChoosePostIt boardId={boardId} />
+            <div className="expanded-postit">
+                <AnimatePresence>
+                    {selectedId && selectedPostIt && (
+                        <PostItExpand
+                            layoutId={selectedId}
+                            type={selectedPostIt.color}
+                            title={selectedPostIt.title}
+                            text={selectedPostIt.textContent}
+                            isOwner={selectedPostIt.isOwner}
+                            onClick={() => setSelectedId(null)}
+                            onDelete={() => openDeleteModal(selectedId)}
+                        />
+                    )}
+                    {isModalOpen && <DeleteModal onOk={handleDelete} onCancel={handleCancel} />}
+                </AnimatePresence>
             </div>
-        </div>
+            <div className="postit-cont">
+                {postits?.length > 0 ? (
+                    postits.map((postit, index) => (
+                        <PostIt
+                            layoutId={postit.id}
+                            key={index}
+                            type={postit.color}
+                            title={postit.title}
+                            text={postit.textContent}
+                            onClick={() => setSelectedId(postit.id)}
+                            onDelete={() => openDeleteModal(postit.id)}
+                        />
+                    ))
+                ) : (
+                    <p>No hay post-its disponibles</p>
+                )}
+                {isModalOpen && <DeleteModal onOk={handleDelete} onCancel={handleCancel} />}
+                <div className="create-postit-btn">
+                    <ChoosePostIt boardId={boardId} />
+                </div>
+            </div>
         </div>
     );
 };
