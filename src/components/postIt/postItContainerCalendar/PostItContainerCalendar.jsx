@@ -1,7 +1,8 @@
 import { AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useAuth } from "../../../hooks/useAuth";
 import { GET_POST_IT_BY_DATE } from "../../../config";
+import { PostItContext } from "../../../context/PostItContext"
 import PostIt from "../PostIt";
 import PostItExpand from "../postItExpand/PostItExpand";
 import useFetch from "../../../hooks/useFetch";
@@ -9,6 +10,7 @@ import "./postItContainerCalendar.scss";
 
 const PostItContainerCalendar = ({ date, groupId }) => {
     const [postits, setPostits] = useState([]);
+    const { postIts: contextPostIts } = useContext(PostItContext);
     const [loader, setLoader] = useState(false);
     const [selectId, setSelectId] = useState(null);
     const endpoint = `${GET_POST_IT_BY_DATE.replace(
@@ -48,6 +50,12 @@ const PostItContainerCalendar = ({ date, groupId }) => {
             setPostits(data);
         }
     }, [data]);
+
+    useEffect(() => {
+        if (contextPostIts) {
+            fetchData();
+        }
+    }, [contextPostIts]);
 
     const selectPostIt = postits.find((postit) => postit.id === selectId);
     return (
