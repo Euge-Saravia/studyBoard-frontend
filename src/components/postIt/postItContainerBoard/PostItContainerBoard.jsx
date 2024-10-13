@@ -1,16 +1,18 @@
-import { useState } from "react";
-import "./postItContainerBoard.scss";
-import PostItExpand from "../postItExpand/PostItExpand";
+import { useContext, useState } from "react";
+import { PostItContext } from "../../../context/PostItContext";
+import { useAuth } from "../../../hooks/useAuth";
 import { AnimatePresence } from "framer-motion";
+import PostItExpand from "../postItExpand/PostItExpand";
 import PostIt from "../PostIt";
 import ChoosePostIt from "../../buttons/choosePostIt/ChoosePostIt";
-import { useAuth } from "../../../hooks/useAuth";
 import useFetch from "../../../hooks/useFetch";
 import useDelete from "../../../hooks/useDelete";
 import DeleteModal from "../../modals/deleteModal/DeleteModal";
+import "./postItContainerBoard.scss";
 
 const PostItContainerBoard = ({ boardId }) => {
     const { authToken } = useAuth();
+    const { triggerChange } = useContext(PostItContext);
     const [selectedId, setSelectedId] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [postitIdToDelete, setPostitIdToDelete] = useState(null);
@@ -49,6 +51,7 @@ const PostItContainerBoard = ({ boardId }) => {
         setTimeout(() => {
         fetch();
         }, 500);
+        triggerChange();
     };
 
     if (loading) return <p>Cargando post-its...</p>;
