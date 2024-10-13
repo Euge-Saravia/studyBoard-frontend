@@ -1,11 +1,16 @@
 import { createContext, useState } from "react";
 
-export const PostItContext = createContext();
+export const PostItContext = createContext({
+    hasChanged: 0,
+    triggerChange: () => {},
+});
 export const PostItProvider = ({ children }) => {
-    const [postIts, setPostIts] = useState([]);
-
+    const [hasChanged, setHasChanged] = useState(0);
+    const triggerChange = () => {
+        setHasChanged(prev => prev + 1);
+    };
     return (
-        <PostItContext.Provider value={{ postIts, setPostIts }}>
+        <PostItContext.Provider value={{ hasChanged, triggerChange }}>
             {children}
         </PostItContext.Provider>
     );
