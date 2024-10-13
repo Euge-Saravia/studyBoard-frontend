@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { PostItContext } from "../../../context/PostItContext";
 import { useAuth } from "../../../hooks/useAuth";
 import { AnimatePresence } from "framer-motion";
@@ -12,7 +12,7 @@ import "./postItContainerBoard.scss";
 
 const PostItContainerBoard = ({ boardId }) => {
     const { authToken } = useAuth();
-    const { triggerChange } = useContext(PostItContext);
+    const { triggerChange, hasChanged } = useContext(PostItContext);
     const [selectedId, setSelectedId] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [postitIdToDelete, setPostitIdToDelete] = useState(null);
@@ -21,7 +21,7 @@ const PostItContainerBoard = ({ boardId }) => {
         data: postits,
         loading,
         error,
-        fetch,
+        fetch: fetchData,
     } = useFetch(
         `/postits/board/${boardId}`,
         {
@@ -53,6 +53,12 @@ const PostItContainerBoard = ({ boardId }) => {
         }, 500);
         triggerChange();
     };
+
+    useEffect(() => {
+      if (hasChanged) {
+          fetchData();
+      }
+  }, [hasChanged]);
 
     if (loading) return <p>Cargando post-its...</p>;
     if (error) return <p>Error al cargar los post-its: {error}</p>;
