@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
 import useFetch from "../../hooks/useFetch";
 import usePut from "../../hooks/usePut";
+import { UPDATE_PROFILE_AVATAR, UPDATE_PROFILE_NAME, USER_PROFILE } from "../../config";
 
 const UserHomeProfile = () => {
   const [name, setName] = useState("");
@@ -16,7 +17,7 @@ const UserHomeProfile = () => {
   const [isEditingName, setIsEditingName] = useState(false);
 
   const { data, loading, error } = useFetch(
-    "/api/users/me",
+    USER_PROFILE,
     {
       method: "GET",
       headers: {
@@ -38,13 +39,13 @@ const UserHomeProfile = () => {
     executePut,
     loading: avatarPutLoading,
     error: avatarPutError,
-  } = usePut("/api/users/me/avatar");
+  } = usePut(UPDATE_PROFILE_AVATAR);
 
   const {
     executePut: updateName,
     loading: namePutLoading,
     error: namePutError,
-  } = usePut("/api/users/me/name");
+  } = usePut(UPDATE_PROFILE_NAME);
 
   const handleImageUpload = (imageUrl) => {
     executePut({ avatarUrl: imageUrl });

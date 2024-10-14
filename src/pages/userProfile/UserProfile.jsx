@@ -3,7 +3,7 @@ import LoadingModal from "../../components/modals/loadingModal/LoadingModal";
 import UserHomeProfile from "../../components/userHomeProfile/UserHomeProfile";
 
 const UserProfile = () => {
-  const [loading, setLoading] = useState(false)
+  const [loading] = useState(false)
 
   return (
     <>

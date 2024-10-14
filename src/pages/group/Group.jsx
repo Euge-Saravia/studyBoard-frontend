@@ -1,18 +1,17 @@
-import { useEffect, useState } from "react";
 import CalendarComponent from "../../components/calendar/calendarComponent/CalendarComponent";
 import GroupNav from "../../components/group/groupNav/GroupNav";
 import BoardTagsContainer from "../../components/board/boardTagsContainer/BoardTagsContainer";
-import "./group.scss";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { PostItProvider } from "../../context/PostItContext";
+import "./group.scss";
 
-const Group = ({ name }) => {
-    //comprobar si user actual es creador
-    const isCreator = true;
+const Group = () => {
     const [activeView, setActiveView] = useState("Boards");
     const location = useLocation();
     const id = location.state.data;
     const [isDesktop, setIsDesktop] = useState(window.innerWidth > 1024);
-    
+
     const handleViewChange = (view) => {
         if (view !== activeView) {
             setActiveView(view);
@@ -34,7 +33,7 @@ const Group = ({ name }) => {
     };
 
     return (
-        <>
+        <PostItProvider>
             <section>
                 {!isDesktop && <>
                     <GroupNav onViewChange={handleViewChange} />
@@ -44,14 +43,13 @@ const Group = ({ name }) => {
                 </>
                 }
             </section>
-            {isDesktop && 
+            {isDesktop &&
                 <section className="group-deskt">
-                    <BoardTagsContainer key="boards" id={id}  />
+                    <BoardTagsContainer key="boards" id={id} />
                     <CalendarComponent key="calendar" groupId={id} />
                 </section>
             }
-          
-        </>
+        </PostItProvider>
     );
 };
 

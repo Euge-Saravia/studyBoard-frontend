@@ -35,7 +35,7 @@ const AboutUs = () => {
       <h5 className="ourTeam">Conoce al Equipo</h5>
       <ul className="ourTeamLinkedin">
         <li><a href="https://www.linkedin.com/in/flavia-ferrigno/" target="_blank" rel="noopener noreferrer">Flavia Ferrigno</a></li>
-        <li><a href="https://www.linkedin.com/in/isabel-afonso-guizado/" target="_blank" rel="noopener noreferrer">Isabela Afonso</a></li>
+        <li><a href="https://www.linkedin.com/in/isabel-afonso-guizado/" target="_blank" rel="noopener noreferrer">Isabel Afonso</a></li>
         <li><a href="https://www.linkedin.com/in/elisabet-lopez-pons/" target="_blank" rel="noopener noreferrer">Elisabet López</a></li>
         <li><a href="https://www.linkedin.com/in/laura-gil-cara/" target="_blank" rel="noopener noreferrer">Laura Gil</a></li>
         <li><a href="https://www.linkedin.com/in/rebeca-garcia-58149061/" target="_blank" rel="noopener noreferrer">Rebeca García</a></li>
